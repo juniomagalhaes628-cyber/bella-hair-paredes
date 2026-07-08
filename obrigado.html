@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcação enviada — Bella Hair</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>tailwind.config={theme:{extend:{colors:{navy:'#0a1520',navy2:'#0f1e2c',gold:'#c9a84c'},fontFamily:{serif:['"Cormorant Garamond"','serif'],sans:['Inter','sans-serif']}}}}</script>
+</head>
+<body class="bg-navy text-[#eef1f4] font-sans antialiased min-h-screen flex flex-col items-center justify-center px-6">
+
+  <div class="text-center max-w-md fade-up">
+    <p class="text-gold text-4xl mb-6">✦</p>
+    <h1 class="font-serif text-4xl md:text-5xl font-light mb-4">
+      Marcação <em class="text-gold">enviada!</em>
+    </h1>
+    <div class="w-12 h-px bg-gold mx-auto my-6"></div>
+    <p class="text-[#eef1f4]/55 font-light leading-relaxed text-sm mb-3">
+      Recebemos o seu pedido. Entraremos em contacto brevemente para confirmar a disponibilidade.
+    </p>
+    <p class="text-[#eef1f4]/35 text-xs mb-10">
+      Para confirmação imediata ligue para
+      <a href="tel:913533917" class="text-gold">913 533 917</a>
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="index.html" class="btn-primary">← Voltar ao site</a>
+      <a href="marcacoes.html" class="btn-outline">Nova marcação</a>
+    </div>
+  </div>
+
+  <p class="absolute bottom-8 text-[#eef1f4]/20 text-xs">Bella Hair by Leandro Oliveira · Paredes</p>
+
+  <script>
+    document.querySelectorAll('.fade-up').forEach((el,i)=>{
+      el.style.animation=`fadeUp 700ms cubic-bezier(0.23,1,0.32,1) ${i*120}ms both`;
+    });
+  </script>
+</body>
+</html>

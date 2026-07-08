@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Marque a sua consulta na Bella Hair by Leandro Oliveira — Cabeleireiro em Paredes. Rápido, fácil e online.">
+  <title>Marcações — Bella Hair by Leandro Oliveira</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:  '#0a1520',
+            navy2: '#0f1e2c',
+            navy3: '#162638',
+            gold:  '#c9a84c',
+            'gold-light': '#e0c26a',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Form inputs — navy style */
+    .form-field {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(238,241,244,.1);
+      color: #eef1f4;
+      padding: .85rem 1.1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: .875rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 200ms ease, background 200ms ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-field::placeholder { color: rgba(238,241,244,.3); }
+    .form-field:focus {
+      border-color: rgba(201,168,76,.5);
+      background: rgba(255,255,255,.06);
+    }
+    .form-field option { background: #0f1e2c; color: #eef1f4; }
+
+    /* Select arrow */
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 1rem; top: 50%;
+      transform: translateY(-50%);
+      color: rgba(201,168,76,.6);
+      pointer-events: none;
+      font-size: .75rem;
+    }
+
+    /* Horários grid */
+    .time-slot {
+      padding: .6rem;
+      border: 1px solid rgba(238,241,244,.1);
+      text-align: center;
+      font-size: .8rem;
+      color: rgba(238,241,244,.55);
+      cursor: pointer;
+      transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 160ms ease;
+      user-select: none;
+    }
+    .time-slot:hover {
+      border-color: rgba(201,168,76,.4);
+      color: #eef1f4;
+    }
+    .time-slot:active { transform: scale(0.96); }
+    .time-slot.selected {
+      border-color: #c9a84c;
+      background: rgba(201,168,76,.12);
+      color: #c9a84c;
+    }
+    .time-slot.unavailable {
+      opacity: .25;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Success state */
+    #success-msg {
+      display: none;
+    }
+
+    /* Step indicator */
+    .step-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(238,241,244,.15);
+      transition: background 300ms ease;
+    }
+    .step-dot.active { background: #c9a84c; }
+    .step-dot.done   { background: rgba(201,168,76,.4); }
+  </style>
+</head>
+
+<body class="bg-navy text-[#eef1f4] font-sans antialiased min-h-screen">
+
+  <!-- Navbar simples -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[rgba(10,21,32,.95)] border-b border-[rgba(201,168,76,.1)] backdrop-blur-md">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/logo.jpg" alt="Bella Hair"
+             class="h-10 w-auto object-contain"
+             style="filter: brightness(0) invert(1);">
+      </a>
+      <a href="index.html" class="nav-link text-xs">← Voltar ao site</a>
+    </div>
+  </nav>
+
+  <!-- Hero da página -->
+  <div class="pt-32 pb-16 px-6 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[.03]"
+         style="background-image: linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px); background-size:72px 72px;"></div>
+    <div class="relative z-10 max-w-xl mx-auto">
+      <p class="section-label mb-5 fade-up">Reserva online</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-light fade-up delay-1">
+        Marque a sua<br><em class="text-gold">consulta</em>
+      </h1>
+      <p class="mt-5 text-[#eef1f4]/45 text-sm font-light max-w-sm mx-auto fade-up delay-2">
+        Preencha o formulário e entraremos em contacto para confirmar o seu agendamento.
+      </p>
+    </div>
+  </div>
+
+  <!-- Formulário -->
+  <main class="max-w-2xl mx-auto px-6 pb-24">
+
+    <!-- Card -->
+    <div class="bg-navy2 border border-[rgba(201,168,76,.15)] p-8 md:p-10 fade-up delay-2">
+
+      <!-- Steps indicator -->
+      <div class="flex items-center gap-2 mb-10">
+        <div class="step-dot active" id="dot1"></div>
+        <div class="flex-1 h-px bg-[rgba(238,241,244,.08)]"></div>
+        <div class="step-dot" id="dot2"></div>
+        <div class="flex-1 h-px bg-[rgba(238,241,244,.08)]"></div>
+        <div class="step-dot" id="dot3"></div>
+      </div>
+
+      <!-- FORM — envia por email via FormSubmit -->
+      <form id="booking-form"
+            action="https://formsubmit.co/juniomagalhaes628@gmail.com"
+            method="POST">
+
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="🗓️ Nova marcação — Bella Hair Paredes">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/obrigado.html">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="Salão" value="Bella Hair by Leandro Oliveira — Paredes">
+        <input type="hidden" name="horario" id="hidden-horario" value="">
+
+        <!-- Passo 1: Dados pessoais -->
+        <div id="step-1">
+          <p class="section-label mb-6">01 — Os seus dados</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Nome completo *</label>
+              <input type="text" name="Nome" placeholder="Ex: Maria Silva"
+                     class="form-field" required>
+            </div>
+            <div>
+              <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Telemóvel *</label>
+              <input type="tel" name="Telemóvel" placeholder="9XX XXX XXX"
+                     class="form-field" required>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Email (opcional)</label>
+            <input type="email" name="Email" placeholder="para confirmação por email"
+                   class="form-field">
+          </div>
+
+          <button type="button" onclick="goToStep(2)"
+                  class="btn-primary w-full justify-center">
+            Continuar →
+          </button>
+        </div>
+
+        <!-- Passo 2: Serviço e data -->
+        <div id="step-2" class="hidden">
+          <p class="section-label mb-6">02 — Serviço & data</p>
+
+          <div class="mb-4">
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Serviço pretendido *</label>
+            <div class="select-wrap">
+              <select name="Serviço" class="form-field" required>
+                <option value="" disabled selected>Escolha o serviço</option>
+                <optgroup label="── Cortes">
+                  <option>Corte Feminino (€18)</option>
+                  <option>Corte + Lavagem (€25)</option>
+                  <option>Corte Masculino (€12)</option>
+                  <option>Franja (€8)</option>
+                </optgroup>
+                <optgroup label="── Coloração">
+                  <option>Coloração total (€35)</option>
+                  <option>Retoque raízes (€25)</option>
+                  <option>Mechas (€45+)</option>
+                  <option>Balayage (€65+)</option>
+                </optgroup>
+                <optgroup label="── Tratamentos">
+                  <option>Hidratação (€20)</option>
+                  <option>Progressiva (€70+)</option>
+                  <option>Penteado festa (€35+)</option>
+                  <option>Penteado noiva (€80+)</option>
+                </optgroup>
+                <option value="Outro / Dúvida">Outro / Tenho uma dúvida</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Data preferida *</label>
+            <input type="date" name="Data" id="date-input" class="form-field" required>
+          </div>
+
+          <div class="mb-8">
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-3">Horário preferido</label>
+            <div class="grid grid-cols-4 sm:grid-cols-5 gap-2" id="time-grid">
+              <div class="time-slot" data-time="09:00">09h00</div>
+              <div class="time-slot" data-time="09:30">09h30</div>
+              <div class="time-slot" data-time="10:00">10h00</div>
+              <div class="time-slot" data-time="10:30">10h30</div>
+              <div class="time-slot" data-time="11:00">11h00</div>
+              <div class="time-slot" data-time="11:30">11h30</div>
+              <div class="time-slot" data-time="12:00">12h00</div>
+              <div class="time-slot" data-time="14:00">14h00</div>
+              <div class="time-slot" data-time="14:30">14h30</div>
+              <div class="time-slot" data-time="15:00">15h00</div>
+              <div class="time-slot" data-time="15:30">15h30</div>
+              <div class="time-slot" data-time="16:00">16h00</div>
+              <div class="time-slot" data-time="16:30">16h30</div>
+              <div class="time-slot" data-time="17:00">17h00</div>
+              <div class="time-slot" data-time="17:30">17h30</div>
+              <div class="time-slot" data-time="18:00">18h00</div>
+              <div class="time-slot" data-time="18:30">18h30</div>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <button type="button" onclick="goToStep(1)"
+                    class="btn-outline flex-1 justify-center">← Voltar</button>
+            <button type="button" onclick="goToStep(3)"
+                    class="btn-primary flex-1 justify-center">Continuar →</button>
+          </div>
+        </div>
+
+        <!-- Passo 3: Confirmação -->
+        <div id="step-3" class="hidden">
+          <p class="section-label mb-6">03 — Confirmação</p>
+
+          <div class="mb-6">
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Observações (opcional)</label>
+            <textarea name="Observações" rows="3"
+                      placeholder="Ex: cabelo muito danificado, quero algo natural, alergia a algum produto..."
+                      class="form-field resize-none"></textarea>
+          </div>
+
+          <!-- Resumo -->
+          <div id="summary" class="bg-[rgba(201,168,76,.06)] border border-[rgba(201,168,76,.15)] p-5 mb-7">
+            <p class="text-[10px] tracking-[.18em] uppercase text-gold mb-4">Resumo da marcação</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-[#eef1f4]/45">Nome</span>
+                <span id="s-nome" class="text-right font-light">—</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#eef1f4]/45">Telemóvel</span>
+                <span id="s-tel" class="text-right font-light">—</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#eef1f4]/45">Serviço</span>
+                <span id="s-servico" class="text-right font-light max-w-[55%] text-right">—</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#eef1f4]/45">Data</span>
+                <span id="s-data" class="text-right font-light">—</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#eef1f4]/45">Horário</span>
+                <span id="s-hora" class="text-right font-light">—</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-[#eef1f4]/35 text-xs mb-7 leading-relaxed">
+            ✦ Após o envio, entraremos em contacto para confirmar a disponibilidade.<br>
+            Para questões urgentes ligue: <a href="tel:913533917" class="text-gold">913 533 917</a>
+          </p>
+
+          <div class="flex gap-3">
+            <button type="button" onclick="goToStep(2)"
+                    class="btn-outline flex-1 justify-center">← Voltar</button>
+            <button type="submit" id="submit-btn"
+                    class="btn-primary flex-1 justify-center">
+              Enviar marcação ✦
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- Mensagem de sucesso (fallback local) -->
+      <div id="success-msg" class="text-center py-8">
+        <p class="text-gold text-3xl mb-4">✦</p>
+        <h3 class="font-serif text-2xl font-light mb-3">Marcação enviada!</h3>
+        <p class="text-[#eef1f4]/50 text-sm font-light leading-relaxed mb-6">
+          Obrigada pelo contacto. Entraremos em contacto brevemente para confirmar.
+        </p>
+        <a href="index.html" class="btn-outline">← Voltar ao site</a>
+      </div>
+
+    </div>
+
+    <!-- Info lateral -->
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-navy2 border border-[rgba(238,241,244,.06)] p-5 text-center">
+        <p class="text-gold text-sm mb-2">✦</p>
+        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 mb-1">Horário</p>
+        <p class="text-sm text-[#eef1f4]/60 font-light">Ter – Sáb<br>9h às 19h</p>
+      </div>
+      <div class="bg-navy2 border border-[rgba(238,241,244,.06)] p-5 text-center">
+        <p class="text-gold text-sm mb-2">◈</p>
+        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 mb-1">Morada</p>
+        <p class="text-sm text-[#eef1f4]/60 font-light">R. Dr. José Barbosa Leão 44<br>4580-123 Paredes</p>
+      </div>
+      <div class="bg-navy2 border border-[rgba(238,241,244,.06)] p-5 text-center">
+        <p class="text-gold text-sm mb-2">◇</p>
+        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 mb-1">Telefone</p>
+        <a href="tel:913533917" class="text-sm text-[#eef1f4]/60 font-light hover:text-gold transition-colors">913 533 917</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer mínimo -->
+  <footer class="border-t border-[rgba(201,168,76,.07)] py-6 px-6 text-center">
+    <p class="text-[#eef1f4]/20 text-xs">© 2025 Bella Hair by Leandro Oliveira · Paredes</p>
+  </footer>
+
+  <script>
+    // ── Step navigation
+    function goToStep(n) {
+      // Validate step 1
+      if (n === 2) {
+        const nome = document.querySelector('[name="Nome"]').value.trim();
+        const tel  = document.querySelector('[name="Telemóvel"]').value.trim();
+        if (!nome || !tel) {
+          shake(document.querySelector('[name="Nome"]').closest('div').parentElement);
+          return;
+        }
+      }
+      // Validate step 2
+      if (n === 3) {
+        const servico = document.querySelector('[name="Serviço"]').value;
+        const data    = document.querySelector('[name="Data"]').value;
+        if (!servico || !data) {
+          shake(document.querySelector('[name="Serviço"]').closest('.select-wrap'));
+          return;
+        }
+        // Update summary
+        updateSummary();
+      }
+
+      [1,2,3].forEach(i => {
+        document.getElementById('step-'+i).classList.toggle('hidden', i !== n);
+        const dot = document.getElementById('dot'+i);
+        dot.classList.remove('active','done');
+        if (i < n)  dot.classList.add('done');
+        if (i === n) dot.classList.add('active');
+      });
+    }
+
+    function shake(el) {
+      el.style.animation = 'none';
+      el.style.transition = 'transform 80ms ease';
+      el.style.transform = 'translateX(-6px)';
+      setTimeout(() => { el.style.transform = 'translateX(6px)'; }, 80);
+      setTimeout(() => { el.style.transform = 'translateX(0)'; }, 160);
+    }
+
+    function updateSummary() {
+      const v = (sel) => document.querySelector(sel)?.value || '—';
+      document.getElementById('s-nome').textContent    = v('[name="Nome"]');
+      document.getElementById('s-tel').textContent     = v('[name="Telemóvel"]');
+      document.getElementById('s-servico').textContent = v('[name="Serviço"]') || '—';
+      const rawDate = v('[name="Data"]');
+      if (rawDate !== '—') {
+        const d = new Date(rawDate + 'T12:00:00');
+        document.getElementById('s-data').textContent = d.toLocaleDateString('pt-PT', {weekday:'short', day:'numeric', month:'long'});
+      }
+      const h = document.getElementById('hidden-horario').value;
+      document.getElementById('s-hora').textContent = h || 'A definir';
+    }
+
+    // ── Time slots
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        slot.classList.add('selected');
+        document.getElementById('hidden-horario').value = slot.dataset.time;
+      });
+    });
+
+    // ── Min date = hoje
+    const dateInput = document.getElementById('date-input');
+    const today = new Date();
+    today.setDate(today.getDate() + 1); // min = amanhã
+    dateInput.min = today.toISOString().split('T')[0];
+
+    // Bloquear domingo (0) e segunda (1)
+    dateInput.addEventListener('input', () => {
+      const d = new Date(dateInput.value + 'T12:00:00');
+      const day = d.getDay();
+      if (day === 0 || day === 1) {
+        dateInput.value = '';
+        dateInput.style.borderColor = 'rgba(201,68,68,.6)';
+        setTimeout(() => dateInput.style.borderColor = '', 1200);
+        alert('O salão está fechado ao domingo e segunda-feira. Por favor escolha outro dia.');
+      }
+    });
+
+    // ── Submit feedback
+    document.getElementById('booking-form').addEventListener('submit', () => {
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'A enviar...';
+      btn.style.opacity = '.6';
+      btn.disabled = true;
+    });
+
+    // ── Fade-up on load
+    document.querySelectorAll('.fade-up').forEach((el, i) => {
+      el.style.animationDelay = (i * 120) + 'ms';
+    });
+  </script>
+
+</body>
+</html>
