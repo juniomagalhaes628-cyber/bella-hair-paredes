@@ -1,0 +1,210 @@
+/* ===========================
+   Bella Hair Paredes — Styles
+   =========================== */
+
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --gold: #c9a84c;
+  --gold-light: #e0c26a;
+  --dark: #080808;
+  --dark-2: #111111;
+  --text: #f5f0e8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--dark); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ── Typography ── */
+.font-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+.section-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.gold-divider {
+  width: 56px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
+
+/* ── Navbar ── */
+#navbar {
+  transition: background 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease;
+}
+.nav-link {
+  color: rgba(245,240,232,.55);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  transition: color 200ms ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover { color: var(--gold); }
+  .nav-link:hover::after { width: 100%; }
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .85rem 2rem;
+  background: var(--gold);
+  color: #080808;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; font-size: .8rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: transform 160ms var(--ease-out), background 200ms ease, box-shadow 200ms ease;
+}
+.btn-primary:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background: var(--gold-light);
+    box-shadow: 0 0 28px rgba(201,168,76,.28);
+  }
+}
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .85rem 2rem;
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; font-size: .8rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid rgba(201,168,76,.35);
+  cursor: pointer; text-decoration: none;
+  transition: transform 160ms var(--ease-out), border-color 200ms ease, background 200ms ease;
+}
+.btn-outline:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,.05);
+  }
+}
+
+/* ── Hero ── */
+.hero-glow {
+  position: absolute;
+  width: 640px; height: 640px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.07) 0%, transparent 70%);
+  pointer-events: none;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: .025;
+  background-image:
+    linear-gradient(rgba(201,168,76,1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Hero entry animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 700ms var(--ease-out) both; opacity: 0; }
+.delay-1 { animation-delay:  80ms; }
+.delay-2 { animation-delay: 180ms; }
+.delay-3 { animation-delay: 290ms; }
+.delay-4 { animation-delay: 400ms; }
+.delay-5 { animation-delay: 500ms; }
+
+/* ── Cards ── */
+.service-card {
+  background: var(--dark-2);
+  border: 1px solid rgba(201,168,76,.1);
+  padding: 2rem;
+  transition:
+    border-color 250ms var(--ease-out),
+    box-shadow   250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover {
+    border-color: rgba(201,168,76,.32);
+    box-shadow: 0 12px 36px rgba(0,0,0,.5), 0 0 0 1px rgba(201,168,76,.08);
+  }
+}
+
+.pricing-card {
+  background: var(--dark-2);
+  border: 1px solid rgba(245,240,232,.07);
+  padding: 2rem;
+  transition: border-color 250ms var(--ease-out), transform 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .pricing-card:hover { border-color: rgba(201,168,76,.28); transform: translateY(-2px); }
+}
+.pricing-card.featured {
+  border-color: rgba(201,168,76,.38);
+  background: linear-gradient(150deg, #111111 0%, #16120a 100%);
+  position: relative;
+}
+
+.testimonial-card {
+  background: var(--dark-2);
+  border: 1px solid rgba(245,240,232,.06);
+  padding: 2rem;
+  transition: border-color 250ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .testimonial-card:hover { border-color: rgba(201,168,76,.2); }
+}
+
+/* ── Stars ── */
+.stars { color: var(--gold); letter-spacing: 2px; }
+
+/* ── Mobile menu ── */
+.hamburger-line {
+  display: block; width: 22px; height: 1px;
+  background: var(--text);
+  transition: transform 250ms var(--ease-out), opacity 200ms ease;
+}
+.mobile-menu {
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 280ms var(--ease-out), opacity 250ms ease;
+}
+.mobile-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .2s  !important;
+  }
+}
