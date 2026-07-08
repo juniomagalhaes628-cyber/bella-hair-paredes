@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bella Hair Paredes — Cabeleireiro premium em Paredes. Cortes, coloração, mechas e tratamentos capilares com 4.9 estrelas no Google. Agende já: 913 533 917.">
-  <meta name="keywords" content="cabeleireiro paredes, bella hair paredes, corte cabelo paredes, coloração paredes, mechas paredes">
-  <meta property="og:title" content="Bella Hair Paredes — Cabeleireiro">
-  <meta property="og:description" content="Arte e elegância ao serviço do seu cabelo. 4.9 ★ no Google · 913 533 917">
-  <meta property="og:type" content="website">
-  <title>Bella Hair Paredes — Cabeleireiro</title>
+  <meta name="description" content="Bella Hair by Leandro Oliveira — Cabeleireiro premium em Paredes. Balayage, coloração, mechas e tratamentos capilares. 4.9★ no Google. Agende: 913 533 917.">
+  <meta property="og:title" content="Bella Hair by Leandro Oliveira">
+  <meta property="og:description" content="Arte e elegância ao serviço do seu cabelo. Paredes, Portugal.">
+  <meta property="og:image" content="assets/logo.jpg">
+  <title>Bella Hair — by Leandro Oliveira</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
   <script>
@@ -21,7 +20,10 @@
       theme: {
         extend: {
           colors: {
-            gold: '#c9a84c',
+            navy:  '#0a1520',
+            navy2: '#0f1e2c',
+            navy3: '#162638',
+            gold:  '#c9a84c',
             'gold-light': '#e0c26a',
           },
           fontFamily: {
@@ -34,28 +36,28 @@
   </script>
 </head>
 
-<body class="bg-[#080808] text-[#f5f0e8] font-sans antialiased overflow-x-hidden">
+<body class="bg-navy text-[#eef1f4] font-sans antialiased overflow-x-hidden">
 
-  <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
-      <!-- Logo -->
-      <a href="#" class="flex flex-col leading-none select-none">
-        <span class="font-serif text-[1.15rem] tracking-[.22em] text-[#f5f0e8]">BELLA HAIR</span>
-        <span class="font-sans text-[9px] tracking-[.35em] uppercase text-gold mt-[3px]">PAREDES</span>
+      <!-- Logo image -->
+      <a href="#" class="flex items-center">
+        <img src="assets/logo.jpg" alt="Bella Hair by Leandro Oliveira"
+             class="h-12 w-auto object-contain"
+             style="filter: brightness(0) invert(1);">
       </a>
 
       <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-8">
+        <a href="#trabalhos"    class="nav-link">Trabalhos</a>
         <a href="#servicos"     class="nav-link">Serviços</a>
         <a href="#precos"       class="nav-link">Preços</a>
         <a href="#sobre"        class="nav-link">Sobre</a>
-        <a href="#depoimentos"  class="nav-link">Opiniões</a>
         <a href="#contacto"     class="nav-link">Contacto</a>
       </div>
 
-      <!-- CTA + hamburger -->
       <div class="flex items-center gap-4">
         <a href="tel:913533917" class="hidden md:inline-flex btn-primary">Agendar →</a>
         <button id="hamburger" class="md:hidden flex flex-col gap-[6px] p-1" aria-label="Abrir menu">
@@ -67,78 +69,161 @@
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="mobile-menu md:hidden absolute top-full left-0 right-0 bg-[#0c0c0c] border-t border-[rgba(201,168,76,.15)] px-6 pt-8 pb-10">
+    <div id="mobile-menu" class="mobile-menu md:hidden absolute top-full left-0 right-0 bg-[#090f18] border-t border-[rgba(201,168,76,.15)] px-6 pt-8 pb-10">
       <div class="flex flex-col gap-7">
+        <a href="#trabalhos"   class="nav-link text-[.95rem]" onclick="closeMenu()">Trabalhos</a>
         <a href="#servicos"    class="nav-link text-[.95rem]" onclick="closeMenu()">Serviços</a>
         <a href="#precos"      class="nav-link text-[.95rem]" onclick="closeMenu()">Preços</a>
         <a href="#sobre"       class="nav-link text-[.95rem]" onclick="closeMenu()">Sobre</a>
-        <a href="#depoimentos" class="nav-link text-[.95rem]" onclick="closeMenu()">Opiniões</a>
         <a href="#contacto"    class="nav-link text-[.95rem]" onclick="closeMenu()">Contacto</a>
-        <a href="tel:913533917" class="btn-primary text-center mt-2">Ligar agora — 913 533 917</a>
+        <a href="tel:913533917" class="btn-primary text-center mt-2">Ligar — 913 533 917</a>
       </div>
     </div>
   </nav>
 
 
-  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <!-- ═══════════════ HERO ═══════════════ -->
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
     <div class="hero-glow"></div>
     <div class="hero-grid"></div>
 
-    <!-- Decorative vertical line -->
+    <!-- Vertical side text -->
     <div class="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-3">
-      <div class="w-px h-24 bg-gradient-to-b from-transparent to-[rgba(201,168,76,.3)]"></div>
-      <span class="text-[rgba(201,168,76,.4)] text-[9px] tracking-[.3em] uppercase" style="writing-mode:vertical-rl">Paredes · Portugal</span>
-      <div class="w-px h-24 bg-gradient-to-t from-transparent to-[rgba(201,168,76,.3)]"></div>
+      <div class="w-px h-20 bg-gradient-to-b from-transparent to-[rgba(201,168,76,.3)]"></div>
+      <span class="text-[rgba(201,168,76,.4)] text-[9px] tracking-[.3em] uppercase select-none"
+            style="writing-mode:vertical-rl">Paredes · Portugal</span>
+      <div class="w-px h-20 bg-gradient-to-t from-transparent to-[rgba(201,168,76,.3)]"></div>
     </div>
 
     <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
-      <p class="section-label mb-8 fade-up">✦ &nbsp;Cabeleireiro Premium&nbsp; ✦</p>
 
-      <h1 class="font-serif font-light leading-[.9] tracking-tight fade-up delay-1"
-          style="font-size: clamp(4.5rem, 14vw, 9rem)">
-        <em>Bella</em><br>
-        <span class="text-gold">Hair</span>
+      <!-- Logo grande no hero -->
+      <div class="fade-up flex justify-center mb-10">
+        <img src="assets/logo.jpg" alt="Bella Hair"
+             class="h-28 md:h-36 w-auto object-contain"
+             style="filter: brightness(0) invert(1);">
+      </div>
+
+      <p class="section-label mb-6 fade-up delay-1">✦ &nbsp;by Leandro Oliveira&nbsp; ✦</p>
+
+      <h1 class="font-serif font-light leading-tight tracking-wide fade-up delay-2"
+          style="font-size: clamp(2.2rem, 6vw, 4rem)">
+        Arte &amp; Elegância<br>
+        <em class="text-gold">ao serviço do seu cabelo</em>
       </h1>
 
-      <p class="mt-8 text-[#f5f0e8]/55 text-base md:text-lg font-light tracking-wide max-w-md mx-auto fade-up delay-2">
-        Arte e elegância ao serviço do seu cabelo.<br>
-        Cortes, coloração e tratamentos em Paredes.
+      <p class="mt-6 text-[#eef1f4]/55 text-base font-light tracking-wide max-w-md mx-auto fade-up delay-3">
+        Balayage, coloração, mechas e tratamentos em Paredes.<br>
+        Onde cada detalhe faz a diferença.
       </p>
 
       <!-- Rating -->
-      <div class="flex items-center justify-center gap-3 mt-7 fade-up delay-3">
+      <div class="flex items-center justify-center gap-3 mt-6 fade-up delay-3">
         <span class="stars text-sm">★★★★★</span>
         <span class="text-gold font-medium text-sm">4.9</span>
-        <span class="text-[#f5f0e8]/35 text-xs">· 67 avaliações no Google</span>
+        <span class="text-[#eef1f4]/35 text-xs">· 67 avaliações Google</span>
       </div>
 
       <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 fade-up delay-4">
-        <a href="tel:913533917"  class="btn-primary">Agendar consulta</a>
-        <a href="#servicos"      class="btn-outline">Ver serviços</a>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-9 fade-up delay-4">
+        <a href="tel:913533917" class="btn-primary">Agendar consulta</a>
+        <a href="#trabalhos"    class="btn-outline">Ver trabalhos</a>
       </div>
 
-      <p class="mt-8 text-[#f5f0e8]/28 text-[10px] tracking-[.25em] uppercase fade-up delay-5">
-        Terça – Sábado &nbsp;·&nbsp; 9h às 19h
+      <p class="mt-7 text-[#eef1f4]/28 text-[10px] tracking-[.25em] uppercase fade-up delay-5">
+        Ter – Sáb &nbsp;·&nbsp; 9h às 19h
       </p>
     </div>
 
-    <!-- Scroll cue -->
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 fade-up delay-5">
-      <span class="text-[#f5f0e8]/25 text-[9px] tracking-[.3em] uppercase">scroll</span>
+      <span class="text-[#eef1f4]/25 text-[9px] tracking-[.3em] uppercase">scroll</span>
       <div class="w-px h-10 bg-gradient-to-b from-[rgba(201,168,76,.4)] to-transparent"></div>
     </div>
   </section>
 
 
-  <!-- ═══════════════════════ SERVICES ═══════════════════════ -->
+  <!-- ═══════════════ GALLERY ═══════════════ -->
+  <section id="trabalhos" class="py-28 px-6 bg-[#080e18]">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="text-center mb-16 reveal">
+        <p class="section-label mb-4">Resultados reais</p>
+        <h2 class="font-serif text-4xl md:text-[3rem] font-light">Os nossos trabalhos</h2>
+        <div class="gold-divider mt-6"></div>
+        <p class="mt-5 text-[#eef1f4]/40 text-sm font-light max-w-sm mx-auto">
+          Balayage, coloração e tratamentos realizados no nosso salão em Paredes.
+        </p>
+      </div>
+
+      <!-- Masonry-style grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+
+        <div class="gallery-item reveal col-span-1 row-span-2 overflow-hidden" style="aspect-ratio:3/4">
+          <img src="assets/gallery-1.jpg" alt="Balayage resultado"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               loading="lazy">
+        </div>
+
+        <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:60ms">
+          <img src="assets/gallery-2.jpg" alt="Coloração loira"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               loading="lazy">
+        </div>
+
+        <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:120ms">
+          <img src="assets/gallery-3.jpg" alt="Leandro Oliveira cabeleireiro"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               loading="lazy">
+        </div>
+
+        <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:180ms">
+          <img src="assets/gallery-5.jpg" alt="Resultado moreno"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               loading="lazy">
+        </div>
+
+        <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:60ms">
+          <img src="assets/gallery-4.jpg" alt="Trabalho no salão"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               loading="lazy">
+        </div>
+
+        <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:120ms">
+          <img src="assets/gallery-6.jpg" alt="Mechas californianas"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               loading="lazy">
+        </div>
+
+        <div class="gallery-item reveal col-span-1 row-span-2 overflow-hidden" style="aspect-ratio:3/4;transition-delay:180ms">
+          <img src="assets/gallery-7.jpg" alt="Loiro platinado"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               loading="lazy">
+        </div>
+
+        <div class="gallery-item reveal col-span-1 md:col-span-2 overflow-hidden" style="aspect-ratio:16/9;transition-delay:240ms">
+          <img src="assets/gallery-8.jpg" alt="Balayage natural"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               loading="lazy">
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="https://www.google.com/maps/place/?q=place_id:ChIJK4uaKs-PJA0RdRCDz9L4CaE"
+           target="_blank" rel="noopener"
+           class="btn-outline">Ver mais no Google →</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ SERVICES ═══════════════ -->
   <section id="servicos" class="py-28 px-6">
     <div class="max-w-6xl mx-auto">
 
       <div class="text-center mb-20 reveal">
-        <p class="section-label mb-4">O que oferecemos</p>
-        <h2 class="font-serif text-4xl md:text-[3.2rem] font-light">Serviços</h2>
+        <p class="section-label mb-4">Especialidades</p>
+        <h2 class="font-serif text-4xl md:text-[3rem] font-light">Serviços</h2>
         <div class="gold-divider mt-6"></div>
       </div>
 
@@ -147,48 +232,48 @@
         <div class="service-card reveal">
           <div class="text-gold text-xl mb-5">✂</div>
           <h3 class="font-serif text-xl font-light mb-2">Corte de Cabelo</h3>
-          <p class="text-[#f5f0e8]/48 text-sm font-light leading-relaxed">
-            Cortes femininos e masculinos adaptados ao seu rosto e estilo. Precisão e detalhe em cada visita.
+          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+            Feminino e masculino, adaptados ao seu rosto e estilo. Precisão em cada detalhe.
           </p>
         </div>
 
         <div class="service-card reveal" style="transition-delay:80ms">
           <div class="text-gold text-xl mb-5">◈</div>
           <h3 class="font-serif text-xl font-light mb-2">Coloração</h3>
-          <p class="text-[#f5f0e8]/48 text-sm font-light leading-relaxed">
-            Coloração total, retoque de raízes e técnicas modernas com produtos profissionais de longa duração.
+          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+            Coloração total e retoque de raízes com produtos profissionais de longa duração.
           </p>
         </div>
 
         <div class="service-card reveal" style="transition-delay:160ms">
           <div class="text-gold text-xl mb-5">◇</div>
           <h3 class="font-serif text-xl font-light mb-2">Mechas & Balayage</h3>
-          <p class="text-[#f5f0e8]/48 text-sm font-light leading-relaxed">
-            Babylights, mechas californianas e balayage para um efeito natural, luminoso e com dimensão.
+          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+            Babylights, balayage e mechas californianas para luminosidade e dimensão naturais.
           </p>
         </div>
 
         <div class="service-card reveal" style="transition-delay:80ms">
           <div class="text-gold text-xl mb-5">✦</div>
           <h3 class="font-serif text-xl font-light mb-2">Tratamentos</h3>
-          <p class="text-[#f5f0e8]/48 text-sm font-light leading-relaxed">
-            Hidratação profunda, nutrição e reconstrução capilar com fórmulas adaptadas a cada tipo de cabelo.
+          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+            Hidratação, nutrição e reconstrução capilar com fórmulas adaptadas a cada tipo de cabelo.
           </p>
         </div>
 
         <div class="service-card reveal" style="transition-delay:160ms">
           <div class="text-gold text-xl mb-5">❧</div>
           <h3 class="font-serif text-xl font-light mb-2">Penteados</h3>
-          <p class="text-[#f5f0e8]/48 text-sm font-light leading-relaxed">
-            Penteados para casamentos, festas e eventos especiais. Do mais clássico ao mais contemporâneo.
+          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+            Casamentos, festas e eventos especiais. Do clássico ao mais contemporâneo.
           </p>
         </div>
 
         <div class="service-card reveal" style="transition-delay:240ms">
           <div class="text-gold text-xl mb-5">◉</div>
           <h3 class="font-serif text-xl font-light mb-2">Alisamento</h3>
-          <p class="text-[#f5f0e8]/48 text-sm font-light leading-relaxed">
-            Progressiva brasileira e alisamento japonês para um cabelo liso, sedoso e de longa duração.
+          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+            Progressiva brasileira para um cabelo liso, sedoso e com tratamento duradouro.
           </p>
         </div>
 
@@ -197,88 +282,85 @@
   </section>
 
 
-  <!-- ═══════════════════════ PRICING ═══════════════════════ -->
-  <section id="precos" class="py-28 px-6 bg-[#0a0a0a]">
+  <!-- ═══════════════ PRICING ═══════════════ -->
+  <section id="precos" class="py-28 px-6 bg-[#080e18]">
     <div class="max-w-5xl mx-auto">
 
       <div class="text-center mb-20 reveal">
         <p class="section-label mb-4">Investimento</p>
-        <h2 class="font-serif text-4xl md:text-[3.2rem] font-light">Tabela de Preços</h2>
+        <h2 class="font-serif text-4xl md:text-[3rem] font-light">Tabela de Preços</h2>
         <div class="gold-divider mt-6"></div>
-        <p class="mt-5 text-[#f5f0e8]/40 text-sm max-w-sm mx-auto font-light">
-          Preços indicativos. Para orçamento personalizado contacte-nos.
+        <p class="mt-5 text-[#eef1f4]/40 text-sm max-w-sm mx-auto font-light">
+          Preços indicativos. Orçamento personalizado mediante consulta.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-        <!-- Cortes -->
         <div class="pricing-card reveal">
           <p class="section-label mb-7">Cortes</p>
           <div class="space-y-4">
-            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(245,240,232,.06)]">
-              <span class="text-sm text-[#f5f0e8]/60">Corte Feminino</span>
+            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(238,241,244,.06)]">
+              <span class="text-sm text-[#eef1f4]/60">Corte Feminino</span>
               <span class="font-serif text-lg text-gold">€18</span>
             </div>
-            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(245,240,232,.06)]">
-              <span class="text-sm text-[#f5f0e8]/60">Corte + Lavagem</span>
+            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(238,241,244,.06)]">
+              <span class="text-sm text-[#eef1f4]/60">Corte + Lavagem</span>
               <span class="font-serif text-lg text-gold">€25</span>
             </div>
-            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(245,240,232,.06)]">
-              <span class="text-sm text-[#f5f0e8]/60">Corte Masculino</span>
+            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(238,241,244,.06)]">
+              <span class="text-sm text-[#eef1f4]/60">Corte Masculino</span>
               <span class="font-serif text-lg text-gold">€12</span>
             </div>
             <div class="flex justify-between items-baseline">
-              <span class="text-sm text-[#f5f0e8]/60">Franja</span>
+              <span class="text-sm text-[#eef1f4]/60">Franja</span>
               <span class="font-serif text-lg text-gold">€8</span>
             </div>
           </div>
         </div>
 
-        <!-- Coloração — featured -->
         <div class="pricing-card featured reveal" style="transition-delay:80ms">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-[#080808] text-[9px] font-medium tracking-[.15em] uppercase px-4 py-[5px]">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-navy text-[9px] font-semibold tracking-[.15em] uppercase px-4 py-[5px]">
             Mais popular
           </div>
           <p class="section-label mb-7">Coloração</p>
           <div class="space-y-4">
             <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(201,168,76,.12)]">
-              <span class="text-sm text-[#f5f0e8]/60">Coloração total</span>
+              <span class="text-sm text-[#eef1f4]/60">Coloração total</span>
               <span class="font-serif text-lg text-gold">€35</span>
             </div>
             <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(201,168,76,.12)]">
-              <span class="text-sm text-[#f5f0e8]/60">Retoque raízes</span>
+              <span class="text-sm text-[#eef1f4]/60">Retoque raízes</span>
               <span class="font-serif text-lg text-gold">€25</span>
             </div>
             <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(201,168,76,.12)]">
-              <span class="text-sm text-[#f5f0e8]/60">Mechas</span>
+              <span class="text-sm text-[#eef1f4]/60">Mechas</span>
               <span class="font-serif text-lg text-gold">€45+</span>
             </div>
             <div class="flex justify-between items-baseline">
-              <span class="text-sm text-[#f5f0e8]/60">Balayage</span>
+              <span class="text-sm text-[#eef1f4]/60">Balayage</span>
               <span class="font-serif text-lg text-gold">€65+</span>
             </div>
           </div>
         </div>
 
-        <!-- Tratamentos -->
         <div class="pricing-card reveal" style="transition-delay:160ms">
           <p class="section-label mb-7">Tratamentos</p>
           <div class="space-y-4">
-            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(245,240,232,.06)]">
-              <span class="text-sm text-[#f5f0e8]/60">Hidratação</span>
+            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(238,241,244,.06)]">
+              <span class="text-sm text-[#eef1f4]/60">Hidratação</span>
               <span class="font-serif text-lg text-gold">€20</span>
             </div>
-            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(245,240,232,.06)]">
-              <span class="text-sm text-[#f5f0e8]/60">Progressiva</span>
+            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(238,241,244,.06)]">
+              <span class="text-sm text-[#eef1f4]/60">Progressiva</span>
               <span class="font-serif text-lg text-gold">€70+</span>
             </div>
-            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(245,240,232,.06)]">
-              <span class="text-sm text-[#f5f0e8]/60">Penteado festa</span>
+            <div class="flex justify-between items-baseline pb-4 border-b border-[rgba(238,241,244,.06)]">
+              <span class="text-sm text-[#eef1f4]/60">Penteado festa</span>
               <span class="font-serif text-lg text-gold">€35+</span>
             </div>
             <div class="flex justify-between items-baseline">
-              <span class="text-sm text-[#f5f0e8]/60">Noiva</span>
+              <span class="text-sm text-[#eef1f4]/60">Noiva</span>
               <span class="font-serif text-lg text-gold">€80+</span>
             </div>
           </div>
@@ -293,57 +375,54 @@
   </section>
 
 
-  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+  <!-- ═══════════════ ABOUT ═══════════════ -->
   <section id="sobre" class="py-28 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
-        <!-- Text -->
         <div class="reveal">
-          <p class="section-label mb-6">A nossa história</p>
+          <p class="section-label mb-6">Leandro Oliveira</p>
           <h2 class="font-serif font-light leading-tight" style="font-size:clamp(2.4rem,5vw,3.5rem)">
-            Mais de uma<br>
-            <em class="text-gold">década de arte</em><br>
-            capilar
+            Paixão pelo<br>
+            <em class="text-gold">detalhe perfeito</em>
           </h2>
           <div class="w-10 h-px bg-gold mt-8 mb-8"></div>
-          <p class="text-[#f5f0e8]/50 font-light leading-[1.85] text-[.9rem]">
-            No coração de Paredes, a Bella Hair é um espaço onde cada visita é uma experiência única. A nossa equipa combina técnica apurada com um atendimento personalizado, ouvindo e interpretando os seus desejos para criar o resultado perfeito.
+          <p class="text-[#eef1f4]/50 font-light leading-[1.85] text-[.9rem]">
+            No coração de Paredes, a Bella Hair é um espaço onde cada visita é uma experiência única. Leandro Oliveira combina técnica apurada com um atendimento personalizado, ouvindo e interpretando os seus desejos para criar o resultado perfeito.
           </p>
-          <p class="text-[#f5f0e8]/50 font-light leading-[1.85] text-[.9rem] mt-4">
-            Utilizamos produtos profissionais de primeira linha, garantindo não só a beleza imediata, mas também a saúde e longevidade do seu cabelo.
+          <p class="text-[#eef1f4]/50 font-light leading-[1.85] text-[.9rem] mt-4">
+            Especializado em coloração, balayage e extensões, utiliza produtos profissionais de primeira linha para garantir não só a beleza imediata, mas também a saúde e longevidade do seu cabelo.
           </p>
 
-          <!-- Stats -->
-          <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-[rgba(245,240,232,.07)]">
+          <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-[rgba(238,241,244,.06)]">
             <div>
               <p class="font-serif text-[2.2rem] text-gold leading-none">4.9<span class="text-xl">★</span></p>
-              <p class="text-[#f5f0e8]/38 text-[9px] tracking-[.2em] uppercase mt-2">Avaliação</p>
+              <p class="text-[#eef1f4]/35 text-[9px] tracking-[.2em] uppercase mt-2">Avaliação</p>
             </div>
             <div>
               <p class="font-serif text-[2.2rem] text-gold leading-none">67</p>
-              <p class="text-[#f5f0e8]/38 text-[9px] tracking-[.2em] uppercase mt-2">Avaliações</p>
+              <p class="text-[#eef1f4]/35 text-[9px] tracking-[.2em] uppercase mt-2">Reviews</p>
             </div>
             <div>
               <p class="font-serif text-[2.2rem] text-gold leading-none">10+</p>
-              <p class="text-[#f5f0e8]/38 text-[9px] tracking-[.2em] uppercase mt-2">Anos</p>
+              <p class="text-[#eef1f4]/35 text-[9px] tracking-[.2em] uppercase mt-2">Anos</p>
             </div>
           </div>
         </div>
 
-        <!-- Visual -->
+        <!-- Photo do cabeleireiro -->
         <div class="reveal relative" style="transition-delay:150ms">
-          <div class="aspect-[3/4] bg-[#111] border border-[rgba(201,168,76,.14)] flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0" style="background:radial-gradient(circle at 35% 65%, rgba(201,168,76,.07) 0%, transparent 65%)"></div>
-            <div class="text-center p-12 relative z-10">
-              <p class="font-serif text-[5rem] text-gold font-light italic leading-none">BH</p>
-              <div class="gold-divider mt-6 mb-6"></div>
-              <p class="font-serif text-base font-light text-[#f5f0e8]/50 italic">Paredes, Portugal</p>
-              <p class="text-[9px] tracking-[.3em] uppercase text-[#f5f0e8]/25 mt-2">Cabeleireiro de excelência</p>
-            </div>
+          <div class="overflow-hidden" style="aspect-ratio:3/4">
+            <img src="assets/gallery-7.jpg" alt="Leandro Oliveira — Bella Hair Paredes"
+                 class="w-full h-full object-cover">
           </div>
-          <!-- shadow box decoration -->
-          <div class="absolute -right-3 -bottom-3 w-full h-full border border-[rgba(201,168,76,.07)] pointer-events-none -z-10"></div>
+          <div class="absolute -right-3 -bottom-3 w-full h-full border border-[rgba(201,168,76,.1)] pointer-events-none -z-10"></div>
+          <!-- badge -->
+          <div class="absolute bottom-6 left-6 bg-[rgba(10,21,32,.92)] border border-[rgba(201,168,76,.25)] px-5 py-3 backdrop-blur-sm">
+            <p class="stars text-xs mb-1">★★★★★</p>
+            <p class="text-gold text-sm font-medium">4.9 · 67 avaliações</p>
+            <p class="text-[#eef1f4]/40 text-xs mt-0.5">Google Maps</p>
+          </div>
         </div>
 
       </div>
@@ -351,13 +430,13 @@
   </section>
 
 
-  <!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
-  <section id="depoimentos" class="py-28 px-6 bg-[#0a0a0a]">
+  <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+  <section class="py-28 px-6 bg-[#080e18]">
     <div class="max-w-5xl mx-auto">
 
       <div class="text-center mb-20 reveal">
         <p class="section-label mb-4">Clientes satisfeitas</p>
-        <h2 class="font-serif text-4xl md:text-[3.2rem] font-light">O que dizem</h2>
+        <h2 class="font-serif text-4xl md:text-[3rem] font-light">O que dizem</h2>
         <div class="gold-divider mt-6"></div>
       </div>
 
@@ -365,48 +444,47 @@
 
         <div class="testimonial-card reveal">
           <div class="stars text-xs mb-5">★★★★★</div>
-          <p class="text-[#f5f0e8]/60 text-sm font-light leading-[1.9] italic">
-            "Ótimo atendimento, saí super satisfeita com o meu corte e coloração. Recomendo a toda a gente! A profissional percebe exatamente o que queremos."
+          <p class="text-[#eef1f4]/60 text-sm font-light leading-[1.9] italic">
+            "Ótimo atendimento, saí super satisfeita com o meu corte e coloração. Recomendo a toda a gente! O Leandro percebe exatamente o que queremos."
           </p>
-          <div class="mt-6 pt-5 border-t border-[rgba(245,240,232,.06)]">
-            <p class="text-[#f5f0e8]/75 text-sm font-medium">Ana S.</p>
-            <p class="text-[#f5f0e8]/28 text-xs mt-0.5">Google Review</p>
+          <div class="mt-6 pt-5 border-t border-[rgba(238,241,244,.06)]">
+            <p class="text-[#eef1f4]/75 text-sm font-medium">Ana S.</p>
+            <p class="text-[#eef1f4]/28 text-xs mt-0.5">Google Review</p>
           </div>
         </div>
 
         <div class="testimonial-card reveal" style="transition-delay:80ms">
           <div class="stars text-xs mb-5">★★★★★</div>
-          <p class="text-[#f5f0e8]/60 text-sm font-light leading-[1.9] italic">
-            "Sempre que preciso de cuidar do meu cabelo venho aqui. O ambiente é acolhedor, o preço é justo e o resultado é sempre impecável. 10/10!"
+          <p class="text-[#eef1f4]/60 text-sm font-light leading-[1.9] italic">
+            "Sempre que preciso de cuidar do meu cabelo venho aqui. Ambiente acolhedor, preço justo e resultado sempre impecável. 10/10!"
           </p>
-          <div class="mt-6 pt-5 border-t border-[rgba(245,240,232,.06)]">
-            <p class="text-[#f5f0e8]/75 text-sm font-medium">Maria J.</p>
-            <p class="text-[#f5f0e8]/28 text-xs mt-0.5">Google Review</p>
+          <div class="mt-6 pt-5 border-t border-[rgba(238,241,244,.06)]">
+            <p class="text-[#eef1f4]/75 text-sm font-medium">Maria J.</p>
+            <p class="text-[#eef1f4]/28 text-xs mt-0.5">Google Review</p>
           </div>
         </div>
 
         <div class="testimonial-card reveal" style="transition-delay:160ms">
           <div class="stars text-xs mb-5">★★★★★</div>
-          <p class="text-[#f5f0e8]/60 text-sm font-light leading-[1.9] italic">
-            "Fiz as minhas mechas aqui e adorei! Super natural e luminoso. Atendimento personalizado e muito profissional. Voltarei com toda a certeza."
+          <p class="text-[#eef1f4]/60 text-sm font-light leading-[1.9] italic">
+            "Fiz as minhas mechas aqui e adorei! Super natural e luminoso. Atendimento personalizado e muito profissional. Voltarei com certeza."
           </p>
-          <div class="mt-6 pt-5 border-t border-[rgba(245,240,232,.06)]">
-            <p class="text-[#f5f0e8]/75 text-sm font-medium">Carla R.</p>
-            <p class="text-[#f5f0e8]/28 text-xs mt-0.5">Google Review</p>
+          <div class="mt-6 pt-5 border-t border-[rgba(238,241,244,.06)]">
+            <p class="text-[#eef1f4]/75 text-sm font-medium">Carla R.</p>
+            <p class="text-[#eef1f4]/28 text-xs mt-0.5">Google Review</p>
           </div>
         </div>
 
       </div>
 
-      <!-- Google badge -->
       <div class="flex justify-center mt-12 reveal">
         <a href="https://www.google.com/maps/place/?q=place_id:ChIJK4uaKs-PJA0RdRCDz9L4CaE"
            target="_blank" rel="noopener"
-           class="flex items-center gap-4 bg-[#111] border border-[rgba(201,168,76,.15)] px-7 py-4 transition-colors duration-200 hover:border-[rgba(201,168,76,.35)]">
+           class="flex items-center gap-4 bg-navy2 border border-[rgba(201,168,76,.15)] px-7 py-4 transition-colors duration-200 hover:border-[rgba(201,168,76,.35)]">
           <span class="stars text-base">★★★★★</span>
           <div>
             <p class="text-gold font-medium text-sm">4.9 / 5</p>
-            <p class="text-[#f5f0e8]/35 text-xs mt-0.5">67 avaliações · Google Maps</p>
+            <p class="text-[#eef1f4]/35 text-xs mt-0.5">67 avaliações · Google Maps</p>
           </div>
         </a>
       </div>
@@ -415,13 +493,13 @@
   </section>
 
 
-  <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+  <!-- ═══════════════ CONTACT ═══════════════ -->
   <section id="contacto" class="py-28 px-6 border-t border-[rgba(201,168,76,.08)]">
     <div class="max-w-6xl mx-auto">
 
       <div class="text-center mb-20 reveal">
         <p class="section-label mb-4">Visite-nos</p>
-        <h2 class="font-serif text-4xl md:text-[3.2rem] font-light">Contacto</h2>
+        <h2 class="font-serif text-4xl md:text-[3rem] font-light">Contacto</h2>
         <div class="gold-divider mt-6"></div>
       </div>
 
@@ -430,10 +508,9 @@
         <div class="text-center reveal">
           <p class="text-gold text-xl mb-4">◈</p>
           <p class="section-label mb-4">Morada</p>
-          <p class="text-[#f5f0e8]/55 text-sm font-light leading-[1.9]">
+          <p class="text-[#eef1f4]/55 text-sm font-light leading-[1.9]">
             R. Dr. José Barbosa Leão 44<br>
-            4580-123 Paredes<br>
-            Portugal
+            4580-123 Paredes, Portugal
           </p>
           <a href="https://www.google.com/maps/place/?q=place_id:ChIJK4uaKs-PJA0RdRCDz9L4CaE"
              target="_blank" rel="noopener"
@@ -445,17 +522,17 @@
         <div class="text-center reveal" style="transition-delay:80ms">
           <p class="text-gold text-xl mb-4">✦</p>
           <p class="section-label mb-4">Horário</p>
-          <div class="text-[#f5f0e8]/55 text-sm font-light space-y-2">
-            <div class="flex justify-center gap-3">
-              <span class="text-[#f5f0e8]/28 w-28 text-right">Terça–Sábado</span>
+          <div class="text-[#eef1f4]/55 text-sm font-light space-y-2">
+            <div class="flex justify-center gap-4">
+              <span class="text-[#eef1f4]/28 w-24 text-right">Ter – Sáb</span>
               <span>9h – 19h</span>
             </div>
-            <div class="flex justify-center gap-3">
-              <span class="text-[#f5f0e8]/28 w-28 text-right">Segunda</span>
+            <div class="flex justify-center gap-4">
+              <span class="text-[#eef1f4]/28 w-24 text-right">Segunda</span>
               <span>Fechado</span>
             </div>
-            <div class="flex justify-center gap-3">
-              <span class="text-[#f5f0e8]/28 w-28 text-right">Domingo</span>
+            <div class="flex justify-center gap-4">
+              <span class="text-[#eef1f4]/28 w-24 text-right">Domingo</span>
               <span>Fechado</span>
             </div>
           </div>
@@ -465,7 +542,7 @@
           <p class="text-gold text-xl mb-4">◇</p>
           <p class="section-label mb-4">Telefone</p>
           <a href="tel:913533917"
-             class="text-[#f5f0e8]/55 text-sm font-light transition-colors duration-200 hover:text-gold">
+             class="text-[#eef1f4]/55 text-sm font-light transition-colors duration-200 hover:text-gold block">
             913 533 917
           </a>
           <div class="mt-6">
@@ -475,15 +552,14 @@
 
       </div>
 
-      <!-- Map link block -->
       <div class="reveal">
         <a href="https://www.google.com/maps/place/?q=place_id:ChIJK4uaKs-PJA0RdRCDz9L4CaE"
            target="_blank" rel="noopener"
-           class="block h-44 bg-[#111] border border-[rgba(201,168,76,.1)] flex items-center justify-center transition-colors duration-250 hover:border-[rgba(201,168,76,.3)]">
+           class="block h-44 bg-navy2 border border-[rgba(201,168,76,.1)] flex items-center justify-center transition-colors duration-250 hover:border-[rgba(201,168,76,.3)]">
           <div class="text-center pointer-events-none">
             <p class="text-gold text-2xl mb-3">◈</p>
-            <p class="text-[#f5f0e8]/38 text-[10px] tracking-[.25em] uppercase">Ver localização no Google Maps</p>
-            <p class="text-[#f5f0e8]/22 text-xs mt-1.5">R. Dr. José Barbosa Leão 44, 4580-123 Paredes</p>
+            <p class="text-[#eef1f4]/38 text-[10px] tracking-[.25em] uppercase">Ver no Google Maps</p>
+            <p class="text-[#eef1f4]/22 text-xs mt-1.5">R. Dr. José Barbosa Leão 44 · 4580-123 Paredes</p>
           </div>
         </a>
       </div>
@@ -492,40 +568,40 @@
   </section>
 
 
-  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="border-t border-[rgba(201,168,76,.07)] py-8 px-6">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-      <div>
-        <span class="font-serif text-xs tracking-[.25em] text-[#f5f0e8]/40 uppercase">Bella Hair Paredes</span>
-      </div>
-      <p class="text-[#f5f0e8]/22 text-xs">
-        © 2025 Bella Hair Paredes &nbsp;·&nbsp; Todos os direitos reservados
+      <img src="assets/logo.jpg" alt="Bella Hair"
+           class="h-8 w-auto object-contain opacity-50"
+           style="filter: brightness(0) invert(1);">
+      <p class="text-[#eef1f4]/22 text-xs">
+        © 2025 Bella Hair by Leandro Oliveira &nbsp;·&nbsp; Paredes, Portugal
       </p>
-      <a href="tel:913533917" class="text-[#f5f0e8]/35 text-xs transition-colors duration-200 hover:text-gold">
+      <a href="tel:913533917" class="text-[#eef1f4]/35 text-xs transition-colors duration-200 hover:text-gold">
         913 533 917
       </a>
     </div>
   </footer>
 
 
-  <!-- ═══════════════════════ JS ═══════════════════════ -->
+  <!-- ═══════════════ JS ═══════════════ -->
   <script>
-    // ── Navbar on scroll
+    // Navbar scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
-        navbar.style.cssText = 'background:rgba(8,8,8,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,.1)';
+        navbar.style.cssText = 'background:rgba(10,21,32,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.1)';
       } else {
         navbar.style.cssText = 'background:transparent;backdrop-filter:none;border-bottom:1px solid transparent';
       }
     }, { passive: true });
 
-    // ── Hamburger
+    // Hamburger
     const burger = document.getElementById('hamburger');
     const menu   = document.getElementById('mobile-menu');
-    const hl1    = document.getElementById('hl1');
-    const hl2    = document.getElementById('hl2');
-    const hl3    = document.getElementById('hl3');
+    const hl1 = document.getElementById('hl1');
+    const hl2 = document.getElementById('hl2');
+    const hl3 = document.getElementById('hl3');
     let open = false;
 
     function closeMenu() {
@@ -533,7 +609,6 @@
       menu.classList.remove('open');
       hl1.style.transform = hl3.style.transform = '';
       hl2.style.opacity = '1';
-      burger.setAttribute('aria-label', 'Abrir menu');
     }
 
     burger.addEventListener('click', () => {
@@ -543,21 +618,24 @@
         hl1.style.transform = 'translateY(7px) rotate(45deg)';
         hl2.style.opacity   = '0';
         hl3.style.transform = 'translateY(-7px) rotate(-45deg)';
-        burger.setAttribute('aria-label', 'Fechar menu');
       } else {
         closeMenu();
       }
     });
 
-    // ── Scroll reveal (IntersectionObserver)
+    // Gallery hover zoom
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      const card = img.parentElement;
+      card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.05)'; });
+      card.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; });
+    });
+
+    // Scroll reveal
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.1, rootMargin: '-30px 0px' });
+    }, { threshold: 0.08, rootMargin: '-20px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
