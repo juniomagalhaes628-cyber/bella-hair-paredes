@@ -162,9 +162,10 @@
 
         <!-- FormSubmit config -->
         <input type="hidden" name="_subject" value="🗓️ Nova marcação — Bella Hair Paredes">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/obrigado.html">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_next" value="obrigado.html">
         <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_autoresponse" value="Obrigado pela sua marcação na Bella Hair! Entraremos em contacto brevemente para confirmar. Questões urgentes: 913 533 917.">
         <input type="hidden" name="Salão" value="Bella Hair by Leandro Oliveira — Paredes">
         <input type="hidden" name="horario" id="hidden-horario" value="">
 
@@ -303,7 +304,21 @@
             </div>
           </div>
 
-          <p class="text-[#eef1f4]/35 text-xs mb-7 leading-relaxed">
+          <!-- GDPR consent — obrigatório -->
+          <div class="mb-6 flex items-start gap-3 p-4 bg-[rgba(201,168,76,.04)] border border-[rgba(201,168,76,.1)]">
+            <input type="checkbox" id="gdpr-consent" name="Consentimento_GDPR" value="Sim"
+                   class="mt-0.5 flex-shrink-0 accent-gold cursor-pointer" required>
+            <label for="gdpr-consent" class="text-[#eef1f4]/50 text-xs leading-relaxed cursor-pointer">
+              Consinto que os meus dados pessoais (nome e contacto) sejam utilizados pela Bella Hair para confirmação do agendamento, em conformidade com o
+              <a href="privacidade.html" target="_blank" class="text-gold underline">Aviso de Privacidade</a>.
+              Os dados não serão partilhados com terceiros.
+            </label>
+          </div>
+          <div id="gdpr-error" class="hidden text-red-400 text-xs mb-4">
+            ✖ Por favor aceite os termos de privacidade para continuar.
+          </div>
+
+          <p class="text-[#eef1f4]/28 text-xs mb-7 leading-relaxed">
             ✦ Após o envio, entraremos em contacto para confirmar a disponibilidade.<br>
             Para questões urgentes ligue: <a href="tel:913533917" class="text-gold">913 533 917</a>
           </p>
@@ -427,20 +442,37 @@
     today.setDate(today.getDate() + 1); // min = amanhã
     dateInput.min = today.toISOString().split('T')[0];
 
-    // Bloquear domingo (0) e segunda (1)
+    // Bloquear domingo (0) e segunda (1) — sem alert()
+    const dateErr = document.createElement('p');
+    dateErr.className = 'text-red-400 text-xs mt-2 hidden';
+    dateErr.textContent = '✖ O salão está fechado ao domingo e segunda-feira. Escolha outro dia.';
+    dateInput.parentElement.appendChild(dateErr);
+
     dateInput.addEventListener('input', () => {
       const d = new Date(dateInput.value + 'T12:00:00');
       const day = d.getDay();
       if (day === 0 || day === 1) {
         dateInput.value = '';
-        dateInput.style.borderColor = 'rgba(201,68,68,.6)';
-        setTimeout(() => dateInput.style.borderColor = '', 1200);
-        alert('O salão está fechado ao domingo e segunda-feira. Por favor escolha outro dia.');
+        dateInput.style.borderColor = 'rgba(220,68,68,.6)';
+        dateErr.classList.remove('hidden');
+        setTimeout(() => {
+          dateInput.style.borderColor = '';
+          dateErr.classList.add('hidden');
+        }, 3000);
       }
     });
 
-    // ── Submit feedback
-    document.getElementById('booking-form').addEventListener('submit', () => {
+    // ── Submit — GDPR check + feedback
+    document.getElementById('booking-form').addEventListener('submit', (e) => {
+      const consent = document.getElementById('gdpr-consent');
+      const gdprErr = document.getElementById('gdpr-error');
+      if (!consent.checked) {
+        e.preventDefault();
+        gdprErr.classList.remove('hidden');
+        consent.closest('div').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      gdprErr.classList.add('hidden');
       const btn = document.getElementById('submit-btn');
       btn.textContent = 'A enviar...';
       btn.style.opacity = '.6';
