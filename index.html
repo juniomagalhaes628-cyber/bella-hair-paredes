@@ -20,9 +20,9 @@
       theme: {
         extend: {
           colors: {
-            navy:  '#0a1520',
-            navy2: '#0f1e2c',
-            navy3: '#162638',
+            navy:  '#000000',
+            navy2: '#0f0f0f',
+            navy3: '#1a1a1a',
             gold:  '#c9a84c',
             'gold-light': '#e0c26a',
           },
@@ -69,7 +69,7 @@
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="mobile-menu md:hidden absolute top-full left-0 right-0 bg-[#090f18] border-t border-[rgba(201,168,76,.15)] px-6 pt-8 pb-10">
+    <div id="mobile-menu" class="mobile-menu md:hidden absolute top-full left-0 right-0 bg-[#080808] border-t border-[rgba(201,168,76,.15)] px-6 pt-8 pb-10">
       <div class="flex flex-col gap-7">
         <a href="#trabalhos"   class="nav-link text-[.95rem]" onclick="closeMenu()">Trabalhos</a>
         <a href="#servicos"    class="nav-link text-[.95rem]" onclick="closeMenu()">Serviços</a>
@@ -143,7 +143,7 @@
 
 
   <!-- ═══════════════ GALLERY ═══════════════ -->
-  <section id="trabalhos" class="py-28 px-6 bg-[#080e18]">
+  <section id="trabalhos" class="py-28 px-6 bg-black">
     <div class="max-w-6xl mx-auto">
 
       <div class="text-center mb-16 reveal">
@@ -287,7 +287,7 @@
 
 
   <!-- ═══════════════ PRICING ═══════════════ -->
-  <section id="precos" class="py-28 px-6 bg-[#080e18]">
+  <section id="precos" class="py-28 px-6 bg-black">
     <div class="max-w-5xl mx-auto">
 
       <div class="text-center mb-20 reveal">
@@ -422,7 +422,7 @@
           </div>
           <div class="absolute -right-3 -bottom-3 w-full h-full border border-[rgba(201,168,76,.1)] pointer-events-none -z-10"></div>
           <!-- badge -->
-          <div class="absolute bottom-6 left-6 bg-[rgba(10,21,32,.92)] border border-[rgba(201,168,76,.25)] px-5 py-3 backdrop-blur-sm">
+          <div class="absolute bottom-6 left-6 bg-[rgba(0,0,0,.92)] border border-[rgba(201,168,76,.25)] px-5 py-3 backdrop-blur-sm">
             <p class="stars text-xs mb-1">★★★★★</p>
             <p class="text-gold text-sm font-medium">4.9 · 67 avaliações</p>
             <p class="text-[#eef1f4]/40 text-xs mt-0.5">Google Maps</p>
@@ -435,7 +435,7 @@
 
 
   <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
-  <section class="py-28 px-6 bg-[#080e18]">
+  <section class="py-28 px-6 bg-black">
     <div class="max-w-5xl mx-auto">
 
       <div class="text-center mb-20 reveal">
@@ -632,7 +632,7 @@
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
-        navbar.style.cssText = 'background:rgba(10,21,32,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.1)';
+        navbar.style.cssText = 'background:rgba(0,0,0,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.1)';
       } else {
         navbar.style.cssText = 'background:transparent;backdrop-filter:none;border-bottom:1px solid transparent';
       }

@@ -7,12 +7,12 @@
   --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 
-  /* Brand palette — extraído do logo */
-  --navy:        #0a1520;   /* fundo principal */
-  --navy-2:      #0f1e2c;   /* cards / superfícies */
-  --navy-3:      #162638;   /* card hover / featured */
+  /* Brand palette */
+  --navy:        #000000;   /* fundo principal */
+  --navy-2:      #0f0f0f;   /* cards / superfícies */
+  --navy-3:      #1a1a1a;   /* card hover / featured */
   --navy-border: rgba(255,255,255,.07);
-  --navy-mid:    #1e3a52;   /* acento navy claro */
+  --navy-mid:    #222222;   /* acento médio */
 
   --gold:        #c9a84c;   /* acento dourado premium */
   --gold-light:  #e0c26a;
@@ -84,7 +84,7 @@ body {
   display: inline-flex; align-items: center; gap: .5rem;
   padding: .85rem 2rem;
   background: var(--gold);
-  color: #0a1520;
+  color: #000000;
   font-family: 'Inter', sans-serif;
   font-weight: 600; font-size: .78rem;
   letter-spacing: .1em; text-transform: uppercase;
@@ -124,7 +124,7 @@ body {
 .hero-glow {
   position: absolute;
   width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(30,58,82,.45) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201,168,76,.08) 0%, transparent 70%);
   pointer-events: none;
   top: 50%; left: 50%; transform: translate(-50%,-50%);
 }
@@ -182,7 +182,7 @@ body {
 }
 .pricing-card.featured {
   border-color: rgba(201,168,76,.4);
-  background: linear-gradient(150deg, var(--navy-2) 0%, #142030 100%);
+  background: linear-gradient(150deg, var(--navy-2) 0%, #1a1a1a 100%);
 }
 
 .testimonial-card {
