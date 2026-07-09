@@ -40,109 +40,150 @@
 
   <!-- ═══════════════ NAVBAR ═══════════════ -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
 
-      <!-- Logo image -->
+      <!-- Mobile hamburger (esquerda) -->
+      <button id="hamburger" class="md:hidden flex flex-col gap-[6px] p-1" aria-label="Abrir menu">
+        <span class="hamburger-line" id="hl1"></span>
+        <span class="hamburger-line" id="hl2"></span>
+        <span class="hamburger-line" id="hl3"></span>
+      </button>
+
+      <!-- Desktop links (esquerda) -->
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#trabalhos" class="nav-link">Trabalhos</a>
+        <a href="#servicos"  class="nav-link">Serviços</a>
+        <a href="#precos"    class="nav-link">Preços</a>
+        <a href="#sobre"     class="nav-link">Sobre</a>
+        <a href="#contacto"  class="nav-link">Contacto</a>
+      </div>
+
+      <!-- Logo (direita) -->
       <a href="#" class="flex items-center">
         <img src="assets/logo.jpg" alt="Bella Hair by Leandro Oliveira"
-             class="h-12 w-auto object-contain"
+             class="h-11 w-auto object-contain"
              style="filter: invert(1); mix-blend-mode: screen;">
       </a>
-
-      <!-- Desktop links -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#trabalhos"    class="nav-link">Trabalhos</a>
-        <a href="#servicos"     class="nav-link">Serviços</a>
-        <a href="#precos"       class="nav-link">Preços</a>
-        <a href="#sobre"        class="nav-link">Sobre</a>
-        <a href="#contacto"     class="nav-link">Contacto</a>
-      </div>
-
-      <div class="flex items-center gap-4">
-        <a href="marcacoes.html" class="hidden md:inline-flex btn-primary">Agendar o meu look →</a>
-        <button id="hamburger" class="md:hidden flex flex-col gap-[6px] p-1" aria-label="Abrir menu">
-          <span class="hamburger-line" id="hl1"></span>
-          <span class="hamburger-line" id="hl2"></span>
-          <span class="hamburger-line" id="hl3"></span>
-        </button>
-      </div>
     </div>
 
     <!-- Mobile menu -->
     <div id="mobile-menu" class="mobile-menu md:hidden absolute top-full left-0 right-0 bg-[#080808] border-t border-[rgba(201,168,76,.15)] px-6 pt-8 pb-10">
       <div class="flex flex-col gap-7">
-        <a href="#trabalhos"   class="nav-link text-[.95rem]" onclick="closeMenu()">Trabalhos</a>
-        <a href="#servicos"    class="nav-link text-[.95rem]" onclick="closeMenu()">Serviços</a>
-        <a href="#precos"      class="nav-link text-[.95rem]" onclick="closeMenu()">Preços</a>
-        <a href="#sobre"       class="nav-link text-[.95rem]" onclick="closeMenu()">Sobre</a>
-        <a href="#contacto"    class="nav-link text-[.95rem]" onclick="closeMenu()">Contacto</a>
-        <a href="tel:913533917" class="btn-primary text-center mt-2">Ligar — 913 533 917</a>
+        <a href="#trabalhos" class="nav-link text-[.95rem]" onclick="closeMenu()">Trabalhos</a>
+        <a href="#servicos"  class="nav-link text-[.95rem]" onclick="closeMenu()">Serviços</a>
+        <a href="#precos"    class="nav-link text-[.95rem]" onclick="closeMenu()">Preços</a>
+        <a href="#sobre"     class="nav-link text-[.95rem]" onclick="closeMenu()">Sobre</a>
+        <a href="#contacto"  class="nav-link text-[.95rem]" onclick="closeMenu()">Contacto</a>
+        <a href="marcacoes.html" class="btn-primary text-center mt-3">Agendar o meu look ✦</a>
       </div>
     </div>
   </nav>
 
 
-  <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Vídeo de fundo -->
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="assets/hero-1.mp4" type="video/mp4">
-      <source src="assets/hero-2.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-grid"></div>
+  <!-- ═══════════════ HERO — split layout ═══════════════ -->
+  <section class="relative min-h-screen flex overflow-hidden bg-black">
 
-    <!-- Vertical side text -->
-    <div class="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-3">
-      <div class="w-px h-20 bg-gradient-to-b from-transparent to-[rgba(201,168,76,.3)]"></div>
-      <span class="text-[rgba(201,168,76,.4)] text-[9px] tracking-[.3em] uppercase select-none"
-            style="writing-mode:vertical-rl">Paredes · Portugal</span>
-      <div class="w-px h-20 bg-gradient-to-t from-transparent to-[rgba(201,168,76,.3)]"></div>
-    </div>
+    <!-- ── COLUNA ESQUERDA — texto ── -->
+    <div class="relative z-10 w-full lg:w-[52%] flex flex-col justify-center px-8 md:px-14 lg:px-20 pt-32 pb-20">
 
-    <div class="relative z-10 text-center max-w-4xl mx-auto px-6" style="z-index:10">
+      <!-- Linha decorativa vertical esquerda -->
+      <div class="absolute left-0 top-0 bottom-0 w-px hidden lg:block"
+           style="background: linear-gradient(to bottom, transparent, rgba(201,168,76,.35) 30%, rgba(201,168,76,.35) 70%, transparent)"></div>
 
-      <!-- Logo grande no hero -->
-      <div class="fade-up flex justify-center mb-10">
+      <!-- Logo -->
+      <div class="fade-up mb-10">
         <img src="assets/logo.jpg" alt="Bella Hair"
-             class="h-28 md:h-36 w-auto object-contain"
+             class="h-20 md:h-24 w-auto object-contain"
              style="filter: invert(1); mix-blend-mode: screen;">
       </div>
 
-      <p class="section-label mb-6 fade-up delay-1">✦ &nbsp;by Leandro Oliveira&nbsp; ✦</p>
+      <p class="section-label mb-5 fade-up delay-1">✦ &nbsp;by Leandro Oliveira&nbsp; ✦</p>
 
-      <h1 class="font-serif font-light leading-tight tracking-wide fade-up delay-2"
-          style="font-size: clamp(2.2rem, 6vw, 4rem)">
-        Arte &amp; Elegância<br>
-        <em class="text-gold">ao serviço do seu cabelo</em>
+      <h1 class="font-serif font-light leading-[1.06] fade-up delay-2"
+          style="font-size: clamp(2.8rem, 5.5vw, 5rem)">
+        O seu cabelo<br>
+        <em class="text-gold">merece</em><br>
+        o melhor.
       </h1>
 
-      <p class="mt-6 text-[#eef1f4]/55 text-base font-light tracking-wide max-w-md mx-auto fade-up delay-3">
-        Balayage, coloração, mechas e tratamentos em Paredes.<br>
-        Onde cada detalhe faz a diferença.
+      <p class="mt-7 text-[#eef1f4]/48 text-sm font-light leading-[1.95] max-w-[360px] fade-up delay-3">
+        Ajudamos a sentir-se mais confiante e elegante através de serviços únicos e personalizados — balayage, coloração, extensões e tratamentos em Paredes.
       </p>
-
-      <!-- Rating -->
-      <div class="flex items-center justify-center gap-3 mt-6 fade-up delay-3">
-        <span class="stars text-sm">★★★★★</span>
-        <span class="text-gold font-medium text-sm">4.9</span>
-        <span class="text-[#eef1f4]/35 text-xs">· 72 avaliações Google</span>
-      </div>
 
       <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-9 fade-up delay-4">
+      <div class="flex flex-col sm:flex-row items-start gap-4 mt-9 fade-up delay-4">
         <a href="marcacoes.html" class="btn-primary">Agendar o meu look ✦</a>
-        <a href="#trabalhos"     class="btn-outline">Ver trabalhos</a>
+        <a href="#trabalhos" class="btn-outline">Ver trabalhos</a>
       </div>
 
-      <p class="mt-7 text-[#eef1f4]/28 text-[10px] tracking-[.25em] uppercase fade-up delay-5">
-        Ter – Sáb &nbsp;·&nbsp; 9h às 19h
-      </p>
+      <!-- Rating + horário -->
+      <div class="mt-12 pt-8 border-t border-[rgba(238,241,244,.07)] flex items-center gap-6 fade-up delay-5">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="stars text-xs">★★★★★</span>
+            <span class="text-gold font-medium text-sm">4.9</span>
+          </div>
+          <p class="text-[#eef1f4]/30 text-[10px] tracking-[.2em] uppercase">72 avaliações Google</p>
+        </div>
+        <div class="w-px h-8 bg-[rgba(238,241,244,.1)]"></div>
+        <div>
+          <p class="text-[#eef1f4]/60 text-sm font-light">Ter – Sáb</p>
+          <p class="text-[#eef1f4]/30 text-[10px] tracking-[.2em] uppercase">9h às 19h</p>
+        </div>
+      </div>
     </div>
 
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 fade-up delay-5" style="z-index:10">
-      <span class="text-[#eef1f4]/25 text-[9px] tracking-[.3em] uppercase">scroll</span>
+    <!-- ── COLUNA DIREITA — vídeo + decoração geométrica ── -->
+    <div class="hidden lg:block absolute right-0 top-0 w-[50%] h-full">
+
+      <!-- Vídeo -->
+      <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+        <source src="assets/hero-1.mp4" type="video/mp4">
+        <source src="assets/hero-2.mp4" type="video/mp4">
+      </video>
+
+      <!-- Overlay gradiente (fundir com fundo esquerdo) -->
+      <div class="absolute inset-0 z-10"
+           style="background: linear-gradient(to right, rgba(0,0,0,.7) 0%, rgba(0,0,0,.15) 35%, rgba(0,0,0,.1) 100%); pointer-events:none"></div>
+      <div class="absolute inset-0 z-10"
+           style="background: linear-gradient(to bottom, rgba(0,0,0,.4) 0%, transparent 25%, transparent 75%, rgba(0,0,0,.4) 100%); pointer-events:none"></div>
+
+      <!-- Linhas geométricas decorativas -->
+      <svg class="absolute inset-0 w-full h-full z-20 pointer-events-none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Linhas horizontais subtis -->
+        <line x1="0" y1="22%" x2="100%" y2="22%" stroke="rgba(201,168,76,.1)" stroke-width="0.5"/>
+        <line x1="0" y1="78%" x2="100%" y2="78%" stroke="rgba(201,168,76,.08)" stroke-width="0.5"/>
+        <!-- Linhas verticais subtis -->
+        <line x1="18%" y1="0" x2="18%" y2="100%" stroke="rgba(201,168,76,.07)" stroke-width="0.5"/>
+        <line x1="82%" y1="0" x2="82%" y2="100%" stroke="rgba(201,168,76,.07)" stroke-width="0.5"/>
+        <!-- Cantos dourados (canto sup esq) -->
+        <path d="M 6% 8% L 6% 4% L 14% 4%" stroke="rgba(201,168,76,.45)" stroke-width="1" fill="none"/>
+        <!-- Canto sup dir -->
+        <path d="M 86% 4% L 94% 4% L 94% 8%" stroke="rgba(201,168,76,.45)" stroke-width="1" fill="none"/>
+        <!-- Canto inf esq -->
+        <path d="M 6% 92% L 6% 96% L 14% 96%" stroke="rgba(201,168,76,.45)" stroke-width="1" fill="none"/>
+        <!-- Canto inf dir -->
+        <path d="M 86% 96% L 94% 96% L 94% 92%" stroke="rgba(201,168,76,.45)" stroke-width="1" fill="none"/>
+        <!-- Linha diagonal subtil -->
+        <line x1="0" y1="0" x2="18%" y2="22%" stroke="rgba(201,168,76,.06)" stroke-width="0.5"/>
+      </svg>
+
+      <!-- Glow dourado -->
+      <div class="absolute inset-0 z-10 pointer-events-none"
+           style="background: radial-gradient(ellipse at 60% 50%, rgba(201,168,76,.06) 0%, transparent 65%)"></div>
+    </div>
+
+    <!-- Mobile: vídeo de fundo (tela cheia) -->
+    <div class="lg:hidden absolute inset-0 z-0">
+      <video class="w-full h-full object-cover" autoplay muted loop playsinline style="opacity:.25">
+        <source src="assets/hero-1.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-12 hidden lg:flex flex-col items-center gap-2 fade-up delay-5" style="z-index:20">
+      <span class="text-[#eef1f4]/20 text-[9px] tracking-[.3em] uppercase">scroll</span>
       <div class="w-px h-10 bg-gradient-to-b from-[rgba(201,168,76,.4)] to-transparent"></div>
     </div>
   </section>
