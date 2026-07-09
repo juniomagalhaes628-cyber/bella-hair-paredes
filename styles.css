@@ -7,19 +7,19 @@
   --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 
-  /* Brand palette */
-  --navy:        #000000;   /* fundo principal */
-  --navy-2:      #0f0f0f;   /* cards / superfícies */
-  --navy-3:      #1a1a1a;   /* card hover / featured */
-  --navy-border: rgba(255,255,255,.07);
-  --navy-mid:    #222222;   /* acento médio */
+  /* Brand palette — tema creme claro */
+  --navy:        #F7F3EE;   /* fundo principal — creme quente */
+  --navy-2:      #FFFFFF;   /* cards / superfícies — branco */
+  --navy-3:      #EDE8DF;   /* secções alternadas */
+  --navy-border: rgba(0,0,0,.08);
+  --navy-mid:    #D5CFC6;   /* acento médio */
 
   --gold:        #c9a84c;   /* acento dourado premium */
   --gold-light:  #e0c26a;
 
-  --text:        #eef1f4;   /* branco suave */
-  --text-muted:  rgba(238,241,244,.5);
-  --text-faint:  rgba(238,241,244,.25);
+  --text:        #1C1C1C;   /* quase preto */
+  --text-muted:  rgba(28,28,28,.58);
+  --text-faint:  rgba(28,28,28,.30);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -107,7 +107,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 500; font-size: .78rem;
   letter-spacing: .1em; text-transform: uppercase;
-  border: 1px solid rgba(238,241,244,.2);
+  border: 1px solid rgba(0,0,0,.18);
   cursor: pointer; text-decoration: none;
   transition: transform 160ms var(--ease-out), border-color 200ms ease, background 200ms ease;
 }
@@ -124,7 +124,7 @@ body {
 .hero-glow {
   position: absolute;
   width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,168,76,.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201,168,76,.18) 0%, transparent 70%);
   pointer-events: none;
   top: 50%; left: 50%; transform: translate(-50%,-50%);
 }
@@ -166,7 +166,7 @@ body {
 @media (hover: hover) and (pointer: fine) {
   .service-card:hover {
     border-color: rgba(201,168,76,.3);
-    box-shadow: 0 10px 32px rgba(0,0,0,.35), 0 0 0 1px rgba(201,168,76,.07);
+    box-shadow: 0 10px 32px rgba(0,0,0,.1), 0 0 0 1px rgba(201,168,76,.15);
   }
 }
 
@@ -182,7 +182,7 @@ body {
 }
 .pricing-card.featured {
   border-color: rgba(201,168,76,.4);
-  background: linear-gradient(150deg, var(--navy-2) 0%, #1a1a1a 100%);
+  background: linear-gradient(150deg, var(--navy-2) 0%, #f5f0e8 100%);
 }
 
 .testimonial-card {

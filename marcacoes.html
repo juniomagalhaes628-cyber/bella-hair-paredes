@@ -17,9 +17,9 @@
       theme: {
         extend: {
           colors: {
-            navy:  '#000000',
-            navy2: '#0f0f0f',
-            navy3: '#1a1a1a',
+            navy:  '#F7F3EE',
+            navy2: '#FFFFFF',
+            navy3: '#EDE8DF',
             gold:  '#c9a84c',
             'gold-light': '#e0c26a',
           },
@@ -36,9 +36,9 @@
     /* Form inputs — navy style */
     .form-field {
       width: 100%;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(238,241,244,.1);
-      color: #eef1f4;
+      background: #F7F3EE;
+      border: 1px solid rgba(0,0,0,.14);
+      color: #1c1c1c;
       padding: .85rem 1.1rem;
       font-family: 'Inter', sans-serif;
       font-size: .875rem;
@@ -48,12 +48,12 @@
       -webkit-appearance: none;
       appearance: none;
     }
-    .form-field::placeholder { color: rgba(238,241,244,.3); }
+    .form-field::placeholder { color: rgba(28,28,28,.3); }
     .form-field:focus {
       border-color: rgba(201,168,76,.5);
-      background: rgba(255,255,255,.06);
+      background: #FFFFFF;
     }
-    .form-field option { background: #0f1e2c; color: #eef1f4; }
+    .form-field option { background: #FFFFFF; color: #1c1c1c; }
 
     /* Select arrow */
     .select-wrap { position: relative; }
@@ -70,10 +70,10 @@
     /* Horários grid */
     .time-slot {
       padding: .6rem;
-      border: 1px solid rgba(238,241,244,.1);
+      border: 1px solid rgba(28,28,28,.1);
       text-align: center;
       font-size: .8rem;
-      color: rgba(238,241,244,.55);
+      color: rgba(28,28,28,.55);
       cursor: pointer;
       transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 160ms ease;
       user-select: none;
@@ -103,7 +103,7 @@
     .step-dot {
       width: 8px; height: 8px;
       border-radius: 50%;
-      background: rgba(238,241,244,.15);
+      background: rgba(28,28,28,.15);
       transition: background 300ms ease;
     }
     .step-dot.active { background: #c9a84c; }
@@ -111,10 +111,10 @@
   </style>
 </head>
 
-<body class="bg-navy text-[#eef1f4] font-sans antialiased min-h-screen">
+<body class="bg-navy text-[#1c1c1c] font-sans antialiased min-h-screen">
 
   <!-- Navbar simples -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[rgba(0,0,0,.95)] border-b border-[rgba(201,168,76,.1)] backdrop-blur-md">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[rgba(247,243,238,.95)] border-b border-[rgba(201,168,76,.1)] backdrop-blur-md">
     <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
         <img src="assets/logo.jpg" alt="Bella Hair"
@@ -134,12 +134,12 @@
       <h1 class="font-serif text-4xl md:text-5xl font-light fade-up delay-1">
         Marque a sua<br><em class="text-gold">consulta</em>
       </h1>
-      <p class="mt-5 text-[#eef1f4]/45 text-sm font-light max-w-sm mx-auto fade-up delay-2">
+      <p class="mt-5 text-[#1c1c1c]/45 text-sm font-light max-w-sm mx-auto fade-up delay-2">
         Preencha o formulário e entraremos em contacto para confirmar o seu agendamento.
       </p>
       <div class="mt-5 inline-flex items-center gap-2 border border-[rgba(201,168,76,.3)] bg-[rgba(201,168,76,.07)] px-4 py-2 fade-up delay-3">
         <span class="text-gold text-xs">✦</span>
-        <span class="text-[#eef1f4]/60 text-xs">O horário só fica reservado após confirmação da nossa parte</span>
+        <span class="text-[#1c1c1c]/60 text-xs">O horário só fica reservado após confirmação da nossa parte</span>
       </div>
     </div>
   </div>
@@ -153,9 +153,9 @@
       <!-- Steps indicator -->
       <div class="flex items-center gap-2 mb-10">
         <div class="step-dot active" id="dot1"></div>
-        <div class="flex-1 h-px bg-[rgba(238,241,244,.08)]"></div>
+        <div class="flex-1 h-px bg-[rgba(28,28,28,.08)]"></div>
         <div class="step-dot" id="dot2"></div>
-        <div class="flex-1 h-px bg-[rgba(238,241,244,.08)]"></div>
+        <div class="flex-1 h-px bg-[rgba(28,28,28,.08)]"></div>
         <div class="step-dot" id="dot3"></div>
       </div>
 
@@ -179,19 +179,19 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Nome completo *</label>
+              <label class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 block mb-2">Nome completo *</label>
               <input type="text" name="Nome" placeholder="Ex: Maria Silva"
                      class="form-field" required>
             </div>
             <div>
-              <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Telemóvel *</label>
+              <label class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 block mb-2">Telemóvel *</label>
               <input type="tel" name="Telemóvel" placeholder="9XX XXX XXX"
                      class="form-field" required>
             </div>
           </div>
 
           <div class="mb-6">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Email (opcional)</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 block mb-2">Email (opcional)</label>
             <input type="email" name="Email" placeholder="para confirmação por email"
                    class="form-field">
           </div>
@@ -207,7 +207,7 @@
           <p class="section-label mb-6">02 — Serviço & data</p>
 
           <div class="mb-4">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Serviço pretendido *</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 block mb-2">Serviço pretendido *</label>
             <div class="select-wrap">
               <select name="Serviço" class="form-field" required>
                 <option value="" disabled selected>Escolha o serviço</option>
@@ -235,12 +235,12 @@
           </div>
 
           <div class="mb-6">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Data preferida *</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 block mb-2">Data preferida *</label>
             <input type="date" name="Data" id="date-input" class="form-field" required>
           </div>
 
           <div class="mb-8">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-3">Horário preferido</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 block mb-3">Horário preferido</label>
             <div class="grid grid-cols-4 sm:grid-cols-5 gap-2" id="time-grid">
               <div class="time-slot" data-time="09:00">09h00</div>
               <div class="time-slot" data-time="09:30">09h30</div>
@@ -275,7 +275,7 @@
           <p class="section-label mb-6">03 — Confirmação</p>
 
           <div class="mb-6">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Observações (opcional)</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 block mb-2">Observações (opcional)</label>
             <textarea name="Observações" rows="3"
                       placeholder="Ex: cabelo muito danificado, quero algo natural, alergia a algum produto..."
                       class="form-field resize-none"></textarea>
@@ -286,23 +286,23 @@
             <p class="text-[10px] tracking-[.18em] uppercase text-gold mb-4">Resumo da marcação</p>
             <div class="space-y-2 text-sm">
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Nome</span>
+                <span class="text-[#1c1c1c]/45">Nome</span>
                 <span id="s-nome" class="text-right font-light">—</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Telemóvel</span>
+                <span class="text-[#1c1c1c]/45">Telemóvel</span>
                 <span id="s-tel" class="text-right font-light">—</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Serviço</span>
+                <span class="text-[#1c1c1c]/45">Serviço</span>
                 <span id="s-servico" class="text-right font-light max-w-[55%] text-right">—</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Data</span>
+                <span class="text-[#1c1c1c]/45">Data</span>
                 <span id="s-data" class="text-right font-light">—</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Horário</span>
+                <span class="text-[#1c1c1c]/45">Horário</span>
                 <span id="s-hora" class="text-right font-light">—</span>
               </div>
             </div>
@@ -312,7 +312,7 @@
           <div class="mb-6 flex items-start gap-3 p-4 bg-[rgba(201,168,76,.04)] border border-[rgba(201,168,76,.1)]">
             <input type="checkbox" id="gdpr-consent" name="Consentimento_GDPR" value="Sim"
                    class="mt-0.5 flex-shrink-0 accent-gold cursor-pointer" required>
-            <label for="gdpr-consent" class="text-[#eef1f4]/50 text-xs leading-relaxed cursor-pointer">
+            <label for="gdpr-consent" class="text-[#1c1c1c]/50 text-xs leading-relaxed cursor-pointer">
               Consinto que os meus dados pessoais (nome e contacto) sejam utilizados pela Bella Hair para confirmação do agendamento, em conformidade com o
               <a href="privacidade.html" target="_blank" class="text-gold underline">Aviso de Privacidade</a>.
               Os dados não serão partilhados com terceiros.
@@ -322,7 +322,7 @@
             ✖ Por favor aceite os termos de privacidade para continuar.
           </div>
 
-          <p class="text-[#eef1f4]/28 text-xs mb-7 leading-relaxed">
+          <p class="text-[#1c1c1c]/28 text-xs mb-7 leading-relaxed">
             ✦ Após o envio, entraremos em contacto para confirmar a disponibilidade.<br>
             Para questões urgentes ligue: <a href="tel:913533917" class="text-gold">913 533 917</a>
           </p>
@@ -343,7 +343,7 @@
       <div id="success-msg" class="text-center py-8">
         <p class="text-gold text-3xl mb-4">✦</p>
         <h3 class="font-serif text-2xl font-light mb-3">Marcação enviada!</h3>
-        <p class="text-[#eef1f4]/50 text-sm font-light leading-relaxed mb-6">
+        <p class="text-[#1c1c1c]/50 text-sm font-light leading-relaxed mb-6">
           Obrigada pelo contacto. Entraremos em contacto brevemente para confirmar.
         </p>
         <a href="index.html" class="btn-outline">← Voltar ao site</a>
@@ -353,27 +353,27 @@
 
     <!-- Info lateral -->
     <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <div class="bg-navy2 border border-[rgba(238,241,244,.06)] p-5 text-center">
+      <div class="bg-navy2 border border-[rgba(28,28,28,.06)] p-5 text-center">
         <p class="text-gold text-sm mb-2">✦</p>
-        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 mb-1">Horário</p>
-        <p class="text-sm text-[#eef1f4]/60 font-light">Ter – Sáb<br>9h às 19h</p>
+        <p class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 mb-1">Horário</p>
+        <p class="text-sm text-[#1c1c1c]/60 font-light">Ter – Sáb<br>9h às 19h</p>
       </div>
-      <div class="bg-navy2 border border-[rgba(238,241,244,.06)] p-5 text-center">
+      <div class="bg-navy2 border border-[rgba(28,28,28,.06)] p-5 text-center">
         <p class="text-gold text-sm mb-2">◈</p>
-        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 mb-1">Morada</p>
-        <p class="text-sm text-[#eef1f4]/60 font-light">R. Dr. José Barbosa Leão 44<br>4580-123 Paredes</p>
+        <p class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 mb-1">Morada</p>
+        <p class="text-sm text-[#1c1c1c]/60 font-light">R. Dr. José Barbosa Leão 44<br>4580-123 Paredes</p>
       </div>
-      <div class="bg-navy2 border border-[rgba(238,241,244,.06)] p-5 text-center">
+      <div class="bg-navy2 border border-[rgba(28,28,28,.06)] p-5 text-center">
         <p class="text-gold text-sm mb-2">◇</p>
-        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 mb-1">Telefone</p>
-        <a href="tel:913533917" class="text-sm text-[#eef1f4]/60 font-light hover:text-gold transition-colors">913 533 917</a>
+        <p class="text-[10px] tracking-[.18em] uppercase text-[#1c1c1c]/40 mb-1">Telefone</p>
+        <a href="tel:913533917" class="text-sm text-[#1c1c1c]/60 font-light hover:text-gold transition-colors">913 533 917</a>
       </div>
     </div>
   </main>
 
   <!-- Footer mínimo -->
   <footer class="border-t border-[rgba(201,168,76,.07)] py-6 px-6 text-center">
-    <p class="text-[#eef1f4]/20 text-xs">© 2025 Bella Hair by Leandro Oliveira · Paredes</p>
+    <p class="text-[#1c1c1c]/20 text-xs">© 2025 Bella Hair by Leandro Oliveira · Paredes</p>
   </footer>
 
   <script>
@@ -504,10 +504,10 @@
         <div class="text-center py-12">
           <p class="text-gold text-3xl mb-4">✦</p>
           <h3 class="font-serif text-2xl font-light mb-3">Pedido já enviado</h3>
-          <p class="text-[#eef1f4]/50 text-sm font-light leading-relaxed mb-2">
+          <p class="text-[#1c1c1c]/50 text-sm font-light leading-relaxed mb-2">
             Já recebemos o seu pedido de marcação.<br>Entraremos em contacto brevemente para confirmar.
           </p>
-          <p class="text-[#eef1f4]/35 text-xs mb-8">Para confirmação imediata ligue: <a href="tel:913533917" class="text-gold">913 533 917</a></p>
+          <p class="text-[#1c1c1c]/35 text-xs mb-8">Para confirmação imediata ligue: <a href="tel:913533917" class="text-gold">913 533 917</a></p>
           <a href="index.html" class="btn-outline">← Voltar ao site</a>
         </div>`;
     }
