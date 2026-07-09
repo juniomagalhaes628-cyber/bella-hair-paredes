@@ -377,6 +377,32 @@
   </footer>
 
   <script>
+    // ── Google Sheets API (Apps Script)
+    // Depois de configurar o Apps Script, cola o URL aqui:
+    const BOOKING_API = 'COLE_AQUI_O_URL_DO_APPS_SCRIPT';
+
+    async function fetchBookedSlots(date) {
+      if (!BOOKING_API || BOOKING_API.includes('COLE_AQUI')) return [];
+      try {
+        const res = await fetch(`${BOOKING_API}?date=${date}`);
+        const data = await res.json();
+        return data.booked || [];
+      } catch { return []; }
+    }
+
+    async function updateSlotAvailability(date) {
+      const booked = await fetchBookedSlots(date);
+      document.querySelectorAll('.time-slot').forEach(slot => {
+        const isTaken = booked.includes(slot.dataset.time);
+        slot.classList.toggle('unavailable', isTaken);
+        slot.title = isTaken ? 'Horário já reservado' : '';
+        if (isTaken && slot.classList.contains('selected')) {
+          slot.classList.remove('selected');
+          document.getElementById('hidden-horario').value = '';
+        }
+      });
+    }
+
     // ── Step navigation
     function goToStep(n) {
       // Validate step 1
@@ -452,7 +478,7 @@
     dateErr.textContent = '✖ O salão está fechado ao domingo e segunda-feira. Escolha outro dia.';
     dateInput.parentElement.appendChild(dateErr);
 
-    dateInput.addEventListener('input', () => {
+    dateInput.addEventListener('input', async () => {
       const d = new Date(dateInput.value + 'T12:00:00');
       const day = d.getDay();
       if (day === 0 || day === 1) {
@@ -463,7 +489,10 @@
           dateInput.style.borderColor = '';
           dateErr.classList.add('hidden');
         }, 3000);
+        return;
       }
+      // Atualizar disponibilidade dos slots para a data escolhida
+      if (dateInput.value) await updateSlotAvailability(dateInput.value);
     });
 
     // ── Bloquear re-envio se já submeteu nas últimas 2h (mesmo browser)
@@ -483,22 +512,63 @@
         </div>`;
     }
 
-    // ── Submit — GDPR check + feedback
-    document.getElementById('booking-form')?.addEventListener('submit', (e) => {
+    // ── Submit — verificação de disponibilidade + GDPR
+    document.getElementById('booking-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
       const consent = document.getElementById('gdpr-consent');
       const gdprErr = document.getElementById('gdpr-error');
       if (!consent.checked) {
-        e.preventDefault();
         gdprErr.classList.remove('hidden');
         consent.closest('div').scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
       gdprErr.classList.add('hidden');
-      const btn = document.getElementById('submit-btn');
+
+      const btn    = document.getElementById('submit-btn');
+      const date   = document.querySelector('[name="Data"]').value;
+      const time   = document.getElementById('hidden-horario').value;
+      const form   = document.getElementById('booking-form');
+
+      // Se API configurada e horário escolhido — verificar disponibilidade
+      if (BOOKING_API && !BOOKING_API.includes('COLE_AQUI') && date && time) {
+        btn.textContent = 'A verificar...';
+        btn.disabled = true;
+        btn.style.opacity = '.6';
+        try {
+          const res = await fetch(BOOKING_API, {
+            method: 'POST',
+            body: JSON.stringify({
+              date, time,
+              name:  document.querySelector('[name="Nome"]').value,
+              phone: document.querySelector('[name="Telemóvel"]').value,
+            })
+          });
+          const result = await res.json();
+
+          if (!result.success) {
+            // Horário entretanto ocupado
+            btn.textContent = 'Enviar marcação ✦';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            await updateSlotAvailability(date);
+            const errEl = document.createElement('p');
+            errEl.className = 'text-red-400 text-xs mt-4 text-center';
+            errEl.textContent = '✖ Este horário foi entretanto reservado. Escolha outro.';
+            btn.closest('div').before(errEl);
+            setTimeout(() => errEl.remove(), 5000);
+            return;
+          }
+        } catch {
+          // API indisponível — permitir envio (degradação graciosa)
+        }
+      }
+
       btn.textContent = 'A enviar...';
-      btn.style.opacity = '.6';
       btn.disabled = true;
+      btn.style.opacity = '.6';
       localStorage.setItem(SUBMIT_KEY, Date.now().toString());
+      form.submit();
     });
 
     // ── Fade-up on load
