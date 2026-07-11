@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/sitemap.xml

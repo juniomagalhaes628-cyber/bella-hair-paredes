@@ -1,19 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Bella Hair by Leandro Oliveira — Cabeleireiro premium em Paredes. Balayage, coloração, mechas e tratamentos capilares. 4.9★ no Google. Agende: 913 533 917.">
-  <meta property="og:title" content="Bella Hair by Leandro Oliveira">
-  <meta property="og:description" content="Arte e elegância ao serviço do seu cabelo. Paredes, Portugal.">
-  <meta property="og:image" content="assets/logo.jpg">
-  <title>Bella Hair — by Leandro Oliveira</title>
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Bella Hair by Leandro Oliveira — Cabeleireiro Paredes">
+  <meta property="og:description" content="Arte e elegância ao serviço do seu cabelo. Balayage, coloração, extensões e tratamentos em Paredes, Portugal.">
+  <meta property="og:image" content="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/assets/gallery-1.jpg">
+  <meta property="og:url" content="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_PT">
+  <meta property="og:site_name" content="Bella Hair Paredes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bella Hair by Leandro Oliveira — Cabeleireiro Paredes">
+  <meta name="twitter:image" content="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/assets/gallery-1.jpg">
+  <link rel="canonical" href="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂️</text></svg>">
+  <title>Bella Hair — by Leandro Oliveira | Cabeleireiro Paredes</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Bella Hair by Leandro Oliveira",
+    "url": "https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/",
+    "logo": "https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/assets/logo.jpg",
+    "image": [
+      "https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/assets/gallery-1.jpg",
+      "https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/assets/gallery-2.jpg",
+      "https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/assets/gallery-3.jpg"
+    ],
+    "description": "Cabeleireiro premium em Paredes. Balayage, coloração, mechas, extensões e tratamentos capilares.",
+    "telephone": "+351913533917",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "R. Dr. José Barbosa Leão 44",
+      "addressLocality": "Paredes",
+      "postalCode": "4580-123",
+      "addressCountry": "PT"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "72",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "sameAs": [
+      "https://www.instagram.com/bella_hairpt/",
+      "https://www.facebook.com/p/BELLA-HAIR-Paredes-61556915005333/"
+    ],
+    "priceRange": "€€"
+  }
+  </script>
 
   <script>
     tailwind.config = {
@@ -43,7 +97,7 @@
     <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
 
       <!-- Mobile hamburger (esquerda) -->
-      <button id="hamburger" class="md:hidden flex flex-col gap-[6px] p-1" aria-label="Abrir menu">
+      <button id="hamburger" class="md:hidden flex flex-col gap-[6px] p-3" aria-label="Abrir menu">
         <span class="hamburger-line" id="hl1"></span>
         <span class="hamburger-line" id="hl2"></span>
         <span class="hamburger-line" id="hl3"></span>
@@ -106,7 +160,7 @@
         o melhor.
       </h1>
 
-      <p class="mt-7 text-[#eef1f4]/48 text-sm font-light leading-[1.95] max-w-[360px] fade-up delay-3">
+      <p class="mt-7 text-[#eef1f4]/70 text-sm font-light leading-[1.95] max-w-[360px] fade-up delay-3">
         Ajudamos a sentir-se mais confiante e elegante através de serviços únicos e personalizados — balayage, coloração, extensões e tratamentos em Paredes.
       </p>
 
@@ -329,6 +383,11 @@
         </div>
 
       </div>
+
+      <div class="text-center mt-14 reveal">
+        <a href="marcacoes.html" class="btn-primary">Agendar o meu serviço ✦</a>
+        <p class="text-[#eef1f4]/30 text-xs mt-4 font-light">Orçamento gratuito · Sem compromisso</p>
+      </div>
     </div>
   </section>
 
@@ -471,7 +530,7 @@
           <!-- badge -->
           <div class="absolute bottom-6 left-6 bg-[rgba(0,0,0,.92)] border border-[rgba(201,168,76,.25)] px-5 py-3 backdrop-blur-sm">
             <p class="stars text-xs mb-1">★★★★★</p>
-            <p class="text-gold text-sm font-medium">4.9 · 67 avaliações</p>
+            <p class="text-gold text-sm font-medium">4.9 · 72 avaliações</p>
             <p class="text-[#eef1f4]/40 text-xs mt-0.5">Google Maps</p>
           </div>
         </div>
@@ -664,13 +723,24 @@
            class="h-8 w-auto object-contain opacity-70"
            style="filter: invert(1); mix-blend-mode: screen;">
       <p class="text-[#eef1f4]/22 text-xs">
-        © 2025 Bella Hair by Leandro Oliveira &nbsp;·&nbsp; Paredes, Portugal
+        © 2026 Bella Hair by Leandro Oliveira &nbsp;·&nbsp; Paredes, Portugal
+        &nbsp;·&nbsp; <a href="privacidade.html" class="hover:text-gold transition-colors">Privacidade</a>
       </p>
       <a href="tel:913533917" class="text-[#eef1f4]/35 text-xs transition-colors duration-200 hover:text-gold">
         913 533 917
       </a>
     </div>
   </footer>
+
+  <!-- WhatsApp floating button -->
+  <a href="https://wa.me/351913533917?text=Ol%C3%A1%21%20Gostaria%20de%20marcar%20uma%20consulta%20na%20Bella%20Hair."
+     target="_blank" rel="noopener noreferrer"
+     class="whatsapp-btn"
+     aria-label="Falar no WhatsApp">
+    <svg width="26" height="26" fill="white" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
 
 
   <!-- ═══════════════ JS ═══════════════ -->
@@ -712,12 +782,11 @@
       }
     });
 
-    // Gallery hover zoom
-    document.querySelectorAll('.gallery-item img').forEach(img => {
-      const card = img.parentElement;
-      card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.05)'; });
-      card.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; });
-    });
+    // Reduced-motion: pausar vídeos e desativar scroll suave
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('autoplay'); });
+      document.documentElement.style.scrollBehavior = 'auto';
+    }
 
     // Scroll reveal
     const io = new IntersectionObserver((entries) => {
