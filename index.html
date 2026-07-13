@@ -105,6 +105,7 @@
 
       <!-- Desktop links (esquerda) -->
       <div class="hidden md:flex items-center gap-10">
+        <a href="#antes-depois" class="nav-link">Antes &amp; Depois</a>
         <a href="#trabalhos" class="nav-link">Trabalhos</a>
         <a href="#servicos"  class="nav-link">Serviços</a>
         <a href="#precos"    class="nav-link">Preços</a>
@@ -123,6 +124,7 @@
     <!-- Mobile menu -->
     <div id="mobile-menu" class="mobile-menu md:hidden absolute top-full left-0 right-0 bg-[#080808] border-t border-[rgba(201,168,76,.15)] px-6 pt-8 pb-10">
       <div class="flex flex-col gap-7">
+        <a href="#antes-depois" class="nav-link text-[.95rem]" onclick="closeMenu()">Antes &amp; Depois</a>
         <a href="#trabalhos" class="nav-link text-[.95rem]" onclick="closeMenu()">Trabalhos</a>
         <a href="#servicos"  class="nav-link text-[.95rem]" onclick="closeMenu()">Serviços</a>
         <a href="#precos"    class="nav-link text-[.95rem]" onclick="closeMenu()">Preços</a>
@@ -243,8 +245,48 @@
   </section>
 
 
+  <!-- ═══════════════ ANTES & DEPOIS — slider arrastável ═══════════════ -->
+  <!--
+    NOTA: substituir estas duas imagens por um verdadeiro par antes/depois
+    da MESMA cliente (mesmo enquadramento) — é isso que torna esta secção imbatível.
+    Basta trocar os src abaixo: ba-antes.jpg / ba-depois.jpg em /assets.
+  -->
+  <section id="antes-depois" class="py-28 px-6 bg-[#080808]">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="text-center mb-14 reveal">
+        <p class="section-label mb-4">A transformação</p>
+        <h2 class="font-serif text-4xl md:text-[3rem] font-light">Antes &amp; Depois</h2>
+        <div class="gold-divider mt-6"></div>
+        <p class="mt-5 text-[#eef1f4]/40 text-sm font-light max-w-sm mx-auto">
+          Arraste a barra e veja com os seus olhos o que uma sessão na Bella Hair pode fazer.
+        </p>
+      </div>
+
+      <div class="max-w-xl mx-auto reveal">
+        <div class="ba-slider" style="aspect-ratio:4/5">
+          <img src="assets/gallery-1.jpg" alt="Cabelo antes da transformação" loading="lazy">
+          <div class="ba-after">
+            <img src="assets/gallery-5.jpg" alt="Cabelo depois — balayage loiro" loading="lazy">
+          </div>
+          <span class="ba-label ba-label-left">Antes</span>
+          <span class="ba-label ba-label-right">Depois</span>
+          <div class="ba-handle"></div>
+          <input type="range" min="0" max="100" value="50" step="0.1"
+                 class="ba-range" aria-label="Comparar antes e depois">
+        </div>
+        <p class="ba-hint text-center mt-5">◂ &nbsp;arraste para comparar&nbsp; ▸</p>
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="marcacoes.html" class="btn-primary">Quero a minha transformação ✦</a>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ═══════════════ GALLERY ═══════════════ -->
-  <section id="trabalhos" class="py-28 px-6 bg-[#080808]">
+  <section id="trabalhos" class="py-28 px-6">
     <div class="max-w-6xl mx-auto">
 
       <div class="text-center mb-16 reveal">
@@ -263,48 +305,56 @@
           <img src="assets/gallery-1.jpg" alt="Balayage resultado"
                class="w-full h-full object-cover transition-transform duration-500 ease-out"
                loading="lazy">
+          <div class="gallery-caption">Balayage caramelo</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:60ms">
           <img src="assets/gallery-2.jpg" alt="Coloração loira"
                class="w-full h-full object-cover transition-transform duration-500 ease-out"
                loading="lazy">
+          <div class="gallery-caption">Coloração loira</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:120ms">
           <img src="assets/gallery-3.jpg" alt="Leandro Oliveira cabeleireiro"
                class="w-full h-full object-cover transition-transform duration-500 ease-out"
                loading="lazy">
+          <div class="gallery-caption">Volume &amp; brilho</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:180ms">
-          <img src="assets/gallery-5.jpg" alt="Resultado moreno"
+          <img src="assets/gallery-5.jpg" alt="Balayage loiro comprido"
                class="w-full h-full object-cover transition-transform duration-500 ease-out"
                loading="lazy">
+          <div class="gallery-caption">Balayage loiro</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:60ms">
           <img src="assets/gallery-4.jpg" alt="Trabalho no salão"
                class="w-full h-full object-cover transition-transform duration-500 ease-out"
                loading="lazy">
+          <div class="gallery-caption">Mechas iluminadas</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:120ms">
           <img src="assets/gallery-6.jpg" alt="Mechas californianas"
                class="w-full h-full object-cover transition-transform duration-500 ease-out"
                loading="lazy">
+          <div class="gallery-caption">Mechas californianas</div>
         </div>
 
         <div class="gallery-item reveal col-span-1 row-span-2 overflow-hidden" style="aspect-ratio:3/4;transition-delay:180ms">
           <img src="assets/gallery-7.jpg" alt="Loiro platinado"
                class="w-full h-full object-cover transition-transform duration-500 ease-out"
                loading="lazy">
+          <div class="gallery-caption">Loiro platinado</div>
         </div>
 
         <div class="gallery-item reveal col-span-1 md:col-span-2 overflow-hidden" style="aspect-ratio:16/9;transition-delay:240ms">
-          <img src="assets/gallery-8.jpg" alt="Balayage natural"
+          <img src="assets/gallery-8.jpg" alt="Nos bastidores do salão"
                class="w-full h-full object-cover transition-transform duration-500 ease-out"
                loading="lazy">
+          <div class="gallery-caption">Nos bastidores</div>
         </div>
 
       </div>
@@ -319,7 +369,7 @@
 
 
   <!-- ═══════════════ SERVICES ═══════════════ -->
-  <section id="servicos" class="py-28 px-6">
+  <section id="servicos" class="py-28 px-6 bg-[#080808]">
     <div class="max-w-6xl mx-auto">
 
       <div class="text-center mb-20 reveal">
@@ -393,7 +443,7 @@
 
 
   <!-- ═══════════════ PRICING ═══════════════ -->
-  <section id="precos" class="py-28 px-6 bg-[#080808]">
+  <section id="precos" class="py-28 px-6">
     <div class="max-w-5xl mx-auto">
 
       <div class="text-center mb-20 reveal">
@@ -486,23 +536,32 @@
 
 
   <!-- ═══════════════ ABOUT ═══════════════ -->
-  <section id="sobre" class="py-28 px-6">
+  <section id="sobre" class="py-28 px-6 bg-[#080808]">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
         <div class="reveal">
-          <p class="section-label mb-6">Leandro Oliveira</p>
+          <p class="section-label mb-6">O artista por trás da marca</p>
           <h2 class="font-serif font-light leading-tight" style="font-size:clamp(2.4rem,5vw,3.5rem)">
-            Paixão pelo<br>
-            <em class="text-gold">detalhe perfeito</em>
+            Leandro<br>
+            <em class="text-gold">Oliveira</em>
           </h2>
           <div class="w-10 h-px bg-gold mt-8 mb-8"></div>
-          <p class="text-[#eef1f4]/50 font-light leading-[1.85] text-[.9rem]">
-            No coração de Paredes, a Bella Hair é um espaço onde cada visita é uma experiência única. Leandro Oliveira combina técnica apurada com um atendimento personalizado, ouvindo e interpretando os seus desejos para criar o resultado perfeito.
+
+          <!-- Citação na primeira pessoa — cria ligação antes da primeira visita -->
+          <blockquote class="font-serif text-xl md:text-2xl font-light italic leading-[1.6] text-[#eef1f4]/80">
+            «O meu objetivo, em cada cadeira, é simples: que cada pessoa saia daqui a sentir-se a melhor versão de si própria. O cabelo é só o começo.»
+          </blockquote>
+          <p class="mt-4 text-gold text-[10px] tracking-[.25em] uppercase">— Leandro Oliveira, fundador</p>
+
+          <p class="text-[#eef1f4]/50 font-light leading-[1.85] text-[.9rem] mt-8">
+            No coração de Paredes, o Leandro combina técnica apurada com um atendimento verdadeiramente personalizado — ouve, interpreta e cria. Especializado em coloração, balayage e extensões, trabalha apenas com produtos profissionais de primeira linha para garantir a beleza e a saúde do seu cabelo.
           </p>
-          <p class="text-[#eef1f4]/50 font-light leading-[1.85] text-[.9rem] mt-4">
-            Especializado em coloração, balayage e extensões, utiliza produtos profissionais de primeira linha para garantir não só a beleza imediata, mas também a saúde e longevidade do seu cabelo.
-          </p>
+
+          <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener"
+             class="inline-block mt-6 text-gold text-[10px] tracking-[.2em] uppercase transition-colors duration-200 hover:text-gold-light">
+            Acompanhe o dia-a-dia no Instagram →
+          </a>
 
           <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-[rgba(238,241,244,.06)]">
             <div>
@@ -541,7 +600,7 @@
 
 
   <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
-  <section class="py-28 px-6 bg-[#080808]">
+  <section class="py-28 px-6">
     <div class="max-w-5xl mx-auto">
 
       <div class="text-center mb-20 reveal">
@@ -608,6 +667,58 @@
         </a>
       </div>
 
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ INSTAGRAM ═══════════════ -->
+  <!--
+    Para um feed AO VIVO (posts reais atualizados sozinhos), criar um widget grátis
+    em behold.so ou lightwidget.com com a conta @bella_hairpt e colar aqui o embed
+    no lugar desta grelha estática.
+  -->
+  <section id="instagram" class="py-28 px-6 bg-[#080808]">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="text-center mb-14 reveal">
+        <p class="section-label mb-4">@bella_hairpt</p>
+        <h2 class="font-serif text-4xl md:text-[3rem] font-light">Siga-nos no Instagram</h2>
+        <div class="gold-divider mt-6"></div>
+        <p class="mt-5 text-[#eef1f4]/40 text-sm font-light max-w-sm mx-auto">
+          Transformações novas todas as semanas. Junte-se a ~2.900 seguidores.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-2 reveal">
+        <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
+          <img src="assets/gallery-2.jpg" alt="Post Instagram — coloração loira" loading="lazy">
+          <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+        <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
+          <img src="assets/gallery-4.jpg" alt="Post Instagram — balayage" loading="lazy">
+          <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+        <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
+          <img src="assets/gallery-5.jpg" alt="Post Instagram — cabelo comprido loiro" loading="lazy">
+          <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+        <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
+          <img src="assets/gallery-6.jpg" alt="Post Instagram — mechas" loading="lazy">
+          <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+        <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
+          <img src="assets/gallery-1.jpg" alt="Post Instagram — balayage caramelo" loading="lazy">
+          <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+        <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
+          <img src="assets/gallery-8.jpg" alt="Post Instagram — bastidores" loading="lazy">
+          <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+      </div>
+
+      <div class="text-center mt-10 reveal">
+        <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="btn-outline">Seguir @bella_hairpt →</a>
+      </div>
     </div>
   </section>
 
@@ -732,6 +843,18 @@
     </div>
   </footer>
 
+  <!-- Barra fixa de ação (só mobile) — conversão sem scroll -->
+  <div class="mobile-cta-bar md:hidden">
+    <a href="marcacoes.html" class="cta-book">Marcar ✦</a>
+    <a href="https://wa.me/351913533917?text=Ol%C3%A1%21%20Gostaria%20de%20marcar%20uma%20consulta%20na%20Bella%20Hair."
+       target="_blank" rel="noopener noreferrer" class="cta-wa">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+
   <!-- WhatsApp floating button -->
   <a href="https://wa.me/351913533917?text=Ol%C3%A1%21%20Gostaria%20de%20marcar%20uma%20consulta%20na%20Bella%20Hair."
      target="_blank" rel="noopener noreferrer"
@@ -796,6 +919,17 @@
     }, { threshold: 0.08, rootMargin: '-20px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Before/After slider — arrastar com dedo ou rato
+    document.querySelectorAll('.ba-slider').forEach(slider => {
+      const range  = slider.querySelector('.ba-range');
+      const after  = slider.querySelector('.ba-after');
+      const handle = slider.querySelector('.ba-handle');
+      range.addEventListener('input', () => {
+        after.style.clipPath = `inset(0 0 0 ${range.value}%)`;
+        handle.style.left = range.value + '%';
+      });
+    });
   </script>
 
 </body>
