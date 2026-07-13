@@ -152,6 +152,26 @@ body {
   -webkit-user-select: none;
   touch-action: pan-y;
   border: 1px solid rgba(201,168,76,.2);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(201,168,76,.06);
+}
+/* moldura dourada exterior */
+.ba-frame {
+  position: relative;
+  padding: 10px;
+  border: 1px solid rgba(201,168,76,.12);
+  border-radius: 18px;
+  background: linear-gradient(160deg, rgba(201,168,76,.05), transparent 40%);
+}
+.ba-frame::before {
+  content: '✦';
+  position: absolute;
+  top: -11px; left: 50%;
+  transform: translateX(-50%);
+  padding: 0 .8rem;
+  background: #080808;
+  color: var(--gold);
+  font-size: .8rem;
 }
 .ba-slider img {
   position: absolute;
@@ -193,6 +213,23 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 18px rgba(0,0,0,.5);
+  animation: baBreathe 2.6s ease-in-out infinite;
+}
+/* o handle "respira" até à primeira interação */
+@keyframes baBreathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);    box-shadow: 0 4px 18px rgba(0,0,0,.5), 0 0 0 0 rgba(201,168,76,.35); }
+  50%      { transform: translate(-50%, -50%) scale(1.07); box-shadow: 0 4px 18px rgba(0,0,0,.5), 0 0 0 9px rgba(201,168,76,0); }
+}
+.ba-slider.ba-touched .ba-handle::after { animation: none; }
+/* transição suave apenas durante o hint automático */
+.ba-slider.ba-hinting .ba-after  { transition: clip-path 340ms ease-in-out; }
+.ba-slider.ba-hinting .ba-handle { transition: left 340ms ease-in-out; }
+/* feedback ao segurar */
+.ba-slider:active .ba-handle::after { background: rgba(201,168,76,.18); }
+/* navegável por teclado — anel de foco no slider */
+.ba-slider:has(.ba-range:focus-visible) {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 .ba-label {
   position: absolute;
@@ -205,10 +242,31 @@ body {
   background: rgba(0,0,0,.72);
   color: var(--text);
   border: 1px solid rgba(238,241,244,.15);
+  border-radius: 999px;
   pointer-events: none;
+  transition: opacity 300ms ease;
 }
 .ba-label-left  { left: 1rem; }
 .ba-label-right { right: 1rem; color: var(--gold); border-color: rgba(201,168,76,.4); }
+/* labels desvanecem quando a barra se aproxima deles */
+.ba-label.faded { opacity: 0; }
+/* etiqueta do serviço (ex: Balayage) */
+.ba-service {
+  position: absolute;
+  bottom: 1rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: .62rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  padding: .4rem 1.1rem;
+  background: rgba(0,0,0,.78);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,.35);
+  border-radius: 999px;
+  pointer-events: none;
+  white-space: nowrap;
+}
 .ba-range {
   position: absolute;
   inset: 0;
