@@ -761,7 +761,9 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-3 md:grid-cols-6 gap-2 reveal">
+      <!-- As imagens abaixo são o fallback; com o feed Behold ativo são
+           substituídas automaticamente pelos últimos 6 posts reais -->
+      <div id="ig-grid" class="grid grid-cols-3 md:grid-cols-6 gap-2 reveal">
         <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
           <img src="assets/gallery-2.jpg" alt="Post Instagram — coloração loira" loading="lazy">
           <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
@@ -1083,6 +1085,41 @@
     }, { threshold: 0.08, rootMargin: '-20px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ── Feed do Instagram AO VIVO (via behold.so — grátis)
+    // Para ativar:
+    //   1. Criar conta em https://behold.so e ligar o Instagram @bella_hairpt
+    //   2. Criar um feed do tipo "API / JSON" e copiar o URL gerado
+    //   3. Colar o URL na constante abaixo — os últimos 6 posts passam a
+    //      aparecer sozinhos; sem URL, fica a grelha estática (fallback)
+    const INSTAGRAM_FEED_URL = '';
+
+    if (INSTAGRAM_FEED_URL) {
+      fetch(INSTAGRAM_FEED_URL)
+        .then(r => r.json())
+        .then(data => {
+          const posts = (data.posts || data).slice(0, 6);
+          const grid = document.getElementById('ig-grid');
+          if (!grid || !posts.length) return;
+          const igIcon = '<span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>';
+          grid.innerHTML = '';
+          posts.forEach(p => {
+            const src = (p.sizes && p.sizes.medium && p.sizes.medium.mediaUrl) || p.thumbnailUrl || p.mediaUrl;
+            if (!src) return;
+            const a = document.createElement('a');
+            a.href = p.permalink || 'https://www.instagram.com/bella_hairpt/';
+            a.target = '_blank'; a.rel = 'noopener';
+            a.className = 'ig-item';
+            a.setAttribute('aria-label', 'Ver no Instagram');
+            const img = document.createElement('img');
+            img.src = src; img.alt = 'Post Instagram — Bella Hair'; img.loading = 'lazy';
+            a.appendChild(img);
+            a.insertAdjacentHTML('beforeend', igIcon);
+            grid.appendChild(a);
+          });
+        })
+        .catch(() => { /* mantém a grelha estática */ });
+    }
 
     // Before/After slider — arrastar com dedo ou rato
     document.querySelectorAll('.ba-slider').forEach(slider => {
