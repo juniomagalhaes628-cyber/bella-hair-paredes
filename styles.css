@@ -121,9 +121,176 @@ body {
 }
 
 /* ── Gallery hover ── */
+.gallery-item { position: relative; }
+.gallery-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 2.2rem 1.1rem .9rem;
+  background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
+  color: var(--text);
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
 @media (hover: hover) and (pointer: fine) {
   .gallery-item img { transition: transform 500ms ease-out; }
   .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-caption {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
+  }
+  .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Before / After slider ── */
+.ba-slider {
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  border: 1px solid rgba(201,168,76,.2);
+}
+.ba-slider img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.ba-after {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 50%);
+  will-change: clip-path;
+}
+.ba-handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 3;
+  will-change: left;
+}
+.ba-handle::after {
+  content: '◂ ▸';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.85);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: .7rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,.5);
+}
+.ba-label {
+  position: absolute;
+  top: 1rem;
+  z-index: 2;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  padding: .35rem .8rem;
+  background: rgba(0,0,0,.72);
+  color: var(--text);
+  border: 1px solid rgba(238,241,244,.15);
+  pointer-events: none;
+}
+.ba-label-left  { left: 1rem; }
+.ba-label-right { right: 1rem; color: var(--gold); border-color: rgba(201,168,76,.4); }
+.ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 4;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.ba-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 46px; height: 100%;
+}
+.ba-hint {
+  font-size: .65rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ── Instagram grid ── */
+.ig-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+}
+.ig-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 450ms ease-out;
+}
+.ig-item .ig-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .ig-item:hover img { transform: scale(1.06); }
+  .ig-item:hover .ig-overlay { opacity: 1; }
+}
+
+/* ── Mobile sticky action bar ── */
+.mobile-cta-bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 95;
+  display: flex;
+  background: rgba(0,0,0,.96);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(201,168,76,.25);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.mobile-cta-bar a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 1rem .5rem;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.mobile-cta-bar .cta-book { background: var(--gold); color: #000; }
+.mobile-cta-bar .cta-wa   { background: transparent; color: #25D366; }
+@media (max-width: 767px) {
+  body { padding-bottom: 56px; }
+  .whatsapp-btn { display: none; } /* substituído pela barra fixa em mobile */
+}
+@media (min-width: 768px) {
+  .mobile-cta-bar { display: none; }
 }
 
 /* ── WhatsApp floating button ── */
