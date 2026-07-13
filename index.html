@@ -69,6 +69,40 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto tempo demora um balayage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Entre 2h30 e 4h, dependendo do comprimento, do estado do cabelo e do resultado pretendido. Inclui tonalização e finalização — reserve uma manhã ou tarde tranquila." }
+      },
+      {
+        "@type": "Question",
+        "name": "Devo lavar o cabelo antes de vir?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Não é necessário — lavamos cá. Para coloração ou balayage é até preferível vir com o cabelo natural (1–2 dias sem lavar), porque protege o couro cabeludo." }
+      },
+      {
+        "@type": "Question",
+        "name": "Há estacionamento perto do salão?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sim, há estacionamento na rua e nas ruas próximas, no centro de Paredes. Se tiver dificuldade, ligue-nos e indicamos a melhor alternativa." }
+      },
+      {
+        "@type": "Question",
+        "name": "Como funciona a primeira visita?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Começa com uma consulta sem compromisso: avaliamos o seu cabelo, ouvimos o que pretende (traga fotos de referência!) e apresentamos um orçamento. Só avançamos quando estiver 100% confortável." }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso de deixar sinal ao marcar?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Serviços longos (coloração, balayage, extensões) podem exigir um pequeno sinal, confirmado consigo na marcação. Enviamos lembrete por WhatsApp na véspera — se não puder vir, agradecemos aviso com 24h de antecedência." }
+      }
+    ]
+  }
+  </script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -110,6 +144,7 @@
         <a href="#servicos"  class="nav-link">Serviços</a>
         <a href="#precos"    class="nav-link">Preços</a>
         <a href="#sobre"     class="nav-link">Sobre</a>
+        <a href="#faq"       class="nav-link">FAQ</a>
         <a href="#contacto"  class="nav-link">Contacto</a>
       </div>
 
@@ -129,6 +164,7 @@
         <a href="#servicos"  class="nav-link text-[.95rem]" onclick="closeMenu()">Serviços</a>
         <a href="#precos"    class="nav-link text-[.95rem]" onclick="closeMenu()">Preços</a>
         <a href="#sobre"     class="nav-link text-[.95rem]" onclick="closeMenu()">Sobre</a>
+        <a href="#faq"       class="nav-link text-[.95rem]" onclick="closeMenu()">FAQ</a>
         <a href="#contacto"  class="nav-link text-[.95rem]" onclick="closeMenu()">Contacto</a>
         <a href="marcacoes.html" class="btn-primary text-center mt-3">Agendar o meu look ✦</a>
       </div>
@@ -438,6 +474,20 @@
         <a href="marcacoes.html" class="btn-primary">Agendar o meu serviço ✦</a>
         <p class="text-[#eef1f4]/30 text-xs mt-4 font-light">Orçamento gratuito · Sem compromisso</p>
       </div>
+
+      <!-- Marcas profissionais — sinal de qualidade imediato -->
+      <!-- NOTA: confirmar/ajustar à lista real de marcas usadas no salão -->
+      <div class="mt-20 pt-10 border-t border-[rgba(238,241,244,.06)] reveal">
+        <p class="text-center text-[#eef1f4]/25 text-[10px] tracking-[.3em] uppercase mb-9">
+          Trabalhamos apenas com produtos profissionais
+        </p>
+        <div class="brand-strip">
+          <span class="brand-mark font-sans font-semibold text-sm tracking-[.28em] uppercase">L'Oréal <span class="font-light">Professionnel</span></span>
+          <span class="brand-mark font-serif text-xl tracking-[.15em] uppercase">Wella</span>
+          <span class="brand-mark font-sans font-bold text-base tracking-[.35em] uppercase">Olaplex</span>
+          <span class="brand-mark font-serif italic text-xl tracking-[.08em]">Kérastase</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -530,6 +580,9 @@
 
       <div class="text-center mt-14 reveal">
         <a href="tel:913533917" class="btn-primary">Pedir orçamento personalizado</a>
+        <p class="text-[#eef1f4]/25 text-[11px] mt-5 font-light">
+          Marcações de coloração, balayage e extensões podem exigir um pequeno sinal · Lembrete por WhatsApp na véspera
+        </p>
       </div>
     </div>
   </section>
@@ -557,6 +610,25 @@
           <p class="text-[#eef1f4]/50 font-light leading-[1.85] text-[.9rem] mt-8">
             No coração de Paredes, o Leandro combina técnica apurada com um atendimento verdadeiramente personalizado — ouve, interpreta e cria. Especializado em coloração, balayage e extensões, trabalha apenas com produtos profissionais de primeira linha para garantir a beleza e a saúde do seu cabelo.
           </p>
+          <p class="text-[#eef1f4]/50 font-light leading-[1.85] text-[.9rem] mt-4">
+            E não está sozinho: ao seu lado trabalha uma equipa que as clientes descrevem, nas próprias palavras, como <em class="text-[#eef1f4]/70">"fantástica"</em> — do primeiro café à última escova.
+          </p>
+
+          <!--
+            EQUIPA: quando houver fotos + nomes, descomentar e preencher este bloco.
+            As clientes gostam de escolher COM QUEM marcam — cria fidelização à pessoa.
+
+          <div class="grid grid-cols-3 gap-4 mt-10">
+            <div class="text-center">
+              <div class="overflow-hidden rounded-full mx-auto w-20 h-20 border border-[rgba(201,168,76,.3)]">
+                <img src="assets/equipa-1.jpg" alt="Nome — função" class="w-full h-full object-cover">
+              </div>
+              <p class="text-[#eef1f4]/70 text-sm mt-3">Nome</p>
+              <p class="text-[#eef1f4]/35 text-[9px] tracking-[.15em] uppercase mt-0.5">Função</p>
+            </div>
+          </div>
+          -->
+
 
           <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener"
              class="inline-block mt-6 text-gold text-[10px] tracking-[.2em] uppercase transition-colors duration-200 hover:text-gold-light">
@@ -723,6 +795,64 @@
   </section>
 
 
+  <!-- ═══════════════ FAQ — responde às objeções antes do telefonema ═══════════════ -->
+  <section id="faq" class="py-28 px-6">
+    <div class="max-w-2xl mx-auto">
+
+      <div class="text-center mb-14 reveal">
+        <p class="section-label mb-4">Dúvidas frequentes</p>
+        <h2 class="font-serif text-4xl md:text-[3rem] font-light">Antes de marcar</h2>
+        <div class="gold-divider mt-6"></div>
+      </div>
+
+      <div class="space-y-3">
+
+        <details class="faq-item reveal">
+          <summary>Quanto tempo demora um balayage?</summary>
+          <div class="faq-body">
+            Entre 2h30 e 4h, dependendo do comprimento, do estado do cabelo e do resultado pretendido. Inclui tonalização e finalização — reserve uma manhã ou tarde tranquila. Vale cada minuto.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="transition-delay:60ms">
+          <summary>Devo lavar o cabelo antes de vir?</summary>
+          <div class="faq-body">
+            Não é necessário — lavamos cá. Para coloração ou balayage é até <em>preferível</em> vir com o cabelo natural (1–2 dias sem lavar), porque a oleosidade natural protege o couro cabeludo.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="transition-delay:120ms">
+          <summary>Há estacionamento perto do salão?</summary>
+          <div class="faq-body">
+            Sim — há estacionamento na rua e nas ruas próximas, em pleno centro de Paredes. Se tiver dificuldade em encontrar lugar, ligue-nos (<a href="tel:913533917" class="text-gold">913 533 917</a>) e indicamos a melhor alternativa.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="transition-delay:180ms">
+          <summary>Como funciona a primeira visita?</summary>
+          <div class="faq-body">
+            Começa com uma consulta sem compromisso: avaliamos o seu cabelo, ouvimos o que pretende — traga fotos de referência! — e apresentamos um orçamento personalizado. Só avançamos quando estiver 100% confortável com o plano.
+          </div>
+        </details>
+
+        <details class="faq-item reveal" style="transition-delay:240ms">
+          <summary>Preciso de deixar sinal ao marcar?</summary>
+          <div class="faq-body">
+            Serviços longos (coloração, balayage, extensões) podem exigir um pequeno sinal, confirmado consigo na marcação. Enviamos lembrete por WhatsApp na véspera — e se não puder vir, agradecemos aviso com 24h de antecedência para darmos o seu lugar a outra cliente.
+          </div>
+        </details>
+
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <p class="text-[#eef1f4]/35 text-sm font-light mb-5">Ficou alguma dúvida por responder?</p>
+        <a href="https://wa.me/351913533917?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20os%20vossos%20servi%C3%A7os."
+           target="_blank" rel="noopener" class="btn-outline">Pergunte no WhatsApp →</a>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ═══════════════ CONTACT ═══════════════ -->
   <section id="contacto" class="py-28 px-6 border-t border-[rgba(201,168,76,.08)]">
     <div class="max-w-6xl mx-auto">
@@ -787,6 +917,40 @@
         <p class="section-label mb-3">Pronta para marcar?</p>
         <h3 class="font-serif text-2xl font-light mb-5">Reserve o seu momento <em class="text-gold">online</em></h3>
         <a href="marcacoes.html" class="btn-primary">Agendar o meu look agora ✦</a>
+      </div>
+
+      <!-- Captura de contactos — trazer clientes de volta -->
+      <div class="reveal mb-5 bg-navy2 border border-[rgba(238,241,244,.07)] p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <p class="section-label mb-3">Clube Bella</p>
+            <h3 class="font-serif text-2xl font-light">Seja a primeira a saber das <em class="text-gold">promoções</em></h3>
+            <p class="text-[#eef1f4]/40 text-xs font-light mt-3 leading-relaxed">
+              Novidades, vagas de última hora e ofertas exclusivas. Sem spam — prometido.
+            </p>
+          </div>
+          <div>
+            <form action="https://formsubmit.co/juniomagalhaes628@gmail.com" method="POST" class="flex gap-2">
+              <input type="hidden" name="_subject" value="💌 Nova subscrição de promoções — Bella Hair">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/obrigado.html">
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+              <input type="email" name="Email" required placeholder="o seu email"
+                     class="flex-1 min-w-0 bg-[rgba(255,255,255,.04)] border border-[rgba(238,241,244,.12)] text-[#eef1f4] text-sm font-light px-4 py-3 outline-none focus:border-[rgba(201,168,76,.5)] transition-colors"
+                     autocomplete="email">
+              <button type="submit" class="btn-primary flex-shrink-0 !px-5">Subscrever</button>
+            </form>
+            <a href="https://wa.me/351913533917?text=Ol%C3%A1%21%20Quero%20receber%20as%20novidades%20e%20promo%C3%A7%C3%B5es%20da%20Bella%20Hair%20%F0%9F%92%9B"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 mt-3 text-[#25D366] text-xs font-medium transition-opacity hover:opacity-80">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              ou receber pelo WhatsApp →
+            </a>
+            <p class="text-[#eef1f4]/22 text-[10px] mt-3 font-light">
+              Ao subscrever aceita ser contactada pela Bella Hair · <a href="privacidade.html" class="underline hover:text-gold transition-colors">Privacidade</a>
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Social links -->
