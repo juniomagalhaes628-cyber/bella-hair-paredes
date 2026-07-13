@@ -259,6 +259,64 @@ body {
   .ig-item:hover .ig-overlay { opacity: 1; }
 }
 
+/* ── FAQ (accordion nativo com <details>) ── */
+.faq-item {
+  background: var(--navy-2);
+  border: 1px solid var(--navy-border);
+  transition: border-color 250ms ease;
+}
+.faq-item[open] { border-color: rgba(201,168,76,.3); }
+@media (hover: hover) and (pointer: fine) {
+  .faq-item:hover { border-color: rgba(201,168,76,.2); }
+}
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  list-style: none;
+  font-size: .9rem;
+  font-weight: 500;
+  color: rgba(238,241,244,.8);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 1.2rem;
+  font-weight: 300;
+  transition: transform 250ms var(--ease-out);
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item .faq-body {
+  padding: 0 1.5rem 1.4rem;
+  font-size: .85rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(238,241,244,.5);
+}
+
+/* ── Faixa de marcas (wordmarks em texto) ── */
+.brand-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem 3.5rem;
+}
+.brand-mark {
+  color: rgba(238,241,244,.35);
+  white-space: nowrap;
+  transition: color 250ms ease;
+  cursor: default;
+}
+@media (hover: hover) and (pointer: fine) {
+  .brand-mark:hover { color: rgba(238,241,244,.7); }
+}
+
 /* ── Mobile sticky action bar ── */
 .mobile-cta-bar {
   position: fixed;
