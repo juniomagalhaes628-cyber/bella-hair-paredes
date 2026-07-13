@@ -299,20 +299,30 @@
         </p>
       </div>
 
-      <div class="max-w-xl mx-auto reveal">
-        <div class="ba-slider" style="aspect-ratio:4/5">
-          <img src="assets/gallery-1.jpg" alt="Cabelo antes da transformação" loading="lazy">
-          <div class="ba-after">
-            <img src="assets/gallery-5.jpg" alt="Cabelo depois — balayage loiro" loading="lazy">
+      <!--
+        Para adicionar mais pares antes/depois: duplicar o bloco .ba-frame
+        (a grelha adapta-se e o JS inicializa todos automaticamente).
+      -->
+      <div class="max-w-xl mx-auto grid grid-cols-1 gap-10 reveal">
+
+        <div class="ba-frame">
+          <div class="ba-slider" style="aspect-ratio:4/5">
+            <img src="assets/gallery-1.jpg" alt="Cabelo antes da transformação" loading="lazy">
+            <div class="ba-after">
+              <img src="assets/gallery-5.jpg" alt="Cabelo depois — balayage loiro" loading="lazy">
+            </div>
+            <span class="ba-label ba-label-left">Antes</span>
+            <span class="ba-label ba-label-right">Depois</span>
+            <span class="ba-service">✦ &nbsp;Balayage&nbsp; ✦</span>
+            <div class="ba-handle"></div>
+            <input type="range" min="0" max="100" value="50" step="0.1"
+                   class="ba-range"
+                   aria-label="Comparar antes e depois — use as setas do teclado ou arraste">
           </div>
-          <span class="ba-label ba-label-left">Antes</span>
-          <span class="ba-label ba-label-right">Depois</span>
-          <div class="ba-handle"></div>
-          <input type="range" min="0" max="100" value="50" step="0.1"
-                 class="ba-range" aria-label="Comparar antes e depois">
         </div>
-        <p class="ba-hint text-center mt-5">◂ &nbsp;arraste para comparar&nbsp; ▸</p>
+
       </div>
+      <p class="ba-hint text-center mt-6">◂ &nbsp;arraste para comparar&nbsp; ▸</p>
 
       <div class="text-center mt-12 reveal">
         <a href="marcacoes.html" class="btn-primary">Quero a minha transformação ✦</a>
@@ -1121,15 +1131,44 @@
         .catch(() => { /* mantém a grelha estática */ });
     }
 
-    // Before/After slider — arrastar com dedo ou rato
+    // Before/After slider — arrasto (dedo/rato) + teclado (setas, via range nativo)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     document.querySelectorAll('.ba-slider').forEach(slider => {
-      const range  = slider.querySelector('.ba-range');
-      const after  = slider.querySelector('.ba-after');
-      const handle = slider.querySelector('.ba-handle');
+      const range   = slider.querySelector('.ba-range');
+      const after   = slider.querySelector('.ba-after');
+      const handle  = slider.querySelector('.ba-handle');
+      const labelL  = slider.querySelector('.ba-label-left');
+      const labelR  = slider.querySelector('.ba-label-right');
+      let touched = false;
+
+      function render(v) {
+        after.style.clipPath = `inset(0 0 0 ${v}%)`;
+        handle.style.left = v + '%';
+        // labels desvanecem quando a barra se aproxima deles
+        if (labelL) labelL.classList.toggle('faded', v < 22);
+        if (labelR) labelR.classList.toggle('faded', v > 78);
+      }
+
       range.addEventListener('input', () => {
-        after.style.clipPath = `inset(0 0 0 ${range.value}%)`;
-        handle.style.left = range.value + '%';
+        if (!touched) { touched = true; slider.classList.add('ba-touched'); }
+        render(range.value);
       });
+
+      // Hint de arrasto na primeira vez que o slider entra no ecrã
+      if (!reducedMotion) {
+        const hintIO = new IntersectionObserver((entries, obs) => {
+          if (!entries[0].isIntersecting) return;
+          obs.disconnect();
+          slider.classList.add('ba-hinting');
+          const seq = [[300, 42], [650, 58], [1000, 50]];
+          seq.forEach(([t, v]) => setTimeout(() => { if (!touched) { range.value = v; render(v); } }, t));
+          setTimeout(() => slider.classList.remove('ba-hinting'), 1400);
+        }, { threshold: 0.5 });
+        hintIO.observe(slider);
+      }
+
+      render(range.value);
     });
   </script>
 
