@@ -1004,18 +1004,54 @@
 
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
-  <footer class="border-t border-[rgba(201,168,76,.07)] py-8 px-6">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-      <img src="assets/logo.jpg" alt="Bella Hair"
-           class="h-8 w-auto object-contain opacity-70"
-           style="filter: invert(1); mix-blend-mode: screen;">
-      <p class="text-[#eef1f4]/22 text-xs">
-        © 2026 Bella Hair by Leandro Oliveira &nbsp;·&nbsp; Paredes, Portugal
-        &nbsp;·&nbsp; <a href="privacidade.html" class="hover:text-gold transition-colors">Privacidade</a>
-      </p>
-      <a href="tel:913533917" class="text-[#eef1f4]/35 text-xs transition-colors duration-200 hover:text-gold">
-        913 533 917
-      </a>
+  <footer class="border-t border-[rgba(201,168,76,.07)] pt-8 pb-10 px-6">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Linha principal: logo · marca · telefone -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+        <img src="assets/logo.jpg" alt="Bella Hair"
+             class="h-8 w-auto object-contain opacity-70"
+             style="filter: invert(1); mix-blend-mode: screen;">
+        <p class="text-[#eef1f4]/30 text-xs">
+          © 2026 Bella Hair by Leandro Oliveira &nbsp;·&nbsp; R. Dr. José Barbosa Leão 44, 4580-123 Paredes
+        </p>
+        <a href="tel:913533917" class="text-[#eef1f4]/35 text-xs transition-colors duration-200 hover:text-gold">
+          913 533 917
+        </a>
+      </div>
+
+      <!--
+        NIF do prestador — obrigatório na identificação (DL 7/2004).
+        Assim que tiver o número, descomente a linha abaixo e preencha:
+        <span>NIF 000 000 000</span> &nbsp;·&nbsp;
+      -->
+
+      <!-- Linha legal: Livro de Reclamações (obrigatório) · RAL · Privacidade -->
+      <div class="mt-7 pt-6 border-t border-[rgba(238,241,244,.05)] flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-3 text-center">
+
+        <a href="https://www.livroreclamacoes.pt/inicio/" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 text-[#eef1f4]/45 text-[11px] transition-colors duration-200 hover:text-gold">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5z"/><path d="M14 3v5h5M8 13h8M8 17h5"/>
+          </svg>
+          Livro de Reclamações
+        </a>
+
+        <span class="hidden sm:inline text-[#eef1f4]/12">·</span>
+
+        <a href="https://www.cicap.pt" target="_blank" rel="noopener"
+           class="text-[#eef1f4]/45 text-[11px] transition-colors duration-200 hover:text-gold">
+          Resolução de Litígios de Consumo (CICAP)
+        </a>
+
+        <span class="hidden sm:inline text-[#eef1f4]/12">·</span>
+
+        <a href="privacidade.html"
+           class="text-[#eef1f4]/45 text-[11px] transition-colors duration-200 hover:text-gold">
+          Aviso de Privacidade
+        </a>
+      </div>
+
     </div>
   </footer>
 
