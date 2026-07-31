@@ -3,7 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Política de Segurança de Conteúdo — restringe de onde podem vir scripts,
+       estilos, imagens e fontes, impede injeção de <base> e plugins, e limita o
+       destino dos formulários ao FormSubmit.
+       Nota: 'frame-ancestors' (anti-clickjacking) só funciona em cabeçalho HTTP,
+       que o GitHub Pages não permite definir. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Marque a sua consulta na Bella Hair by Leandro Oliveira — Cabeleireiro em Paredes. Rápido, fácil e online.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Marcações — Bella Hair by Leandro Oliveira">
+  <meta property="og:description" content="Marque a sua consulta online no cabeleireiro Bella Hair, em Paredes. Balayage, coloração, extensões e tratamentos.">
+  <meta property="og:image" content="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/assets/gallery-1.jpg">
+  <meta property="og:url" content="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/marcacoes.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_PT">
+  <meta property="og:site_name" content="Bella Hair Paredes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Marcações — Bella Hair by Leandro Oliveira">
+  <meta name="twitter:image" content="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/assets/gallery-1.jpg">
+  <link rel="canonical" href="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/marcacoes.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text x='50' y='72' font-size='68' font-family='Georgia,serif' fill='%23c9a84c' text-anchor='middle'>B</text></svg>">
   <title>Marcações — Bella Hair by Leandro Oliveira</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -48,7 +68,7 @@
       -webkit-appearance: none;
       appearance: none;
     }
-    .form-field::placeholder { color: rgba(238,241,244,.3); }
+    .form-field::placeholder { color: rgba(238,241,244,.55); }
     .form-field:focus {
       border-color: rgba(201,168,76,.5);
       background: rgba(255,255,255,.06);
@@ -134,7 +154,7 @@
       <h1 class="font-serif text-4xl md:text-5xl font-light fade-up delay-1">
         Marque a sua<br><em class="text-gold">consulta</em>
       </h1>
-      <p class="mt-5 text-[#eef1f4]/45 text-sm font-light max-w-sm mx-auto fade-up delay-2">
+      <p class="mt-5 text-[#eef1f4]/55 text-sm font-light max-w-sm mx-auto fade-up delay-2">
         Preencha o formulário e entraremos em contacto para confirmar o seu agendamento.
       </p>
       <div class="mt-5 inline-flex items-center gap-2 border border-[rgba(201,168,76,.3)] bg-[rgba(201,168,76,.07)] px-4 py-2 fade-up delay-3">
@@ -163,7 +183,7 @@
       </div>
       <div class="flex-1">
         <p class="text-[#eef1f4]/80 text-sm font-medium">Quer confirmação imediata?</p>
-        <p class="text-[#eef1f4]/40 text-xs mt-0.5">Marque pelo WhatsApp · Resposta na hora</p>
+        <p class="text-[#eef1f4]/55 text-xs mt-0.5">Marque pelo WhatsApp · Resposta na hora</p>
       </div>
       <a href="https://wa.me/351913533917?text=Ol%C3%A1%21%20Gostaria%20de%20marcar%20uma%20consulta%20na%20Bella%20Hair."
          target="_blank" rel="noopener noreferrer"
@@ -173,7 +193,7 @@
     </div>
 
     <div class="text-center mb-6 fade-up delay-1">
-      <span class="text-[#eef1f4]/30 text-[10px] tracking-[.25em] uppercase">— ou preencha o pedido —</span>
+      <span class="text-[#eef1f4]/55 text-[10px] tracking-[.25em] uppercase">— ou preencha o pedido —</span>
     </div>
 
     <!-- Card -->
@@ -208,21 +228,25 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Nome completo *</label>
+              <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 block mb-2">Nome completo *</label>
               <input type="text" name="Nome" placeholder="Ex: Maria Silva"
                      class="form-field" required autocomplete="name">
             </div>
             <div>
-              <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Telemóvel *</label>
+              <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 block mb-2">Telemóvel *</label>
               <input type="tel" name="Telemóvel" placeholder="9XX XXX XXX"
-                     class="form-field" required autocomplete="tel">
+                     class="form-field" required autocomplete="tel"
+                     inputmode="tel" enterkeyhint="next"
+                     pattern="[0-9+ ]{9,15}"
+                     title="Indique um número de telemóvel válido (9 dígitos)">
             </div>
           </div>
 
           <div class="mb-6">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Email (opcional)</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 block mb-2">Email (opcional)</label>
             <input type="email" name="Email" placeholder="para confirmação por email"
-                   class="form-field" autocomplete="email">
+                   class="form-field" autocomplete="email"
+                   inputmode="email" enterkeyhint="done">
           </div>
 
           <button type="button" onclick="goToStep(2)"
@@ -236,7 +260,7 @@
           <p class="section-label mb-6">02 — Serviço & data</p>
 
           <div class="mb-4">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Serviço pretendido *</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 block mb-2">Serviço pretendido *</label>
             <div class="select-wrap">
               <select name="Serviço" class="form-field" required>
                 <option value="" disabled selected>Escolha o serviço</option>
@@ -264,12 +288,12 @@
           </div>
 
           <div class="mb-6">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Data preferida *</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 block mb-2">Data preferida *</label>
             <input type="date" name="Data" id="date-input" class="form-field" required>
           </div>
 
           <div class="mb-8">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-3">Horário preferido</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 block mb-3">Horário preferido</label>
             <div class="grid grid-cols-4 sm:grid-cols-5 gap-2" id="time-grid">
               <div class="time-slot" data-time="09:00">09h00</div>
               <div class="time-slot" data-time="09:30">09h30</div>
@@ -304,7 +328,7 @@
           <p class="section-label mb-6">03 — Confirmação</p>
 
           <div class="mb-6">
-            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 block mb-2">Observações (opcional)</label>
+            <label class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 block mb-2">Observações (opcional)</label>
             <textarea name="Observações" rows="3"
                       placeholder="Ex: cabelo muito danificado, quero algo natural, alergia a algum produto..."
                       class="form-field resize-none"></textarea>
@@ -315,23 +339,23 @@
             <p class="text-[10px] tracking-[.18em] uppercase text-gold mb-4">Resumo da marcação</p>
             <div class="space-y-2 text-sm">
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Nome</span>
+                <span class="text-[#eef1f4]/55">Nome</span>
                 <span id="s-nome" class="text-right font-light">—</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Telemóvel</span>
+                <span class="text-[#eef1f4]/55">Telemóvel</span>
                 <span id="s-tel" class="text-right font-light">—</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Serviço</span>
+                <span class="text-[#eef1f4]/55">Serviço</span>
                 <span id="s-servico" class="text-right font-light max-w-[55%] text-right">—</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Data</span>
+                <span class="text-[#eef1f4]/55">Data</span>
                 <span id="s-data" class="text-right font-light">—</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-[#eef1f4]/45">Horário</span>
+                <span class="text-[#eef1f4]/55">Horário</span>
                 <span id="s-hora" class="text-right font-light">—</span>
               </div>
             </div>
@@ -343,7 +367,7 @@
                    class="mt-0.5 flex-shrink-0 accent-gold cursor-pointer" required>
             <label for="gdpr-consent" class="text-[#eef1f4]/50 text-xs leading-relaxed cursor-pointer">
               Consinto que os meus dados pessoais (nome e contacto) sejam utilizados pela Bella Hair para confirmação do agendamento, em conformidade com o
-              <a href="privacidade.html" target="_blank" class="text-gold underline">Aviso de Privacidade</a>.
+              <a href="privacidade.html" target="_blank" rel="noopener" class="text-gold underline">Aviso de Privacidade</a>.
               Os dados não serão partilhados com terceiros.
             </label>
           </div>
@@ -351,7 +375,7 @@
             ✖ Por favor aceite os termos de privacidade para continuar.
           </div>
 
-          <p class="text-[#eef1f4]/28 text-xs mb-7 leading-relaxed">
+          <p class="text-[#eef1f4]/55 text-xs mb-7 leading-relaxed">
             ✦ Após o envio, entraremos em contacto para confirmar a disponibilidade.<br>
             ✦ Enviamos lembrete por WhatsApp na véspera. Coloração, balayage e extensões podem exigir um pequeno sinal.<br>
             ✦ Se não puder comparecer, agradecemos aviso com 24h de antecedência.<br>
@@ -386,17 +410,17 @@
     <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
       <div class="bg-navy2 border border-[rgba(238,241,244,.06)] p-5 text-center">
         <p class="text-gold text-sm mb-2">✦</p>
-        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 mb-1">Horário</p>
+        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 mb-1">Horário</p>
         <p class="text-sm text-[#eef1f4]/60 font-light">Ter – Sáb<br>9h às 19h</p>
       </div>
       <div class="bg-navy2 border border-[rgba(238,241,244,.06)] p-5 text-center">
         <p class="text-gold text-sm mb-2">◈</p>
-        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 mb-1">Morada</p>
+        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 mb-1">Morada</p>
         <p class="text-sm text-[#eef1f4]/60 font-light">R. Dr. José Barbosa Leão 44<br>4580-123 Paredes</p>
       </div>
       <div class="bg-navy2 border border-[rgba(238,241,244,.06)] p-5 text-center">
         <p class="text-gold text-sm mb-2">◇</p>
-        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/40 mb-1">Telefone</p>
+        <p class="text-[10px] tracking-[.18em] uppercase text-[#eef1f4]/55 mb-1">Telefone</p>
         <a href="tel:913533917" class="text-sm text-[#eef1f4]/60 font-light hover:text-gold transition-colors">913 533 917</a>
       </div>
     </div>
@@ -404,8 +428,8 @@
 
   <!-- Footer mínimo -->
   <footer class="border-t border-[rgba(201,168,76,.07)] py-6 px-6 text-center">
-    <p class="text-[#eef1f4]/25 text-xs">© 2026 Bella Hair by Leandro Oliveira · R. Dr. José Barbosa Leão 44, 4580-123 Paredes</p>
-    <p class="text-[#eef1f4]/20 text-[11px] mt-2">
+    <p class="text-[#eef1f4]/55 text-xs">© 2026 Bella Hair by Leandro Oliveira · R. Dr. José Barbosa Leão 44, 4580-123 Paredes</p>
+    <p class="text-[#eef1f4]/55 text-[11px] mt-2">
       <a href="https://www.livroreclamacoes.pt/inicio/" target="_blank" rel="noopener" class="hover:text-gold transition-colors">Livro de Reclamações</a>
       &nbsp;·&nbsp;
       <a href="https://www.cicap.pt" target="_blank" rel="noopener" class="hover:text-gold transition-colors">RAL · CICAP</a>
@@ -548,7 +572,7 @@
           <p class="text-[#eef1f4]/50 text-sm font-light leading-relaxed mb-2">
             Já recebemos o seu pedido de marcação.<br>Entraremos em contacto brevemente para confirmar.
           </p>
-          <p class="text-[#eef1f4]/35 text-xs mb-8">Para confirmação imediata ligue: <a href="tel:913533917" class="text-gold">913 533 917</a></p>
+          <p class="text-[#eef1f4]/55 text-xs mb-8">Para confirmação imediata ligue: <a href="tel:913533917" class="text-gold">913 533 917</a></p>
           <a href="index.html" class="btn-outline">← Voltar ao site</a>
         </div>`;
     }

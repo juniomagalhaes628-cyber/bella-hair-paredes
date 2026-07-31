@@ -19,7 +19,7 @@
 
   --text:        #eef1f4;
   --text-muted:  rgba(238,241,244,.5);
-  --text-faint:  rgba(238,241,244,.25);
+  --text-faint:  rgba(238,241,244,.55);  /* mínimo WCAG AA (4.5:1) sobre preto */
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,6 +30,42 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+/* ── Base defensiva ──
+   O Tailwind vem de um CDN externo. Se falhar (rede, firewall, avaria do CDN),
+   os links passariam ao azul por omissão do browser — ilegível sobre preto.
+   Estas regras garantem uma degradação graciosa; qualquer classe Tailwind
+   (.text-gold, .text-[#eef1f4]/55, …) tem prioridade sobre elas. */
+a { color: inherit; text-decoration: none; }
+img, video { max-width: 100%; }
+
+/* ── Foco visível (navegação por teclado) ── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+/* o rato não deve mostrar o anel */
+:focus:not(:focus-visible) { outline: none; }
+
+/* ── Skip-link (visível apenas com teclado) ── */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 200;
+  padding: .8rem 1.6rem;
+  background: var(--gold);
+  color: #000;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 200ms var(--ease-out);
+}
+.skip-link:focus { transform: translate(-50%, 0); }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
@@ -143,6 +179,64 @@ body {
   }
   .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
 }
+
+/* ── Lightbox da galeria ── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(0,0,0,.94);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 250ms var(--ease-out);
+}
+.lightbox.open { display: flex; }
+.lightbox.visible { opacity: 1; }
+.lightbox img {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border: 1px solid rgba(201,168,76,.25);
+  box-shadow: 0 24px 70px rgba(0,0,0,.7);
+}
+.lightbox-caption {
+  position: absolute;
+  bottom: 2.2rem; left: 50%;
+  transform: translateX(-50%);
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  padding: 0 1rem;
+}
+.lightbox-btn {
+  position: absolute;
+  background: rgba(0,0,0,.7);
+  border: 1px solid rgba(201,168,76,.3);
+  color: var(--gold);
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  border-radius: 50%;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.lightbox-btn:hover { background: rgba(201,168,76,.18); border-color: var(--gold); }
+.lightbox-close { top: 1.2rem; right: 1.2rem; }
+.lightbox-prev  { left: 1.2rem;  top: 50%; transform: translateY(-50%); }
+.lightbox-next  { right: 1.2rem; top: 50%; transform: translateY(-50%); }
+@media (max-width: 640px) {
+  .lightbox-prev { left: .6rem; }
+  .lightbox-next { right: .6rem; }
+}
+/* a galeria fica clicável */
+.gallery-item { cursor: zoom-in; }
 
 /* ── Before / After slider ── */
 .ba-slider {
@@ -366,7 +460,7 @@ body {
   gap: 2.5rem 3.5rem;
 }
 .brand-mark {
-  color: rgba(238,241,244,.35);
+  color: rgba(238,241,244,.55);
   white-space: nowrap;
   transition: color 250ms ease;
   cursor: default;

@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Política de Segurança de Conteúdo — restringe de onde podem vir scripts,
+       estilos, imagens e fontes, impede injeção de <base> e plugins, e limita o
+       destino dos formulários ao FormSubmit.
+       Nota: 'frame-ancestors' (anti-clickjacking) só funciona em cabeçalho HTTP,
+       que o GitHub Pages não permite definir. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Bella Hair by Leandro Oliveira — Cabeleireiro premium em Paredes. Balayage, coloração, mechas e tratamentos capilares. 4.9★ no Google. Agende: 913 533 917.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Bella Hair by Leandro Oliveira — Cabeleireiro Paredes">
@@ -16,7 +23,8 @@
   <meta name="twitter:title" content="Bella Hair by Leandro Oliveira — Cabeleireiro Paredes">
   <meta name="twitter:image" content="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/assets/gallery-1.jpg">
   <link rel="canonical" href="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂️</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text x='50' y='72' font-size='68' font-family='Georgia,serif' fill='%23c9a84c' text-anchor='middle'>B</text></svg>">
+  <meta name="theme-color" content="#000000">
   <title>Bella Hair — by Leandro Oliveira | Cabeleireiro Paredes</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -126,6 +134,9 @@
 
 <body class="bg-navy text-[#eef1f4] font-sans antialiased overflow-x-hidden">
 
+  <!-- Skip-link — aparece só ao navegar por teclado -->
+  <a href="#conteudo" class="skip-link">Saltar para o conteúdo</a>
+
   <!-- ═══════════════ NAVBAR ═══════════════ -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
     <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
@@ -151,7 +162,7 @@
       <!-- Logo (direita) -->
       <a href="#" class="flex items-center">
         <img src="assets/logo.jpg" alt="Bella Hair by Leandro Oliveira"
-             class="h-11 w-auto object-contain"
+             class="h-11 w-auto object-contain" width="500" height="500"
              style="filter: invert(1); mix-blend-mode: screen;">
       </a>
     </div>
@@ -172,6 +183,8 @@
   </nav>
 
 
+  <main id="conteudo">
+
   <!-- ═══════════════ HERO — split layout ═══════════════ -->
   <section class="relative min-h-screen flex overflow-hidden bg-black">
 
@@ -185,7 +198,7 @@
       <!-- Logo -->
       <div class="fade-up mb-10">
         <img src="assets/logo.jpg" alt="Bella Hair"
-             class="h-20 md:h-24 w-auto object-contain"
+             class="h-20 md:h-24 w-auto object-contain" width="500" height="500"
              style="filter: invert(1); mix-blend-mode: screen;">
       </div>
 
@@ -215,12 +228,12 @@
             <span class="stars text-xs">★★★★★</span>
             <span class="text-gold font-medium text-sm">4.9</span>
           </div>
-          <p class="text-[#eef1f4]/30 text-[10px] tracking-[.2em] uppercase">72 avaliações Google</p>
+          <p class="text-[#eef1f4]/55 text-[10px] tracking-[.2em] uppercase">72 avaliações Google</p>
         </div>
         <div class="w-px h-8 bg-[rgba(238,241,244,.1)]"></div>
         <div>
           <p class="text-[#eef1f4]/60 text-sm font-light">Ter – Sáb</p>
-          <p class="text-[#eef1f4]/30 text-[10px] tracking-[.2em] uppercase">9h às 19h</p>
+          <p class="text-[#eef1f4]/55 text-[10px] tracking-[.2em] uppercase">9h às 19h</p>
         </div>
       </div>
     </div>
@@ -228,10 +241,16 @@
     <!-- ── COLUNA DIREITA — vídeo + decoração geométrica ── -->
     <div class="hidden lg:block absolute right-0 top-0 w-[50%] h-full">
 
-      <!-- Vídeo -->
-      <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
-        <source src="assets/hero-1.mp4" type="video/mp4">
-        <source src="assets/hero-2.mp4" type="video/mp4">
+      <!-- Vídeo (apenas desktop — ver bloco mobile mais abaixo).
+           poster = primeiro fotograma visível enquanto o vídeo carrega. -->
+      <video id="hero-video" class="absolute inset-0 w-full h-full object-cover"
+             autoplay muted loop playsinline
+             preload="none"
+             poster="assets/gallery-3.jpg"
+             data-src="assets/hero-1.mp4"
+             aria-hidden="true" tabindex="-1">
+        <!-- O src é injetado por JS apenas em ecrãs ≥1024px: em mobile,
+             "display:none" não impede o browser de descarregar os 12 MB. -->
       </video>
 
       <!-- Overlay gradiente (fundir com fundo esquerdo) -->
@@ -265,17 +284,19 @@
            style="background: radial-gradient(ellipse at 60% 50%, rgba(201,168,76,.06) 0%, transparent 65%)"></div>
     </div>
 
-    <!-- Mobile: vídeo de fundo (tela cheia) -->
+    <!-- Mobile: imagem de fundo em vez de vídeo.
+         O vídeo pesa 12 MB e aqui aparecia a 25% de opacidade sobre preto —
+         praticamente invisível. A imagem dá o mesmo efeito por ~40 KB. -->
     <div class="lg:hidden absolute inset-0 z-0">
-      <video class="w-full h-full object-cover" autoplay muted loop playsinline style="opacity:.25">
-        <source src="assets/hero-1.mp4" type="video/mp4">
-      </video>
+      <img src="assets/gallery-8.jpg" alt=""
+           class="w-full h-full object-cover" style="opacity:.25"
+           width="526" height="701" fetchpriority="high">
       <div class="absolute inset-0 bg-black/60"></div>
     </div>
 
     <!-- Scroll indicator -->
     <div class="absolute bottom-8 left-12 hidden lg:flex flex-col items-center gap-2 fade-up delay-5" style="z-index:20">
-      <span class="text-[#eef1f4]/20 text-[9px] tracking-[.3em] uppercase">scroll</span>
+      <span class="text-[#eef1f4]/55 text-[9px] tracking-[.3em] uppercase">scroll</span>
       <div class="w-px h-10 bg-gradient-to-b from-[rgba(201,168,76,.4)] to-transparent"></div>
     </div>
   </section>
@@ -294,7 +315,7 @@
         <p class="section-label mb-4">A transformação</p>
         <h2 class="font-serif text-4xl md:text-[3rem] font-light">Antes &amp; Depois</h2>
         <div class="gold-divider mt-6"></div>
-        <p class="mt-5 text-[#eef1f4]/40 text-sm font-light max-w-sm mx-auto">
+        <p class="mt-5 text-[#eef1f4]/55 text-sm font-light max-w-sm mx-auto">
           Arraste a barra e veja com os seus olhos o que uma sessão na Bella Hair pode fazer.
         </p>
       </div>
@@ -307,9 +328,9 @@
 
         <div class="ba-frame">
           <div class="ba-slider" style="aspect-ratio:4/5">
-            <img src="assets/gallery-1.jpg" alt="Cabelo antes da transformação" loading="lazy">
+            <img src="assets/gallery-1.jpg" alt="Cabelo antes da transformação" width="512" height="640" loading="lazy">
             <div class="ba-after">
-              <img src="assets/gallery-5.jpg" alt="Cabelo depois — balayage loiro" loading="lazy">
+              <img src="assets/gallery-5.jpg" alt="Cabelo depois — balayage loiro" width="512" height="640" loading="lazy">
             </div>
             <span class="ba-label ba-label-left">Antes</span>
             <span class="ba-label ba-label-right">Depois</span>
@@ -339,7 +360,7 @@
         <p class="section-label mb-4">Resultados reais</p>
         <h2 class="font-serif text-4xl md:text-[3rem] font-light">Os nossos trabalhos</h2>
         <div class="gold-divider mt-6"></div>
-        <p class="mt-5 text-[#eef1f4]/40 text-sm font-light max-w-sm mx-auto">
+        <p class="mt-5 text-[#eef1f4]/55 text-sm font-light max-w-sm mx-auto">
           Balayage, coloração e tratamentos realizados no nosso salão em Paredes.
         </p>
       </div>
@@ -349,56 +370,56 @@
 
         <div class="gallery-item reveal col-span-1 row-span-2 overflow-hidden" style="aspect-ratio:3/4">
           <img src="assets/gallery-1.jpg" alt="Balayage resultado"
-               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out" width="512" height="640"
                loading="lazy">
           <div class="gallery-caption">Balayage caramelo</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:60ms">
           <img src="assets/gallery-2.jpg" alt="Coloração loira"
-               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out" width="512" height="640"
                loading="lazy">
           <div class="gallery-caption">Coloração loira</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:120ms">
           <img src="assets/gallery-3.jpg" alt="Leandro Oliveira cabeleireiro"
-               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out" width="512" height="640"
                loading="lazy">
           <div class="gallery-caption">Volume &amp; brilho</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:180ms">
           <img src="assets/gallery-5.jpg" alt="Balayage loiro comprido"
-               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out" width="512" height="640"
                loading="lazy">
           <div class="gallery-caption">Balayage loiro</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:60ms">
           <img src="assets/gallery-4.jpg" alt="Trabalho no salão"
-               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out" width="512" height="640"
                loading="lazy">
           <div class="gallery-caption">Mechas iluminadas</div>
         </div>
 
         <div class="gallery-item reveal overflow-hidden" style="aspect-ratio:1/1;transition-delay:120ms">
           <img src="assets/gallery-6.jpg" alt="Mechas californianas"
-               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out" width="512" height="640"
                loading="lazy">
           <div class="gallery-caption">Mechas californianas</div>
         </div>
 
         <div class="gallery-item reveal col-span-1 row-span-2 overflow-hidden" style="aspect-ratio:3/4;transition-delay:180ms">
           <img src="assets/gallery-7.jpg" alt="Loiro platinado"
-               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out" width="512" height="640"
                loading="lazy">
           <div class="gallery-caption">Loiro platinado</div>
         </div>
 
         <div class="gallery-item reveal col-span-1 md:col-span-2 overflow-hidden" style="aspect-ratio:16/9;transition-delay:240ms">
           <img src="assets/gallery-8.jpg" alt="Nos bastidores do salão"
-               class="w-full h-full object-cover transition-transform duration-500 ease-out"
+               class="w-full h-full object-cover transition-transform duration-500 ease-out" width="526" height="701"
                loading="lazy">
           <div class="gallery-caption">Nos bastidores</div>
         </div>
@@ -433,7 +454,7 @@
             <span class="text-[9px] tracking-[.18em] uppercase text-gold">Mais pedido</span>
           </div>
           <h3 class="font-serif text-xl font-light mb-2">Extensões de Cabelo</h3>
-          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+          <p class="text-[#eef1f4]/55 text-sm font-light leading-relaxed">
             Mega hair, extensões de fita e queratina para o comprimento e volume que sempre sonhou. Resultado natural e duradouro.
           </p>
         </div>
@@ -441,7 +462,7 @@
         <div class="service-card reveal" style="transition-delay:80ms">
           <div class="text-gold text-xl mb-5">◇</div>
           <h3 class="font-serif text-xl font-light mb-2">Balayage & Mechas</h3>
-          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+          <p class="text-[#eef1f4]/55 text-sm font-light leading-relaxed">
             Babylights, balayage e mechas californianas para luminosidade e dimensão naturais.
           </p>
         </div>
@@ -449,7 +470,7 @@
         <div class="service-card reveal" style="transition-delay:160ms">
           <div class="text-gold text-xl mb-5">◈</div>
           <h3 class="font-serif text-xl font-light mb-2">Coloração</h3>
-          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+          <p class="text-[#eef1f4]/55 text-sm font-light leading-relaxed">
             Coloração total, retoque de raízes e luzes com produtos profissionais de longa duração.
           </p>
         </div>
@@ -457,7 +478,7 @@
         <div class="service-card reveal" style="transition-delay:80ms">
           <div class="text-gold text-xl mb-5">✂</div>
           <h3 class="font-serif text-xl font-light mb-2">Corte de Cabelo</h3>
-          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+          <p class="text-[#eef1f4]/55 text-sm font-light leading-relaxed">
             Feminino e masculino, adaptados ao seu rosto e estilo. Precisão em cada detalhe.
           </p>
         </div>
@@ -465,7 +486,7 @@
         <div class="service-card reveal" style="transition-delay:160ms">
           <div class="text-gold text-xl mb-5">◉</div>
           <h3 class="font-serif text-xl font-light mb-2">Tratamentos</h3>
-          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+          <p class="text-[#eef1f4]/55 text-sm font-light leading-relaxed">
             Hidratação, progressiva brasileira, nutrição e reconstrução capilar personalizada.
           </p>
         </div>
@@ -473,7 +494,7 @@
         <div class="service-card reveal" style="transition-delay:240ms">
           <div class="text-gold text-xl mb-5">❧</div>
           <h3 class="font-serif text-xl font-light mb-2">Penteados & Manicure</h3>
-          <p class="text-[#eef1f4]/48 text-sm font-light leading-relaxed">
+          <p class="text-[#eef1f4]/55 text-sm font-light leading-relaxed">
             Penteados para festas, casamentos e eventos. Unhas acrílicas, manicure e pedicure.
           </p>
         </div>
@@ -482,13 +503,13 @@
 
       <div class="text-center mt-14 reveal">
         <a href="marcacoes.html" class="btn-primary">Agendar o meu serviço ✦</a>
-        <p class="text-[#eef1f4]/30 text-xs mt-4 font-light">Orçamento gratuito · Sem compromisso</p>
+        <p class="text-[#eef1f4]/55 text-xs mt-4 font-light">Orçamento gratuito · Sem compromisso</p>
       </div>
 
       <!-- Marcas profissionais — sinal de qualidade imediato -->
       <!-- NOTA: confirmar/ajustar à lista real de marcas usadas no salão -->
       <div class="mt-20 pt-10 border-t border-[rgba(238,241,244,.06)] reveal">
-        <p class="text-center text-[#eef1f4]/25 text-[10px] tracking-[.3em] uppercase mb-9">
+        <p class="text-center text-[#eef1f4]/55 text-[10px] tracking-[.3em] uppercase mb-9">
           Trabalhamos apenas com produtos profissionais
         </p>
         <div class="brand-strip">
@@ -510,7 +531,7 @@
         <p class="section-label mb-4">Investimento</p>
         <h2 class="font-serif text-4xl md:text-[3rem] font-light">Tabela de Preços</h2>
         <div class="gold-divider mt-6"></div>
-        <p class="mt-5 text-[#eef1f4]/40 text-sm max-w-sm mx-auto font-light">
+        <p class="mt-5 text-[#eef1f4]/55 text-sm max-w-sm mx-auto font-light">
           Preços indicativos. Orçamento personalizado mediante consulta.
         </p>
       </div>
@@ -590,7 +611,7 @@
 
       <div class="text-center mt-14 reveal">
         <a href="tel:913533917" class="btn-primary">Pedir orçamento personalizado</a>
-        <p class="text-[#eef1f4]/25 text-[11px] mt-5 font-light">
+        <p class="text-[#eef1f4]/55 text-[11px] mt-5 font-light">
           Marcações de coloração, balayage e extensões podem exigir um pequeno sinal · Lembrete por WhatsApp na véspera
         </p>
       </div>
@@ -634,7 +655,7 @@
                 <img src="assets/equipa-1.jpg" alt="Nome — função" class="w-full h-full object-cover">
               </div>
               <p class="text-[#eef1f4]/70 text-sm mt-3">Nome</p>
-              <p class="text-[#eef1f4]/35 text-[9px] tracking-[.15em] uppercase mt-0.5">Função</p>
+              <p class="text-[#eef1f4]/55 text-[9px] tracking-[.15em] uppercase mt-0.5">Função</p>
             </div>
           </div>
           -->
@@ -648,15 +669,15 @@
           <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-[rgba(238,241,244,.06)]">
             <div>
               <p class="font-serif text-[2.2rem] text-gold leading-none">4.9<span class="text-xl">★</span></p>
-              <p class="text-[#eef1f4]/35 text-[9px] tracking-[.2em] uppercase mt-2">Avaliação</p>
+              <p class="text-[#eef1f4]/55 text-[9px] tracking-[.2em] uppercase mt-2">Avaliação</p>
             </div>
             <div>
               <p class="font-serif text-[2.2rem] text-gold leading-none">72</p>
-              <p class="text-[#eef1f4]/35 text-[9px] tracking-[.2em] uppercase mt-2">Reviews</p>
+              <p class="text-[#eef1f4]/55 text-[9px] tracking-[.2em] uppercase mt-2">Reviews</p>
             </div>
             <div>
               <p class="font-serif text-[2.2rem] text-gold leading-none">2.9k</p>
-              <p class="text-[#eef1f4]/35 text-[9px] tracking-[.2em] uppercase mt-2">Seguidores</p>
+              <p class="text-[#eef1f4]/55 text-[9px] tracking-[.2em] uppercase mt-2">Seguidores</p>
             </div>
           </div>
         </div>
@@ -664,7 +685,7 @@
         <!-- Photo do cabeleireiro -->
         <div class="reveal relative" style="transition-delay:150ms">
           <div class="overflow-hidden" style="aspect-ratio:3/4">
-            <img src="assets/gallery-7.jpg" alt="Leandro Oliveira — Bella Hair Paredes"
+            <img src="assets/gallery-7.jpg" alt="Leandro Oliveira — Bella Hair Paredes" width="512" height="640"
                  class="w-full h-full object-cover">
           </div>
           <div class="absolute -right-3 -bottom-3 w-full h-full border border-[rgba(201,168,76,.1)] pointer-events-none -z-10"></div>
@@ -672,7 +693,7 @@
           <div class="absolute bottom-6 left-6 bg-[rgba(0,0,0,.92)] border border-[rgba(201,168,76,.25)] px-5 py-3 backdrop-blur-sm">
             <p class="stars text-xs mb-1">★★★★★</p>
             <p class="text-gold text-sm font-medium">4.9 · 72 avaliações</p>
-            <p class="text-[#eef1f4]/40 text-xs mt-0.5">Google Maps</p>
+            <p class="text-[#eef1f4]/55 text-xs mt-0.5">Google Maps</p>
           </div>
         </div>
 
@@ -700,7 +721,7 @@
           </p>
           <div class="mt-6 pt-5 border-t border-[rgba(238,241,244,.06)]">
             <p class="text-[#eef1f4]/75 text-sm font-medium">Maria Pereira</p>
-            <p class="text-[#eef1f4]/28 text-xs mt-0.5">Google · Extensões de cabelo &amp; Balayage</p>
+            <p class="text-[#eef1f4]/55 text-xs mt-0.5">Google · Extensões de cabelo &amp; Balayage</p>
           </div>
         </div>
 
@@ -711,7 +732,7 @@
           </p>
           <div class="mt-6 pt-5 border-t border-[rgba(238,241,244,.06)]">
             <p class="text-[#eef1f4]/75 text-sm font-medium">Sofia Silva</p>
-            <p class="text-[#eef1f4]/28 text-xs mt-0.5">Google · Extensões de cabelo &amp; Balayage</p>
+            <p class="text-[#eef1f4]/55 text-xs mt-0.5">Google · Extensões de cabelo &amp; Balayage</p>
           </div>
         </div>
 
@@ -722,7 +743,7 @@
           </p>
           <div class="mt-6 pt-5 border-t border-[rgba(238,241,244,.06)]">
             <p class="text-[#eef1f4]/75 text-sm font-medium">Ellen C.</p>
-            <p class="text-[#eef1f4]/28 text-xs mt-0.5">Google · Extensões de cabelo</p>
+            <p class="text-[#eef1f4]/55 text-xs mt-0.5">Google · Extensões de cabelo</p>
           </div>
         </div>
 
@@ -734,7 +755,7 @@
         <p class="text-[#eef1f4]/60 text-sm font-light leading-[1.9] italic">
           "Aqui ouvem até nas entrelinhas o que necessitamos."
         </p>
-        <p class="text-[#eef1f4]/45 text-xs mt-4">— Filipa Nunes &nbsp;·&nbsp; Google · Balayage</p>
+        <p class="text-[#eef1f4]/55 text-xs mt-4">— Filipa Nunes &nbsp;·&nbsp; Google · Balayage</p>
       </div>
 
       <div class="flex justify-center mt-10 reveal">
@@ -744,7 +765,7 @@
           <span class="stars text-base">★★★★★</span>
           <div>
             <p class="text-gold font-medium text-sm">4.9 / 5</p>
-            <p class="text-[#eef1f4]/35 text-xs mt-0.5">72 avaliações · Google Maps</p>
+            <p class="text-[#eef1f4]/55 text-xs mt-0.5">72 avaliações · Google Maps</p>
           </div>
         </a>
       </div>
@@ -766,7 +787,7 @@
         <p class="section-label mb-4">@bella_hairpt</p>
         <h2 class="font-serif text-4xl md:text-[3rem] font-light">Siga-nos no Instagram</h2>
         <div class="gold-divider mt-6"></div>
-        <p class="mt-5 text-[#eef1f4]/40 text-sm font-light max-w-sm mx-auto">
+        <p class="mt-5 text-[#eef1f4]/55 text-sm font-light max-w-sm mx-auto">
           Transformações novas todas as semanas. Junte-se a ~2.900 seguidores.
         </p>
       </div>
@@ -775,27 +796,27 @@
            substituídas automaticamente pelos últimos 6 posts reais -->
       <div id="ig-grid" class="grid grid-cols-3 md:grid-cols-6 gap-2 reveal">
         <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
-          <img src="assets/gallery-2.jpg" alt="Post Instagram — coloração loira" loading="lazy">
+          <img src="assets/gallery-2.jpg" alt="Post Instagram — coloração loira" width="512" height="640" loading="lazy">
           <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
         <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
-          <img src="assets/gallery-4.jpg" alt="Post Instagram — balayage" loading="lazy">
+          <img src="assets/gallery-4.jpg" alt="Post Instagram — balayage" width="512" height="640" loading="lazy">
           <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
         <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
-          <img src="assets/gallery-5.jpg" alt="Post Instagram — cabelo comprido loiro" loading="lazy">
+          <img src="assets/gallery-5.jpg" alt="Post Instagram — cabelo comprido loiro" width="512" height="640" loading="lazy">
           <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
         <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
-          <img src="assets/gallery-6.jpg" alt="Post Instagram — mechas" loading="lazy">
+          <img src="assets/gallery-6.jpg" alt="Post Instagram — mechas" width="512" height="640" loading="lazy">
           <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
         <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
-          <img src="assets/gallery-1.jpg" alt="Post Instagram — balayage caramelo" loading="lazy">
+          <img src="assets/gallery-1.jpg" alt="Post Instagram — balayage caramelo" width="512" height="640" loading="lazy">
           <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
         <a href="https://www.instagram.com/bella_hairpt/" target="_blank" rel="noopener" class="ig-item" aria-label="Ver no Instagram">
-          <img src="assets/gallery-8.jpg" alt="Post Instagram — bastidores" loading="lazy">
+          <img src="assets/gallery-8.jpg" alt="Post Instagram — bastidores" width="526" height="701" loading="lazy">
           <span class="ig-overlay"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
       </div>
@@ -857,7 +878,7 @@
       </div>
 
       <div class="text-center mt-12 reveal">
-        <p class="text-[#eef1f4]/35 text-sm font-light mb-5">Ficou alguma dúvida por responder?</p>
+        <p class="text-[#eef1f4]/55 text-sm font-light mb-5">Ficou alguma dúvida por responder?</p>
         <a href="https://wa.me/351913533917?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20os%20vossos%20servi%C3%A7os."
            target="_blank" rel="noopener" class="btn-outline">Pergunte no WhatsApp →</a>
       </div>
@@ -896,15 +917,15 @@
           <p class="section-label mb-4">Horário</p>
           <div class="text-[#eef1f4]/55 text-sm font-light space-y-2">
             <div class="flex justify-center gap-4">
-              <span class="text-[#eef1f4]/28 w-24 text-right">Ter – Sáb</span>
+              <span class="text-[#eef1f4]/55 w-24 text-right">Ter – Sáb</span>
               <span>9h – 19h</span>
             </div>
             <div class="flex justify-center gap-4">
-              <span class="text-[#eef1f4]/28 w-24 text-right">Segunda</span>
+              <span class="text-[#eef1f4]/55 w-24 text-right">Segunda</span>
               <span>Fechado</span>
             </div>
             <div class="flex justify-center gap-4">
-              <span class="text-[#eef1f4]/28 w-24 text-right">Domingo</span>
+              <span class="text-[#eef1f4]/55 w-24 text-right">Domingo</span>
               <span>Fechado</span>
             </div>
           </div>
@@ -937,7 +958,7 @@
           <div>
             <p class="section-label mb-3">Clube Bella</p>
             <h3 class="font-serif text-2xl font-light">Seja a primeira a saber das <em class="text-gold">promoções</em></h3>
-            <p class="text-[#eef1f4]/40 text-xs font-light mt-3 leading-relaxed">
+            <p class="text-[#eef1f4]/55 text-xs font-light mt-3 leading-relaxed">
               Novidades, vagas de última hora e ofertas exclusivas. Sem spam — prometido.
             </p>
           </div>
@@ -958,7 +979,7 @@
               <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
               ou receber pelo WhatsApp →
             </a>
-            <p class="text-[#eef1f4]/22 text-[10px] mt-3 font-light">
+            <p class="text-[#eef1f4]/55 text-[10px] mt-3 font-light">
               Ao subscrever aceita ser contactada pela Bella Hair · <a href="privacidade.html" class="underline hover:text-gold transition-colors">Privacidade</a>
             </p>
           </div>
@@ -972,18 +993,18 @@
           <span class="text-gold text-lg">◈</span>
           <div>
             <p class="text-[#eef1f4]/70 text-sm font-medium">Instagram</p>
-            <p class="text-[#eef1f4]/35 text-xs mt-0.5">@bella_hairpt · ~2.900 seguidores</p>
+            <p class="text-[#eef1f4]/55 text-xs mt-0.5">@bella_hairpt · ~2.900 seguidores</p>
           </div>
-          <span class="ml-auto text-[#eef1f4]/25 text-xs">→</span>
+          <span class="ml-auto text-[#eef1f4]/55 text-xs">→</span>
         </a>
         <a href="https://www.facebook.com/p/BELLA-HAIR-Paredes-61556915005333/" target="_blank" rel="noopener"
            class="flex-1 flex items-center gap-4 bg-navy2 border border-[rgba(238,241,244,.07)] px-6 py-4 transition-colors duration-200 hover:border-[rgba(201,168,76,.3)]">
           <span class="text-gold text-lg">◇</span>
           <div>
             <p class="text-[#eef1f4]/70 text-sm font-medium">Facebook</p>
-            <p class="text-[#eef1f4]/35 text-xs mt-0.5">BELLA HAIR Paredes · 2.166 gostos</p>
+            <p class="text-[#eef1f4]/55 text-xs mt-0.5">BELLA HAIR Paredes · 2.166 gostos</p>
           </div>
-          <span class="ml-auto text-[#eef1f4]/25 text-xs">→</span>
+          <span class="ml-auto text-[#eef1f4]/55 text-xs">→</span>
         </a>
       </div>
 
@@ -993,8 +1014,8 @@
            class="block h-44 bg-navy2 border border-[rgba(201,168,76,.1)] flex items-center justify-center transition-colors duration-250 hover:border-[rgba(201,168,76,.3)]">
           <div class="text-center pointer-events-none">
             <p class="text-gold text-2xl mb-3">◈</p>
-            <p class="text-[#eef1f4]/38 text-[10px] tracking-[.25em] uppercase">Ver no Google Maps</p>
-            <p class="text-[#eef1f4]/22 text-xs mt-1.5">R. Dr. José Barbosa Leão 44 · 4580-123 Paredes</p>
+            <p class="text-[#eef1f4]/55 text-[10px] tracking-[.25em] uppercase">Ver no Google Maps</p>
+            <p class="text-[#eef1f4]/55 text-xs mt-1.5">R. Dr. José Barbosa Leão 44 · 4580-123 Paredes</p>
           </div>
         </a>
       </div>
@@ -1003,6 +1024,8 @@
   </section>
 
 
+  </main>
+
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="border-t border-[rgba(201,168,76,.07)] pt-8 pb-10 px-6">
     <div class="max-w-6xl mx-auto">
@@ -1010,12 +1033,12 @@
       <!-- Linha principal: logo · marca · telefone -->
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
         <img src="assets/logo.jpg" alt="Bella Hair"
-             class="h-8 w-auto object-contain opacity-70"
+             class="h-8 w-auto object-contain opacity-70" width="500" height="500"
              style="filter: invert(1); mix-blend-mode: screen;">
-        <p class="text-[#eef1f4]/30 text-xs">
+        <p class="text-[#eef1f4]/55 text-xs">
           © 2026 Bella Hair by Leandro Oliveira &nbsp;·&nbsp; R. Dr. José Barbosa Leão 44, 4580-123 Paredes
         </p>
-        <a href="tel:913533917" class="text-[#eef1f4]/35 text-xs transition-colors duration-200 hover:text-gold">
+        <a href="tel:913533917" class="text-[#eef1f4]/55 text-xs transition-colors duration-200 hover:text-gold">
           913 533 917
         </a>
       </div>
@@ -1030,7 +1053,7 @@
       <div class="mt-7 pt-6 border-t border-[rgba(238,241,244,.05)] flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-3 text-center">
 
         <a href="https://www.livroreclamacoes.pt/inicio/" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-2 text-[#eef1f4]/45 text-[11px] transition-colors duration-200 hover:text-gold">
+           class="inline-flex items-center gap-2 text-[#eef1f4]/55 text-[11px] transition-colors duration-200 hover:text-gold">
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M4 5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5z"/><path d="M14 3v5h5M8 13h8M8 17h5"/>
           </svg>
@@ -1040,20 +1063,29 @@
         <span class="hidden sm:inline text-[#eef1f4]/12">·</span>
 
         <a href="https://www.cicap.pt" target="_blank" rel="noopener"
-           class="text-[#eef1f4]/45 text-[11px] transition-colors duration-200 hover:text-gold">
+           class="text-[#eef1f4]/55 text-[11px] transition-colors duration-200 hover:text-gold">
           Resolução de Litígios de Consumo (CICAP)
         </a>
 
         <span class="hidden sm:inline text-[#eef1f4]/12">·</span>
 
         <a href="privacidade.html"
-           class="text-[#eef1f4]/45 text-[11px] transition-colors duration-200 hover:text-gold">
+           class="text-[#eef1f4]/55 text-[11px] transition-colors duration-200 hover:text-gold">
           Aviso de Privacidade
         </a>
       </div>
 
     </div>
   </footer>
+
+  <!-- Lightbox da galeria — aberto ao clicar numa foto -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de imagens">
+    <button class="lightbox-btn lightbox-close" id="lb-close" aria-label="Fechar (Esc)">✕</button>
+    <button class="lightbox-btn lightbox-prev"  id="lb-prev"  aria-label="Imagem anterior">‹</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lightbox-btn lightbox-next"  id="lb-next"  aria-label="Imagem seguinte">›</button>
+    <p class="lightbox-caption" id="lb-caption"></p>
+  </div>
 
   <!-- Barra fixa de ação (só mobile) — conversão sem scroll -->
   <div class="mobile-cta-bar md:hidden">
@@ -1118,10 +1150,31 @@
     });
 
     // Reduced-motion: pausar vídeos e desativar scroll suave
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
       document.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('autoplay'); });
       document.documentElement.style.scrollBehavior = 'auto';
     }
+
+    // Vídeo do hero: só carrega em desktop (poupa 12 MB em telemóvel, onde o
+    // vídeo aparecia a 25% de opacidade — invisível) e nunca com reduced-motion.
+    (function () {
+      const v = document.getElementById('hero-video');
+      if (!v || prefersReducedMotion) return;
+      const isDesktop = window.matchMedia('(min-width: 1024px)');
+      function load() {
+        if (v.dataset.loaded || !isDesktop.matches) return;
+        v.dataset.loaded = '1';
+        const s = document.createElement('source');
+        s.src  = v.dataset.src;
+        s.type = 'video/mp4';
+        v.appendChild(s);
+        v.load();
+        v.play().catch(() => {});   // ignorar bloqueio de autoplay
+      }
+      load();
+      isDesktop.addEventListener('change', load);
+    })();
 
     // Scroll reveal
     const io = new IntersectionObserver((entries) => {
@@ -1131,6 +1184,67 @@
     }, { threshold: 0.08, rootMargin: '-20px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ── Lightbox da galeria (teclado: Esc fecha, ← → navegam)
+    (function () {
+      const box     = document.getElementById('lightbox');
+      const lbImg   = document.getElementById('lb-img');
+      const lbCap   = document.getElementById('lb-caption');
+      const items   = Array.from(document.querySelectorAll('#trabalhos .gallery-item'));
+      if (!box || !items.length) return;
+
+      let index = 0;
+      let lastFocus = null;
+
+      function show(i) {
+        index = (i + items.length) % items.length;
+        const img = items[index].querySelector('img');
+        const cap = items[index].querySelector('.gallery-caption');
+        lbImg.src = img.getAttribute('src');
+        lbImg.alt = img.getAttribute('alt') || '';
+        lbCap.textContent = cap ? cap.textContent.trim() : '';
+      }
+
+      function open(i) {
+        lastFocus = document.activeElement;
+        show(i);
+        box.classList.add('open');
+        requestAnimationFrame(() => box.classList.add('visible'));
+        document.body.style.overflow = 'hidden';
+        document.getElementById('lb-close').focus();
+      }
+
+      function close() {
+        box.classList.remove('visible');
+        setTimeout(() => { box.classList.remove('open'); lbImg.src = ''; }, 250);
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      }
+
+      items.forEach((item, i) => {
+        // clicável e focável por teclado
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('role', 'button');
+        const cap = item.querySelector('.gallery-caption');
+        item.setAttribute('aria-label', 'Ver em grande: ' + (cap ? cap.textContent.trim() : 'foto da galeria'));
+        item.addEventListener('click', () => open(i));
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+        });
+      });
+
+      document.getElementById('lb-close').addEventListener('click', close);
+      document.getElementById('lb-prev').addEventListener('click', () => show(index - 1));
+      document.getElementById('lb-next').addEventListener('click', () => show(index + 1));
+      box.addEventListener('click', (e) => { if (e.target === box) close(); });
+
+      document.addEventListener('keydown', (e) => {
+        if (!box.classList.contains('open')) return;
+        if (e.key === 'Escape')     close();
+        if (e.key === 'ArrowLeft')  show(index - 1);
+        if (e.key === 'ArrowRight') show(index + 1);
+      });
+    })();
 
     // ── Feed do Instagram AO VIVO (via behold.so — grátis)
     // Para ativar:

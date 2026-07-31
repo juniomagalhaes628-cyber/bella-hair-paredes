@@ -3,6 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Política de Segurança de Conteúdo — restringe de onde podem vir scripts,
+       estilos, imagens e fontes, impede injeção de <base> e plugins, e limita o
+       destino dos formulários ao FormSubmit.
+       Nota: 'frame-ancestors' (anti-clickjacking) só funciona em cabeçalho HTTP,
+       que o GitHub Pages não permite definir. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Aviso de Privacidade da Bella Hair by Leandro Oliveira — como tratamos os seus dados pessoais, em conformidade com o RGPD.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://juniomagalhaes628-cyber.github.io/bella-hair-paredes/privacidade.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text x='50' y='72' font-size='68' font-family='Georgia,serif' fill='%23c9a84c' text-anchor='middle'>B</text></svg>">
   <title>Aviso de Privacidade — Bella Hair Paredes</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -33,7 +44,7 @@
           <strong class="text-[#eef1f4]/80 font-medium">Bella Hair by Leandro Oliveira</strong><br>
           R. Dr. José Barbosa Leão 44, 4580-123 Paredes, Portugal<br>
           Telefone: <a href="tel:913533917" class="text-gold">913 533 917</a><br>
-          Instagram: <a href="https://www.instagram.com/bella_hairpt/" class="text-gold" target="_blank">@bella_hairpt</a>
+          Instagram: <a href="https://www.instagram.com/bella_hairpt/" class="text-gold" target="_blank" rel="noopener">@bella_hairpt</a>
         </p>
       </div>
 
@@ -81,7 +92,7 @@
         </p>
         <div class="mt-3 bg-navy2 border border-[rgba(201,168,76,.1)] p-4">
           <p>Telemóvel: <a href="tel:913533917" class="text-gold">913 533 917</a></p>
-          <p class="mt-1">Tem igualmente o direito de apresentar reclamação à <a href="https://www.cnpd.pt" target="_blank" class="text-gold">CNPD — Comissão Nacional de Proteção de Dados</a>.</p>
+          <p class="mt-1">Tem igualmente o direito de apresentar reclamação à <a href="https://www.cnpd.pt" target="_blank" rel="noopener" class="text-gold">CNPD — Comissão Nacional de Proteção de Dados</a>.</p>
         </div>
       </div>
 
@@ -116,7 +127,7 @@
         Assim que tiver o NIF do prestador (empresário/sociedade), acrescente-o aqui e no rodapé.
       -->
 
-      <p class="text-[#eef1f4]/30 text-xs pt-4 border-t border-[rgba(238,241,244,.06)]">
+      <p class="text-[#eef1f4]/55 text-xs pt-4 border-t border-[rgba(238,241,244,.06)]">
         Última atualização: Julho 2026
       </p>
 
@@ -124,8 +135,8 @@
   </main>
 
   <footer class="border-t border-[rgba(201,168,76,.07)] py-6 px-6 text-center">
-    <p class="text-[#eef1f4]/25 text-xs">© 2026 Bella Hair by Leandro Oliveira · R. Dr. José Barbosa Leão 44, 4580-123 Paredes</p>
-    <p class="text-[#eef1f4]/20 text-[11px] mt-2">
+    <p class="text-[#eef1f4]/55 text-xs">© 2026 Bella Hair by Leandro Oliveira · R. Dr. José Barbosa Leão 44, 4580-123 Paredes</p>
+    <p class="text-[#eef1f4]/55 text-[11px] mt-2">
       <a href="https://www.livroreclamacoes.pt/inicio/" target="_blank" rel="noopener" class="hover:text-gold transition-colors">Livro de Reclamações</a>
       &nbsp;·&nbsp;
       <a href="index.html" class="hover:text-gold transition-colors">← Voltar ao site</a>

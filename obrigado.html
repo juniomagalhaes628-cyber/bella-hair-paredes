@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Política de Segurança de Conteúdo — restringe de onde podem vir scripts,
+       estilos, imagens e fontes, impede injeção de <base> e plugins, e limita o
+       destino dos formulários ao FormSubmit.
+       Nota: 'frame-ancestors' (anti-clickjacking) só funciona em cabeçalho HTTP,
+       que o GitHub Pages não permite definir. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text x='50' y='72' font-size='68' font-family='Georgia,serif' fill='%23c9a84c' text-anchor='middle'>B</text></svg>">
   <title>Marcação enviada — Bella Hair</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -20,7 +29,7 @@
     <p class="text-[#eef1f4]/55 font-light leading-relaxed text-sm mb-3">
       Recebemos o seu pedido. Entraremos em contacto brevemente para confirmar a disponibilidade.
     </p>
-    <p class="text-[#eef1f4]/35 text-xs mb-10">
+    <p class="text-[#eef1f4]/55 text-xs mb-10">
       Para confirmação imediata ligue para
       <a href="tel:913533917" class="text-gold">913 533 917</a>
     </p>
@@ -31,7 +40,7 @@
     </div>
   </div>
 
-  <p class="absolute bottom-8 text-[#eef1f4]/20 text-xs">Bella Hair by Leandro Oliveira · Paredes</p>
+  <p class="absolute bottom-8 text-[#eef1f4]/55 text-xs">Bella Hair by Leandro Oliveira · Paredes</p>
 
   <script>
     document.querySelectorAll('.fade-up').forEach((el,i)=>{
