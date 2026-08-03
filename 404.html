@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Política de Segurança de Conteúdo — restringe de onde podem vir scripts,
+       estilos, imagens e fontes, impede injeção de <base> e plugins, e limita o
+       destino dos formulários ao FormSubmit.
+       Nota: 'frame-ancestors' (anti-clickjacking) só funciona em cabeçalho HTTP,
+       que o GitHub Pages não permite definir. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex, follow">
+  <title>Página não encontrada — Bella Hair by Leandro Oliveira</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text x='50' y='72' font-size='68' font-family='Georgia,serif' fill='%23c9a84c' text-anchor='middle'>B</text></svg>">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>tailwind.config={theme:{extend:{colors:{navy:'#000000',navy2:'#0d0d0d',gold:'#c9a84c','gold-light':'#e0c26a'},fontFamily:{serif:['"Cormorant Garamond"','Georgia','serif'],sans:['Inter','system-ui','sans-serif']}}}}</script>
+</head>
+
+<body class="bg-navy text-[#eef1f4] font-sans antialiased min-h-screen flex flex-col items-center justify-center px-6 text-center">
+
+  <main class="max-w-md fade-up">
+    <img src="assets/logo.jpg" alt="Bella Hair by Leandro Oliveira"
+         class="h-16 w-auto object-contain mx-auto mb-10"
+         width="500" height="500"
+         style="filter: invert(1); mix-blend-mode: screen;">
+
+    <p class="section-label mb-4">Erro 404</p>
+    <h1 class="font-serif text-4xl md:text-5xl font-light">
+      Esta página<br><em class="text-gold">não existe</em>
+    </h1>
+    <div class="gold-divider mt-6 mb-7"></div>
+
+    <p class="text-[#eef1f4]/55 text-sm font-light leading-relaxed mb-9">
+      O link pode estar errado ou a página foi movida.
+      Mas o seu cabelo continua à espera — voltamos ao início?
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="index.html" class="btn-primary">← Voltar ao site</a>
+      <a href="marcacoes.html" class="btn-outline">Marcar consulta ✦</a>
+    </div>
+
+    <p class="text-[#eef1f4]/55 text-xs mt-10">
+      Ou ligue-nos: <a href="tel:913533917" class="text-gold">913 533 917</a>
+    </p>
+  </main>
+
+  <footer class="absolute bottom-8 left-0 right-0 px-6">
+    <p class="text-[#eef1f4]/55 text-xs">
+      Bella Hair by Leandro Oliveira · R. Dr. José Barbosa Leão 44, 4580-123 Paredes
+    </p>
+  </footer>
+
+</body>
+</html>

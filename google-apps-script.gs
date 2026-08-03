@@ -18,6 +18,33 @@
 
 const SHEET_NAME = 'Marcações';
 const SHEET_ID   = '';  // Deixe vazio para criar automaticamente
+const NOTIFY_EMAIL = 'juniomagalhaes628@gmail.com';  // destino das notificações
+const MAX_LEN      = 120;  // comprimento máximo aceite por campo
+
+/**
+ * Escapa HTML — impede que um nome com "<script>" ou markup injetado
+ * pelo formulário seja interpretado no email recebido pelo salão.
+ */
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/** Corta e limpa um campo de texto vindo do formulário. */
+function sanitizeField(value) {
+  return String(value == null ? '' : value)
+    .replace(/[\r\n\t]+/g, ' ')   // sem quebras de linha (evita injeção em cabeçalhos)
+    .trim()
+    .slice(0, MAX_LEN);
+}
+
+/** Valida os formatos esperados antes de escrever na folha. */
+function isValidDate(d) { return /^\d{4}-\d{2}-\d{2}$/.test(d) && !isNaN(new Date(d + 'T12:00:00')); }
+function isValidTime(t) { return /^([01]\d|2[0-3]):[0-5]\d$/.test(t); }
 
 function getSheet() {
   let ss;
@@ -76,9 +103,22 @@ function doPost(e) {
     return jsonResponse({ success: false, error: 'JSON inválido' });
   }
 
-  const { date, time, name, phone, service } = body;
+  // Validar e limpar tudo o que vem de fora — o endpoint é público
+  const date    = sanitizeField(body.date);
+  const time    = sanitizeField(body.time);
+  const name    = sanitizeField(body.name);
+  const phone   = sanitizeField(body.phone);
+  const service = sanitizeField(body.service);
+
   if (!date || !time) {
     return jsonResponse({ success: false, error: 'Data e horário são obrigatórios' });
+  }
+  if (!isValidDate(date) || !isValidTime(time)) {
+    return jsonResponse({ success: false, error: 'Formato de data ou horário inválido' });
+  }
+  // Não aceitar marcações no passado
+  if (new Date(date + 'T23:59:59') < new Date()) {
+    return jsonResponse({ success: false, error: 'A data indicada já passou' });
   }
 
   const sheet  = getSheet();
@@ -94,31 +134,42 @@ function doPost(e) {
     }
   }
 
-  // Registar marcação
+  // Registar marcação — prefixo ' impede que um valor iniciado por "=" seja
+  // interpretado como fórmula pelo Google Sheets (CSV/formula injection)
+  const safeCell = (v) => (/^[=+\-@]/.test(v) ? "'" + v : v);
   sheet.appendRow([
     new Date(date + 'T12:00:00'),
     time,
-    name  || '',
-    phone || '',
-    service || '',
+    safeCell(name),
+    safeCell(phone),
+    safeCell(service),
     'Pendente',
     new Date(),
   ]);
 
   // Notificação por email ao salão
   try {
+    // Todos os valores passam por escapeHtml — nada do formulário é
+    // interpretado como HTML na caixa de correio do salão
+    const eName    = escapeHtml(name);
+    const ePhone   = escapeHtml(phone);
+    const eService = escapeHtml(service);
+    const eDate    = escapeHtml(date);
+    const eTime    = escapeHtml(time);
+    const telHref  = encodeURIComponent(phone.replace(/[^\d+]/g, ''));
+
     MailApp.sendEmail({
-      to: 'juniomagalhaes628@gmail.com',
-      subject: `✂️ Nova marcação — ${name} — ${date} ${time}`,
+      to: NOTIFY_EMAIL,
+      subject: `✂️ Nova marcação — ${name} — ${date} ${time}`.slice(0, 200),
       htmlBody: `
         <div style="font-family:sans-serif;max-width:480px;margin:0 auto;background:#0d0d0d;color:#eef1f4;padding:32px;border-radius:8px">
           <h2 style="color:#c9a84c;margin:0 0 24px">Nova Marcação — Bella Hair</h2>
           <table style="width:100%;border-collapse:collapse;font-size:14px">
-            <tr><td style="padding:8px 0;color:#aaa;width:120px">Nome</td><td style="padding:8px 0">${name}</td></tr>
-            <tr><td style="padding:8px 0;color:#aaa">Telemóvel</td><td style="padding:8px 0"><a href="tel:${phone}" style="color:#c9a84c">${phone}</a></td></tr>
-            <tr><td style="padding:8px 0;color:#aaa">Serviço</td><td style="padding:8px 0">${service || '—'}</td></tr>
-            <tr><td style="padding:8px 0;color:#aaa">Data</td><td style="padding:8px 0">${date}</td></tr>
-            <tr><td style="padding:8px 0;color:#aaa">Horário</td><td style="padding:8px 0">${time}</td></tr>
+            <tr><td style="padding:8px 0;color:#aaa;width:120px">Nome</td><td style="padding:8px 0">${eName}</td></tr>
+            <tr><td style="padding:8px 0;color:#aaa">Telemóvel</td><td style="padding:8px 0"><a href="tel:${telHref}" style="color:#c9a84c">${ePhone}</a></td></tr>
+            <tr><td style="padding:8px 0;color:#aaa">Serviço</td><td style="padding:8px 0">${eService || '—'}</td></tr>
+            <tr><td style="padding:8px 0;color:#aaa">Data</td><td style="padding:8px 0">${eDate}</td></tr>
+            <tr><td style="padding:8px 0;color:#aaa">Horário</td><td style="padding:8px 0">${eTime}</td></tr>
           </table>
           <div style="margin-top:24px;padding:16px;background:#1a1a1a;border-left:3px solid #c9a84c;border-radius:4px">
             <p style="margin:0;font-size:12px;color:#888">Aceda à folha de cálculo para confirmar ou cancelar esta marcação.</p>
